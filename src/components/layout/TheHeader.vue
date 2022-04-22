@@ -21,9 +21,9 @@
         <li>
           <router-link to="/register">Sign In</router-link>
         </li>
-        <!-- <li>
+        <li>
           <base-button @click="logout">Logout</base-button>
-        </li> -->
+        </li>
       </ul>
     </nav>
   </header>
