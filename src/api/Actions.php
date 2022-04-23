@@ -16,16 +16,30 @@ if($_POST['action'] == 'login'){
     // echo json_encode($stmt->fetch(PDO::FETCH_ASSOC));
     echo json_encode(($userController->login($_POST['username']))->expose());
 }
+
 if($_POST['action'] == 'register'){
-   // echo 'THIS IS THE REGISTER RESPONSE';
-   $user = new User();
-   $user->setFirstname($_POST['firstname']);
-   $user->setLastname($_POST['lastname']);
-   $user->setUsername($_POST['username']);
-   $user->setEmail($_POST['email']);
-   $user->setPassword($_POST['password']);
-   $user->setRole($_POST['role']);
-   echo json_encode($userController->registration($user));
+   $tmp = $userController->checkIfUsernameExists($_POST['username']);
+    if($tmp){ 
+        //user exists
+        echo json_encode($tmp);
+    }
+    else{ 
+        // user not exists 
+        $user = new User();
+        $user->setFirstname($_POST['firstname']);
+        $user->setLastname($_POST['lastname']);
+        $user->setUsername($_POST['username']);
+        $user->setEmail($_POST['email']);
+        $user->setPassword($_POST['password']);
+        $user->setRole($_POST['role']);
+        try{
+            $userController->registration($user);
+            echo json_encode($tmp);
+        }catch(PDOException $exception){
+            echo json_encode($exception->getMessage());
+        }
+    }
+   
 }
 
 

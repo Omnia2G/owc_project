@@ -6,7 +6,6 @@
       <base-spinner></base-spinner>
     </base-dialog>
   <form @submit.prevent="submitLogin">
-    <!-- <form method="get" name="form" action="../php/PostScript.php" > -->
     <div class="form-control" :class="{ invalid: !username.isValid }">
       <label for="username">Username</label>
       <input
@@ -51,7 +50,7 @@ export default {
         isValid: true,
       },
       formIsValid: true,
-      mode: 'login',
+      //mode: 'login',
       isLoading: false,
       error: null,
     };
@@ -76,9 +75,7 @@ export default {
       }
     },
     submitLogin() {
-      //const bcrypt = require('bcryptjs');
       this.validateForm();
-      
       if (!this.formIsValid) {
         return;
       }
@@ -96,12 +93,6 @@ export default {
       axios
         .post("http://localhost/owc_project/src/api/Actions.php", data)
         .then(res => {
-         //console.log(bcrypt.hash(this.password.val, 10));
-          //console.log(bcrypt.hashSync(), '\n\n');
-          //console.log(bcrypt.compareSync(bcrypt.hashSync(this.password.val, 10), res.data.pw), '\n\n');
-          // console.log(res.data);
-          // console.log(this.username.val);
-          // console.log(this.password.val);
           if (res.data.username === this.username.val && bcrypt.compareSync( this.password.val,  res.data.pw) ){ 
                setTimeout(() => {
                  this.isLoading = false;

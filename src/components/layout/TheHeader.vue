@@ -21,7 +21,7 @@
         <li>
           <router-link to="/register">Sign In</router-link>
         </li>
-        <li>
+        <li v-if="false">
           <base-button @click="logout">Logout</base-button>
         </li>
       </ul>

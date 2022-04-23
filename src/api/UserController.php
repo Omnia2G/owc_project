@@ -18,13 +18,12 @@ class UserController{
     public function login($username){
         $query_data = array(
             ':username' =>  $username,
-            
            );
         $stmt = $this->conn->prepare("SELECT * FROM `login` where username = :username");
         $stmt->execute($query_data);
         $stmt->setFetchMode(PDO::FETCH_CLASS, "User");
-        $personCheck = $stmt->fetch();
-        return $personCheck; 
+        $person = $stmt->fetch();
+        return $person; 
     }
     public function registration(User $person){
         $query_data = array(
@@ -32,7 +31,7 @@ class UserController{
             ':lastname' =>  $person->getLastname(),
             ':username' =>  $person->getUsername(),
             ':email' =>  $person->getEmail(),
-            ':password' =>  $person->getPassword(),
+            ':pw' =>  $person->getPassword(),
             ':role' =>  $person->getRole(),
            );
         $stmt = $this->conn->prepare(
@@ -41,7 +40,16 @@ class UserController{
         $stmt->execute($query_data);
     }
 
-
+    public function checkIfUsernameExists(string $username):bool {
+        $stmt = $this->conn->prepare("SELECT username from `login` where username = :username;");
+        $stmt->bindParam(":username", $username, PDO::PARAM_STR);
+        $stmt->execute();
+        if($stmt->fetch(PDO::FETCH_COLUMN)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     // public function insertUser(User $person): int
     // {
@@ -62,30 +70,7 @@ class UserController{
     //     return $this->conn->lastInsertId();
     // }
 
-    // public function checkIfUserExists(string $username, string $password,string $method):bool {
-    //     $stmt = $this->conn->prepare("select user.* from user where user.username=:username;");
-    //     $stmt->bindParam(":username", $username, PDO::PARAM_STR);
-    //     $stmt->execute();
-    //     $stmt->setFetchMode(PDO::FETCH_CLASS, "User");
-    //     $personCheck = $stmt->fetch();
-    //     switch ($method){
-    //         case "login":
-    //             if ($personCheck->getUsername() === $username && password_verify($password, $personCheck->getPassword())) {
-    //                 return true;
-    //             }else{
-    //                 return false;
-    //             }
-    //         case "registration":
-    //             if(!$personCheck){
-    //                 return false;
-    //             }else {
-    //                 if ($personCheck->getUsername() === $username) {
-    //                     return true;
-    //                 } else {
-    //                     return false;
-    //                 }
-    //             }
-    //     }
+    
 
     // }
     // public function getUserEmail($username):string{
@@ -108,19 +93,7 @@ class UserController{
     // }
 
 
-    // public function getAllMyLogins ($username): array
-    // {
-    //     $stmt = $this->conn->prepare("select * from login where login.username=:username;");
-    //     $stmt->bindParam(":username", $username, PDO::PARAM_STR);
-    //     $stmt->execute();
-    //     return $stmt->fetchAll(PDO::FETCH_CLASS, "Login");
-    // }
-    // public function getSumOfLoginTypes($type){
-    //     $stmt = $this->conn->prepare("select count(login.logintype) from login where login.logintype=:logintype;");
-    //     $stmt->bindParam(":logintype", $type, PDO::PARAM_STR);
-    //     $stmt->execute();
-    //     return $stmt->fetch();
-    // }
+   
 
 
 
