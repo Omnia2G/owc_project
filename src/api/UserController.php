@@ -70,9 +70,6 @@ class UserController{
     //     return $this->conn->lastInsertId();
     // }
 
-    
-
-    // }
     // public function getUserEmail($username):string{
     //     $stmt = $this->conn->prepare("select user.email from user where user.username=:username;");
     //     $stmt->bindParam(":username", $username, PDO::PARAM_STR);
@@ -81,6 +78,7 @@ class UserController{
     //     $tmp_email = $stmt->fetch();
     //     return $tmp_email[0];
     // }
+
     // public function logUser($username, $email, $logintype):void{
     //     $stmt = $this->conn->prepare("insert into login (username, email, logintype, logintime) values (:username, :email, :logintype, :logintime);");
     //     $stmt->bindParam(":username", $username, PDO::PARAM_STR);

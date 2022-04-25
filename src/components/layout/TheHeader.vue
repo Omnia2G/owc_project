@@ -4,16 +4,18 @@
       <h1>
         <router-link to="/">Home</router-link>
       </h1>
-
        <h1>
            <router-link to="topics">Topics</router-link>
        </h1>
-        
-      
       <h1>
         <router-link to="/about">About</router-link>
       </h1>
-
+      <h1>
+        <router-link to="/createtest">New Test</router-link>
+      </h1>
+      <h1>
+        <router-link to="/adminpanel">Admin Panel</router-link>
+      </h1>
       <ul>
         <li>
           <router-link to="/login">Login</router-link>
