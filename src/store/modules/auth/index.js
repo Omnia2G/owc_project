@@ -6,8 +6,12 @@ export default{
     state(){
         return{
             userId: null,
-            token: null,
-            didAutoLogout: null
+            //token: null,
+            userRole: null,
+            // isTeacher: false,
+            // isAdmin: false,
+            isLoggedIn: false,
+            didAutoLogout: false
         };
     },
     mutations,

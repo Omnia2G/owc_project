@@ -1,7 +1,8 @@
 <template>
   <section>
     <base-card>
-      <h1>Something useful about this App!</h1>
+      <h1>LI-FI</h1>
+      <h3>Light-Fidelity</h3>
     </base-card>
   </section>
 </template>
