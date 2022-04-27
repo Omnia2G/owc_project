@@ -1,11 +1,11 @@
 <template>
   <section>
     <base-card>
-      <h1>Visible Light Communication</h1>
-      <h3>Viditeľná sveteľna komunikácia</h3>
+      <h1>Viditeľná sveteľna komunikácia</h1>
+      <h3>Visible Light Communication (VLC)</h3>
       <section>
         <br /><br />
-        <h4>Rozsah</h4>
+        <h4>Úvod</h4>
         <p>
           Rozsah viditeľného svetla je zhruba od 380 - 400nm do 700 - 780nm, ale
           hranice nie je možné presne stanoviť, lebo môžu sa meniť v závislosti
@@ -212,57 +212,57 @@
         <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
         <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
       </section>
-      <br><br>
+      <br /><br />
       <base-button @click="moveUp">Späť na začiatok</base-button>
     </base-card>
     <base-card>
-        <section>
-            <h2>Videá</h2>
-        </section>
-        <br><br>
+      <section>
+        <h2>Videá</h2>
+      </section>
+      <br /><br />
       <base-button @click="moveUp">Späť na začiatok</base-button>
     </base-card>
     <base-card>
-        <section>
-            <h2>Referencie</h2>
-            <ul>
-                <li>ref 1</li>
-                <li>ref 2</li>
-                <li>ref 3</li>
-                <li>ref 4</li>
-                <li>ref 5</li>
-                <li>ref 6</li>
-            </ul>
-        </section>
-        <br><br>
+      <section>
+        <h2>Referencie</h2>
+        <ul>
+          <li>ref 1</li>
+          <li>ref 2</li>
+          <li>ref 3</li>
+          <li>ref 4</li>
+          <li>ref 5</li>
+          <li>ref 6</li>
+        </ul>
+      </section>
+      <br /><br />
       <base-button @click="moveUp">Späť na začiatok</base-button>
     </base-card>
-     <base-card>
-        <section>
-            <h2>Testy pre VLC</h2>
-            <ul>
-                <li>test 1</li>
-                <li>test 2</li>
-                <li>test 3</li>
-                <li>test 4</li>
-                <li>test 5</li>
-                <li>test 6</li>
-            </ul>
-        </section>
-        <br><br>
+    <base-card>
+      <section>
+        <h2>Testy pre VLC</h2>
+        <ul>
+          <li>test 1</li>
+          <li>test 2</li>
+          <li>test 3</li>
+          <li>test 4</li>
+          <li>test 5</li>
+          <li>test 6</li>
+        </ul>
+      </section>
+      <br /><br />
       <base-button @click="moveUp">Späť na začiatok</base-button>
     </base-card>
   </section>
 </template>
 
 <script>
-import BaseCard from '../../components/ui/BaseCard.vue';
-import BaseButton from '../../components/ui/BaseButton.vue';
+import BaseCard from "../../components/ui/BaseCard.vue";
+import BaseButton from "../../components/ui/BaseButton.vue";
 export default {
   components: { BaseButton, BaseCard },
   methods: {
     moveUp() {
-       window.scrollTo(0,0);
+      window.scrollTo(0, 0);
     },
   },
 };

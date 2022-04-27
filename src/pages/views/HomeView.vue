@@ -1,11 +1,13 @@
 <template>
   <section>
     <base-card>
-      <h1>HOME</h1>
-      <h4>in progress...</h4>
+      <h1>E-learningová aplikácia </h1>
+      <h2>z oblasti Optickej bezdrôtovej komunikácie</h2>
+      <h3>in progress...</h3>
       <p>
         <span>{{ time }}</span>
       </p>
+      <p></p>
     </base-card>
   </section>
 </template>

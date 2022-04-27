@@ -53,8 +53,10 @@ button:active {
 }
 
 .flat {
-  background-color: transparent;
-  color: #3a0061;
+  /* background-color: transparent; */
+  background-color: white;
+  /* color: #3a0061; */
+  color: rgb(0, 0, 0);
   border: none;
 }
 
@@ -68,6 +70,7 @@ button:active {
 .flat:active,
 .outline:hover,
 .outline:active {
-  background-color: #edd2ff;
+  /* background-color: #edd2ff; */
+  background-color: beige;
 }
 </style>

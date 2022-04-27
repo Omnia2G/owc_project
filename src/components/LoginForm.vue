@@ -97,29 +97,35 @@ export default {
             res.data.username === this.username.val &&
             bcrypt.compareSync(this.password.val, res.data.pw)
           ) {
+            // console.log(res.data.pw);////////
+            // console.log('pw hash', bcrypt.hashSync(this.password.val));
+            // console.log('JSON str',JSON.stringify(res.data.pw));
             setTimeout(() => {
               this.isLoading = false;
               //TODO save role
-              const expiresIn = 10800000; // 3h - autologout timer 7000 = 7s
+              // const expiresIn = 10800000; // 3h - autologout //// timer 7000 = 7s
+              const expiresIn = 10000;
               const expirationDate = new Date().getTime() + expiresIn;
 
-              localStorage.setItem('userId', res.data.username);
+              localStorage.setItem('token', res.data.pw);
               localStorage.setItem('role', res.data.role);
-              localStorage.setItem('tokenExpiration', expirationDate);
-              
+              localStorage.setItem('tokenExpiration', expirationDate); //expirationDate
+              //console.log(localStorage.getItem('token'));
               this.$store.commit("setUser", {
                 userId: res.data.username,
+                token: res.data.pw,
                 userRole: res.data.role,
                 isLoggedIn: true
               });
 
-              console.log(
-                this.$store.getters.userId,
-                "<=>",
-                this.$store.getters.userRole
-              );
+              // console.log(
+              //   this.$store.getters.userId,
+              //   "<=>",
+              //   this.$store.getters.userRole
+              // );
               this.$router.replace("/");
             }, 500);
+      
           } else {
             throw new Error("Invalid username or Password!");
           }

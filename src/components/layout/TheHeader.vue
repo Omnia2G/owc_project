@@ -2,29 +2,29 @@
   <header>
     <nav>
       <h1>
-        <router-link to="/">Home</router-link>
+        <router-link to="/">Domov</router-link>
       </h1>
 
       <div class="dropdown">
         <h1 >
           <!-- <router-link to="topics">Topics</router-link> -->
-          Topics
+          Témy
         </h1>
         <div class="dropdown-content">
-          <router-link to="/vlc">Visible Light Communication</router-link>
-          <router-link to="/occ">Optical Camera Communication</router-link>
-          <router-link to="/irc">Infrared Communication</router-link>
-          <router-link to="/fso">Free Space Optics</router-link>
+          <router-link to="/vlc">Viditeľná sveteľna komunikácia</router-link>
+          <router-link to="/occ">Optická kamerová komunikácia</router-link>
+          <router-link to="/irc">Infračervená svetelná komunikácia</router-link>
+          <router-link to="/fso">Optická komunikácia vo voľnom priestore</router-link>
           <router-link to="/uvc">Ultraviolet Communication</router-link>
           <router-link to="/lifi">LI-FI</router-link>
         </div>
       </div>
 
       <h1>
-        <router-link to="/about">About</router-link>
+        <router-link to="/about">O nás</router-link>
       </h1>
       <h1 v-if="activeRole === 'teacher' || activeRole === 'admin'">
-        <router-link to="/createtest">New Test</router-link>
+        <router-link to="/createtest">Nový test</router-link>
       </h1>
       <h1 v-if="activeRole === 'admin'">
         <router-link to="/adminpanel">Admin Panel</router-link>
@@ -37,7 +37,7 @@
           <router-link to="/register">Sign In</router-link>
         </li>
         <li v-else>
-          <base-button @click="logout">Logout</base-button>
+          <base-button @click="logout" class="flat">Logout</base-button>
         </li>
       </ul>
     </nav>
@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     logout() {
-      this.$store.dispatch("logout");
+      this.$store.dispatch("autoLogout");
       this.$router.replace("/");
     },
   },
@@ -79,14 +79,13 @@ header a {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   border: 1px solid transparent;
-  /* border-radius: 10px solid transparent; */
 }
 
 a:active,
 a:hover,
 a.router-link-active {
-  /* border: 1px solid #f391e3; */
-  border-radius: 10px solid #f391e3;
+  border: 1px solid #f391e3;
+  border-radius: 10px;
 }
 
 /* h1 {
@@ -126,11 +125,6 @@ header ul {
 li {
   margin: 0 0.5rem;
 }
-
-
-
-
-
 
 
 /* The container <div> - needed to position the dropdown content */

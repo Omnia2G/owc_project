@@ -14,7 +14,17 @@ if($_POST['action'] == 'login'){
     // }
     // echo json_encode($data);
     // echo json_encode($stmt->fetch(PDO::FETCH_ASSOC));
-    echo json_encode(($userController->login($_POST['username']))->expose());
+    echo json_encode(($userController->login($_POST['username'],'',''))->expose());
+}
+if($_POST['action'] == 'autologin'){ 
+    try{
+        echo json_encode(($userController->login('',$_POST['role'], $_POST['password']))->expose());
+    }catch(Error $exception){
+        echo json_encode($exception->getMessage());
+    }
+        
+    
+   
 }
 
 if($_POST['action'] == 'register'){
@@ -41,6 +51,7 @@ if($_POST['action'] == 'register'){
     }
    
 }
+
 
 
 

@@ -1,14 +1,346 @@
 <template>
   <section>
     <base-card>
-      <h1>Infrared Communication</h1>
-      <h3>Infracervena komunikacia</h3>
+      <h1>Infračervená svetelná komunikácia</h1>
+      <h3>Infrared communication (IRC)</h3>
+      <section>
+        <br /><br />
+        <h4>Úvod</h4>
+        <p>
+          Infračervené žiarenie má vlnovú dĺžku od 700 - 750nm do 1mm.
+          International Commission on Illumination (CIE) odporúča delenie na tri
+          pásma.
+        </p>
+        <ul>
+          <h5>IR-A</h5>
+          <li>
+            NIR - blízke (near) infračervené žiarenie, podľa normy DIN, vlnová
+            dĺžka 0,75 - 1,4 μm (mikrometer), je definované podľa vodnej
+            absorpcie. [6]
+          </li>
+        </ul>
+        <ul>
+          <h5>IR-B</h5>
+          <li>
+            SWIR - krátkovlnné IR žiarenie (short wave), podľa DIN, vlnová dĺžka
+            1,4 - 3 μm, pri 1450 nm, kedy značne narastá vodná absorpcia. [6]
+          </li>
+        </ul>
+        <ul>
+          <h5>IR-C</h5>
+          <li>
+            MWIR - strednovlnné IR žiarenie (medium wave), podľa DIN, tiež
+            prostredné IR (intermediate IR, IIR), 3 - 8 μm.
+          </li>
+          <li>
+            LWIR - dlhovlnné IR žiarenie (long wave), podľa DIN, 8 - 15 μm.
+          </li>
+          <li>FIR - ďaleké (far) infračervené žiarenie 15 - 1000 μm. [6]</li>
+        </ul>
+        <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
+        <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
+      </section>
+      <section>
+        <br /><br />
+        <h4>Pásma IR</h4>
+        <p>
+          Infračervené žiarenie sa často používa na prenos informácií na krátku
+          vzdialenosť. S týmto cieľom sa používa pásmo 1 260 - 1 675 nm.
+        </p>
+        <ul>
+          <li>O pásmo (Original) 1 260 - 1 360 nm</li>
+          <li>E pásmo (Extended) 1 360 - 1 460 nm</li>
+          <li>S pásmo (Short wavelength) 1 460 - 1 530 nm</li>
+          <li>C pásmo (Conventional) 1 530 - 1 565 nm</li>
+          <li>L pásmo (Long wavelength) 1 565 - 1 625 nm</li>
+          <li>U pásmo (Ultralong wavelength) 1 625 - 1 675 nm</li>
+        </ul>
+        <p>
+          C - pásmo sa využíva napríklad na nočné videnie, meranie tepla na
+          diaľku, vykurovanie alebo nahrievanie (sauny, varenie). [6]
+        </p>
+        <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
+        <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
+      </section>
+      <section>
+        <br /><br />
+        <h4>Infračervená svetelná komunikácia (IRC)</h4>
+        <p>
+          Infračervená komunikácia patrí medzi najjednoduchšie spôsoby
+          bezdrôtovej komunikácie a slúži ako cenovo výhodný spôsob bezdrôtového
+          prenosu niekoľkých bitov dát. [23]
+        </p>
+        <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
+        <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
+      </section>
+      <section>
+        <br /><br />
+        <h4>Fungovanie infračervenej komunikácie</h4>
+        <p>
+          Infračervené LED diódy vytvárajú svetlo, ktoré ľudské oko nevidí.
+          Vlnová dĺžka svetla je typicky okolo 950 nanometrov. IR LED však nie
+          je jedinou vecou, ktorá môže vyžarovať IR alebo blízke IR vlny. Mnoho
+          iných zdrojov, ako sú žiarovky a samotné slnko alebo čokoľvek s teplom
+          uvoľňuje IR vlny, čo je jedna z ťažkostí pri IR komunikácií. Medzi
+          odosielateľom a príjemcom sa zvyčajne neuskutočňuje žiadny handshake,
+          žiadna autentifikácia ani autorizácia. [23] Pri používaní diaľkového
+          ovládača televízora, na prenos informácií do televízora sa používa IR
+          LED. Infračervený prijímač v televízore musí správne vybrať signály z
+          diaľkového ovládača spomedzi všetkých okolitých infračervených
+          signálov. Aby sa to mohlo uskutočniť, práve z tohto dôvodu je IR
+          signál modulovaný. Modulácia signálu je ako priradenie vzoru k dátam,
+          aby prijímač vedel, že čo má počúvať. [24] Bežná modulačná schéma pre
+          IR komunikáciu je modulácia 38 kHz. Existuje len veľmi málo prírodných
+          zdrojov, ktoré majú pravidelnosť signálu 38 kHz, takže IR vysielač
+          odosielajúci dáta na tejto frekvencií vyniká medzi okolitým IR.
+          Najbežnejšie sú 38kHz modulované IR dáta, ale možno použiť aj iné
+          frekvencie. [24] Zariadenia, ktoré umožňujú infračervenú komunikáciu,
+          sa nazývajú zariadenia IrDA a vyrábajú sa podľa stanovených štandardov
+          IrDA. [23]
+        </p>
+        <p>
+          Pri stlačení tlačidla na diaľkovom ovládači, vysielací IR LED na
+          zlomok sekundy veľmi rýchlo zabliká a prenesie zakódované údaje do
+          prijímača. [24] Tento modulovaný signál je presne to, čo prijímací
+          systém vidí. Účelom prijímacieho zariadenia je však demodulovať signál
+          a vydávať binárny priebeh, ktorý je možné prečítať mikrokontrolérom.
+          [24] Riadením rozostupu medzi prenášanými modulovanými signálmi môže
+          byť priebeh načítaný vstupným kolíkom na mikrokontroléri a dekódovaný
+          ako sériový bitový tok. [24]
+        </p>
+        <p>
+          IrDa prijímače komunikujú pomocou impulzov infračerveného svetla
+          prenášaného v smerovo zameranom kuželi, ktorý siaha do uhla 15o na
+          každú stranu od stredovej čiary vysielania. Hoci norma vyžaduje
+          minimálny dosah 1 meter pre štandardný výstupný výkon, komerčne
+          dostupné produkty majú rozsahy od menej ako jedného metra až po
+          niekoľko metrov. Komunikácia je polo duplexná, pretože prijímač
+          infračerveného zariadenia je účinne "oslepený" svetlom vlastného
+          prenosu. Dátové rýchlosti sa pohybujú od 9,6 Kb/s do 16 Mb/s (9,6 Kb/s
+          je najmenší spoločný menovateľ pre všetky zariadenia a ako taký sa
+          používa na vyjednávanie medzi komunikačnými zariadeniami). Protokol
+          ultra rýchle infračervené (UFIR) podporuje prenosovú rýchlosť až 100
+          Mb/s. [27] Infračervené laserové systémy možno použiť aj na
+          komunikáciu na veľké vzdialenosti (až do približne 2,4 kilometrov) s
+          maximálnou projektovanou dátovou rýchlosťou 16 Mb/s. Takéto systémy sú
+          striktne point-to-point (LoS) systémy a sú citlivé na hmlu a iné
+          atmosférické podmienky. Typické aplikácie zahŕňajú prenosové spojenia
+          medzi budovami pre metropolitné siete alebo siete v areáli akademickej
+          obce a vysielacie a prijímacie zariadenia sú zvyčajne umiestnené na
+          strechách, aby poskytovali priame spojenie bez prekážok. Pre
+          bezdrôtovú LAN konektivitu možno použiť difúzne (alebo nelineárne)
+          systémy, v ktorých je spojenie medzi vysielačom a prijímačom
+          udržiavané "odrážaním" prenášaných signálov od odrážajúcich povrchov,
+          ako sú steny a stropy. Vysielač využíva širokouhlý vysielací lúč a
+          prijímač má širokouhlý detektor. Špecifikácie pre infračervené
+          bezdrôtové siete LAN sú zahrnuté v štandarde IEEE 802.11. [27]
+          Infračervené vysielacie zariadenie, buď svetelná dióda (LED) alebo
+          laserová dióda, premieňa elektrický signál na optický signál. LED
+          diódy majú prirodzene širokú prenosovú cestu a sú vhodné pre aplikácie
+          s krátkym dosahom. Sú tiež oveľa bezpečnejšie ako laserové diódy pre
+          vnútorné použitie. Laserové diódy majú úzke vysielacie lúče a
+          relatívne úzku spektrálnu šírku, vďaka čomu sú vhodnejšie pre
+          aplikácie s dlhým dosahom z bodu do bodu. Väčšina systémov používa
+          moduláciu intenzity s priamou detekciou (IM/DD) na dosiahnutie
+          optickej modulácie a demodulácie. Okolité svetelné zdroje predstavujú
+          významnú šumovú zložku na prijímači. Dostupnosť efektívnych, lacných
+          LED a fotodiód pracujúcich v rozsahu 800-1000 nanometrov viedla k
+          požiadavke, aby vysielače mali vlnovú dĺžku špičkového výkonu medzi
+          850 a 950 nanometrami. [27]
+        </p>
+        <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
+        <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
+      </section>
+      <section>
+        <br /><br />
+        <h4>Výhody IR</h4>
+        <ul>
+          <li>
+            <span><strong>Jednoduchosť: </strong></span>
+            Jednou z výhod infračervenej komunikácie je jednoduchosť jej
+            všeobecného princípu fungovania. Táto technológia je relatívne
+            jednoduchšia na implementáciu ako iné bezdrôtové komunikačné
+            technológie. Používa sa teda v rade prenosných zariadení. [25]
+          </li><br>
+          <li>
+            <span><strong>Lacná technológia: </strong></span>
+            Jednoduchosť IR komunikácie sa ďalej premieta do nízkych nákladov na
+            implementáciu. To je dôvod, prečo ide o najpoužívanejšiu bezdrôtovú
+            komunikačnú technológiu pre aplikácie s krátkym dosahom a aplikácie
+            typu one-on-one use case. [25]
+          </li><br>
+          <li>
+            <span><strong>Obmedzené zachytenie: </strong></span>
+            Infračervené žiarenie sa šíri priamočiarym spôsobom a má krátky
+            dosah. Riziká odpočúvania a rušenia sú nízke v porovnaní s inými
+            bezdrôtovými komunikačnými technológiami, ako sú Bluetooth, Wi-Fi a
+            Wi-Fi Direct. [25]
+          </li><br>
+          <li>
+            <span><strong>Energetická účinnosť: </strong></span>
+            LED dióda používaná pri odosielaní infračervených lúčov má nízke
+            požiadavky na energiu. Ďalej je možné celý IrDA vysielač
+            prevádzkovať s malými a nenabíjateľnými batériami. Tieto batérie
+            môžu vydržať mesiace. [25]
+          </li><br>
+          <li>
+            <span><strong>Rozsiahle aplikácie: </strong></span>
+            Okrem vzdialených senzorov má IR komunikačná technológia ďalšie
+            aplikácie špecifikované IrDA. Medzi ktoré patrí používanie
+            infračerveného portu na pripojenie zariadenia k lokálnej sieti
+            prostredníctvom špecifikácie IrLAN, štandard bezdrôtových platieb
+            prostredníctvom infračerveného finančného zasielania správ alebo
+            protokolu IrFM a výmena binárnych objektov pomocou štandardu OBEX.
+            [25]
+          </li>
+        </ul>
+        <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
+        <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
+      </section>
+      <section>
+        <br /><br />
+        <h4>Nevýhody IR</h4>
+        <ul>
+          <li>
+            <span><strong>Šírenie priamej viditeľnosti: </strong></span>
+            Jednou z charakteristík infračerveného žiarenia je, že sa pohybuje
+            po značne priamej dráhe z jedného bodu do druhého alebo v priamej
+            línií. Toto sa nazýva šírenie viditeľnosti a je to jedna z nevýhod
+            IR komunikačnej technológie. Na rozdiel od rádiovej komunikácie musí
+            byť vysielač IrDA zosúladený s prijímačom IrDA. Napríklad diaľkové
+            ovládanie televízora nebude fungovať, ak nebude vysielané priamo na
+            obrazovku televízora. [25]
+          </li><br>
+          <li>
+            <span><strong>Krátky dosah prenosu: </strong></span>
+            Infračervené žiarenie má tiež kratšie vlnové dĺžky ako mikrovlny a
+            rádiové vlny. V rámci elektromagnetického spektra platí, že čím
+            kratšie sú vlnové dĺžky, tým kratšie sa môže pohybovať. Štandard
+            vyvinutý spoločnosťou IrDA tiež používa nízko výkonné IrDA
+            vysielače. IR komunikačná technológia funguje len na krátky dosah 10
+            metrov alebo menej. Okrem obmedzenia priamej viditeľnosti je
+            blízkosť bezdrôtovej komunikácie cez infračervené rozhranie značne
+            obmedzená. [25]
+          </li><br>
+          <li>
+            <span><strong>Prekážky: </strong></span>
+            Existuje tiež skutočnosť, že infračervené žiarenie nepreniká pevnými
+            predmetmi, ako je betón, drevo a dokonca ani nepriehľadné plasty.
+            Elektromagnetické vlny infračerveného žiarenia môžu byť okrem iného
+            ovplyvnené aj dymom, hmlou, prachom a slnečným žiarením. IrDA
+            vysielače sa tiež môžu navzájom rušiť. Výkon zariadenia môže
+            ovplyvniť vzdialenosť aj prítomnosť prekážok alebo interferencií.
+            [25]
+          </li><br>
+          <li>
+            <span><strong>Bezpečnostné problémy: </strong></span>
+            IR komunikácia je samozrejme značne zabezpečená kvôli prekážkam,
+            dosahu a obmedzeniam priamej viditeľnosti, ktoré ju robia menej
+            zraniteľnou voči odpočúvaniu. Niektoré IrDA prijímače však môžu
+            reagovať na niekoľko IrDA vysielačov, najmä ak je kódovanie a prenos
+            údajov nešifrované, čo vyvoláva obavy o bezpečnosti diaľkovo
+            ovládaných zariadení. [25]
+          </li>
+        </ul>
+        <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
+        <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
+      </section>
+      <section>
+        <br /><br />
+        <h4>Využitie IR</h4>
+        <p>
+          Infračervené rozhranie sa používa v rôznych aplikáciách bezdrôtovej
+          komunikácie, monitorovania a riadenia:
+        </p>
+        <ul>
+          <li>Diaľkové ovládanie spotrebičov</li>
+          <li>Bezdrôtové (LAN)</li>
+          <li>Prepojenie medzi notebookmi a stolnými počítačmi</li>
+          <li>Bezdrôtový modem</li>
+          <li>Detektory narušenia</li>
+          <li>Detektory pohybu</li>
+          <li>Požiarne senzory</li>
+          <li>Systémy nočného videnia</li>
+          <li>Lekárske diagnostické zariadenia</li>
+          <li>Systémy navádzania rakiet</li>
+          <li>Geologické monitorovacie zariadenia</li>
+        </ul>
+        <p>
+          Prenos IR údajov z jedného zariadenia do druhého sa niekedy označuje
+          ako sústredenie do zväzku. [26]
+        </p>
+        <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
+        <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
+      </section>
+      <br /><br />
+      <base-button @click="moveUp">Späť na začiatok</base-button>
+    </base-card>
+    <base-card>
+      <section>
+        <h2>Videá</h2>
+      </section>
+      <br /><br />
+      <base-button @click="moveUp">Späť na začiatok</base-button>
+    </base-card>
+    <base-card>
+      <section>
+        <h2>Referencie</h2>
+        <ul>
+          <li>ref 1</li>
+          <li>ref 2</li>
+          <li>ref 3</li>
+          <li>ref 4</li>
+          <li>ref 5</li>
+          <li>ref 6</li>
+        </ul>
+      </section>
+      <br /><br />
+      <base-button @click="moveUp">Späť na začiatok</base-button>
+    </base-card>
+    <base-card>
+      <section>
+        <h2>Testy pre IRC</h2>
+        <ul>
+          <li>test 1</li>
+          <li>test 2</li>
+          <li>test 3</li>
+          <li>test 4</li>
+          <li>test 5</li>
+          <li>test 6</li>
+        </ul>
+      </section>
+      <br /><br />
+      <base-button @click="moveUp">Späť na začiatok</base-button>
     </base-card>
   </section>
 </template>
 
 <script>
+import BaseCard from "../../components/ui/BaseCard.vue";
+import BaseButton from "../../components/ui/BaseButton.vue";
 export default {
-  
-}
+  components: { BaseButton, BaseCard },
+  methods: {
+    moveUp() {
+      window.scrollTo(0, 0);
+    },
+  },
+};
 </script>
+
+<style scoped>
+h4, h5 {
+  margin-left: 15px;
+  text-align: left;
+}
+p {
+  margin-left: 15px;
+  margin-right: 15px;
+  text-align: left;
+}
+ul li {
+  margin-left: 1rem;
+  margin-right: 2rem;
+  text-align: left;
+}
+</style>

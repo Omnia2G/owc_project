@@ -15,11 +15,19 @@ class UserController{
         $this->conn = (new Database())->getConnection();
     }
 
-    public function login($username){
-        $query_data = array(
-            ':username' =>  $username,
-           );
-        $stmt = $this->conn->prepare("SELECT * FROM `login` where username = :username");
+    public function login($username, string $role, string $password){
+        if($username && $role === '' && $password === ''){
+            $query_data = array(
+                ':username' =>  $username,
+               );
+            $stmt = $this->conn->prepare("SELECT * FROM `login` where username = :username");
+        }else{ // autologin
+            $query_data = array(
+                ':role' => $role,
+                ':pw' =>  $password,
+               );
+            $stmt = $this->conn->prepare("SELECT * FROM `login` where pw = :pw and role = :role");
+        }
         $stmt->execute($query_data);
         $stmt->setFetchMode(PDO::FETCH_CLASS, "User");
         $person = $stmt->fetch();
@@ -50,6 +58,7 @@ class UserController{
             return false;
         }
     }
+    
 
     // public function insertUser(User $person): int
     // {
