@@ -259,13 +259,6 @@ export default {
         return;
       }
       this.isLoading = true;
-      // const formData = {
-      //   first: this.firstname.val,
-      //   last: this.lastname.val,
-      //   user: this.username.val,
-      //   email: this.email.val,
-      //   pw: this.password1.val,
-      // };
 
         this.$emit('save-data');
         const data = new FormData();
@@ -284,12 +277,10 @@ export default {
                setTimeout(() => {
                  this.isLoading = false;
                  this.error = "Entered 'Username' already exists, please choose another!";
-                 //console.log(res.data);
                 }, 500);
           }else{
             setTimeout(() => { 
               this.isLoading = false; 
-              //console.log('username does not exists, insertion done',res.data);
               this.$router.replace('/login');
           }, 1000);
           }
@@ -297,7 +288,6 @@ export default {
         .catch((err) => {
           this.isLoading = false;
           this.error = err;
-          //console.log(err);
         });
 
     },

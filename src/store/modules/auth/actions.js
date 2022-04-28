@@ -1,8 +1,51 @@
-import axios from "axios";
+import axios from 'axios';
+import bcrypt from 'bcryptjs';
 let timer;
 
 export default { //dispatch
-  async autoLogin(context) {
+  async login(context, payload){
+    let url = "http://localhost/owc_project/src/api/Actions.php";
+    const res = await fetch(url, {
+      method: 'POST',
+      body: payload
+    });
+    const responseData = await res.json();
+    const error = new Error("Wrong 'username' or 'password' was entered!");
+    if (!res.ok) {
+      throw error;
+    }
+    //console.log(responseData);
+    let expiresIn = 0;
+    if (
+      responseData.username === payload.get('username') &&
+      bcrypt.compareSync(payload.get('password'), responseData.pw)
+    ) {
+      expiresIn = 10800000; // 3h - autologout //// timer 7000 = 7s
+      //expiresIn = 10000;
+      const expirationDate = new Date().getTime() + expiresIn;
+
+      localStorage.setItem('token', responseData.pw);
+      localStorage.setItem('role', responseData.role);
+      localStorage.setItem('tokenExpiration', expirationDate); //expirationDate
+      
+      context.commit("setUser", {
+        userId: responseData.username,
+        token: responseData.pw,
+        userRole: responseData.role,
+        isLoggedIn: true
+      });
+    } else {
+      throw error;
+    }
+    timer = setTimeout(() => {
+      context.dispatch('autoLogout');
+    }, expiresIn);
+
+  },
+
+  
+
+  autoLogin(context) {
     const token = localStorage.getItem('token');
     const role = localStorage.getItem('role');
     const tokenExpiration = localStorage.getItem('tokenExpiration');
@@ -17,32 +60,28 @@ export default { //dispatch
       data.append("password", token);
       data.append("action", "autologin");
 
-      let responseUserId = null;
-      
-    await axios
+     axios
         .post("http://localhost/owc_project/src/api/Actions.php", data)
         .then((res) => {
-          responseUserId = res.data.username;
+          timer = setTimeout(() => {
+            context.dispatch('autoLogout');
+          }, expiresIn);
+          //console.log("before SETUSER", responseUserId, token, role);
+          if ( res.data.username && role) {
+            context.commit("setUser", {
+              token: token,
+              userId: res.data.username,
+              userRole: role,
+              isLoggedIn: true,
+            });
+          }
         })
         .catch(() => {
           context.dispatch('autoLogout');
-        });
-
-    timer = setTimeout(() => {
-      context.dispatch('autoLogout');
-    }, expiresIn);
-    //console.log("before SETUSER", responseUserId, token, role);
-    if ( responseUserId && role) {
-      context.commit("setUser", {
-        token: token,
-        userId: responseUserId,
-        userRole: role,
-        isLoggedIn: true,
-      });
-    }
+        });    
   },
-  logout(context) {
-    
+
+  logout(context) {    
     localStorage.removeItem("token");
     localStorage.removeItem("role");
     localStorage.removeItem("tokenExpiration");
@@ -54,9 +93,9 @@ export default { //dispatch
       token: null,
       userRole: null,
       isLoggedIn: false,
-    });
-    
+    });  
   },
+
   autoLogout(context) {
     context.dispatch('logout');
     context.commit('setAutoLogout');

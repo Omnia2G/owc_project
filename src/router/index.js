@@ -65,22 +65,29 @@ const router = createRouter({
 
 router.beforeEach((to, _, next) => {
   let role = store.getters.userRole;
+  let localRole = localStorage.getItem('role');
   
   if (to.meta.requiresAuth) {
-    if (!role) {
+    if (!role && !localRole) {
+      //console.log('router NO ROLE');
       router.replace('/login');
     } else {
       if (to.meta.requiresAdmin) {
-        if (role === "admin") {
+        if (role === "admin" || localRole === 'admin') {
+          //console.log('router req admin ');
           return next();
         } else {
+          //console.log('router req admin ELSE');
           router.replace('/login');
         }
-      } else if (to.meta.requiresTeacher) {
-        if (role === "teacher" || role === 'admin') {
+      }
+      if (to.meta.requiresTeacher) {
+        if (role === "teacher" || localRole === 'teacher' || role === 'admin' || localRole === 'admin') {
+          //console.log('router req admin || teacher ');
           return next();
         } else {
-          router.replace('/login');
+          console.log('router req admin || teacher ELSE');
+          //router.replace('/login');
         }
       }
     }

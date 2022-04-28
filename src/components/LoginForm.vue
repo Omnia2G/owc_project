@@ -33,8 +33,6 @@
 </template>
 
 <script>
-import axios from "axios";
-import bcrypt from "bcryptjs";
 
 export default {
   //name: 'login',
@@ -50,7 +48,6 @@ export default {
         isValid: true,
       },
       formIsValid: true,
-      //mode: 'login',
       isLoading: false,
       error: null,
     };
@@ -74,7 +71,7 @@ export default {
         this.formIsValid = false;
       }
     },
-    submitLogin() {
+    async submitLogin() {
       this.validateForm();
       if (!this.formIsValid) {
         return;
@@ -90,54 +87,22 @@ export default {
       data.append("username", this.username.val);
       data.append("password", this.password.val);
       data.append("action", "login");
-      axios
-        .post("http://localhost/owc_project/src/api/Actions.php", data)
-        .then((res) => {
-          if (
-            res.data.username === this.username.val &&
-            bcrypt.compareSync(this.password.val, res.data.pw)
-          ) {
-            // console.log(res.data.pw);////////
-            // console.log('pw hash', bcrypt.hashSync(this.password.val));
-            // console.log('JSON str',JSON.stringify(res.data.pw));
-            setTimeout(() => {
-              this.isLoading = false;
-              //TODO save role
-              // const expiresIn = 10800000; // 3h - autologout //// timer 7000 = 7s
-              const expiresIn = 10000;
-              const expirationDate = new Date().getTime() + expiresIn;
-
-              localStorage.setItem('token', res.data.pw);
-              localStorage.setItem('role', res.data.role);
-              localStorage.setItem('tokenExpiration', expirationDate); //expirationDate
-              //console.log(localStorage.getItem('token'));
-              this.$store.commit("setUser", {
-                userId: res.data.username,
-                token: res.data.pw,
-                userRole: res.data.role,
-                isLoggedIn: true
-              });
-
-              // console.log(
-              //   this.$store.getters.userId,
-              //   "<=>",
-              //   this.$store.getters.userRole
-              // );
-              this.$router.replace("/");
-            }, 500);
       
-          } else {
-            throw new Error("Invalid username or Password!");
-          }
-        })
-        .catch(() => {
-          setTimeout(() => {
-            this.error = "Wrong 'username' or 'password' was entered!";
-            this.isLoading = false;
-          }, 1000);
+      try {
+        await this.$store.dispatch("login", data);
+        setTimeout(() => {
+          this.isLoading = false;
+          this.$router.replace("/");
+        }, 500);
+      } catch (_) {
+        setTimeout(() => {
+          this.error = "Wrong 'username' or 'password' was entered! from modul";
+          this.isLoading = false;
           this.username.val = "";
-          this.password.val = "";
-        });
+          this.password.val = "";       
+        }, 1000);
+      }
+      
     },
     handleError() {
       this.error = null;

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import LoginForm from '../../components/LoginForm.vue';
+import LoginForm from "../../components/LoginForm.vue";
 
 export default {
   components: {
@@ -16,13 +16,10 @@ export default {
   },
   methods: {
     saveLogin() {
-    // this.$store.dispatch('coaches/registerCoach', data);
-    //console.log(data);
-    //this.$router.replace('/');
-  
-    }
-  }
+      // this.$store.dispatch();
+      //console.log(data);
+      //this.$router.replace("/");
+    },
+  },
 };
 </script>
-
-
