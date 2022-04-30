@@ -10,7 +10,7 @@
       <p>3.Krok: vyplňte formulár, a všade označte správnu odpoveď!</p>
       <p>4.Krok: odoslať formulár</p>
       <label for="title">Titul testu</label>
-      <input type="text" id="title" v-model="title" /><br /><br />
+      <input type="text" id="title" name="title" v-model="title" /><br /><br />
       <label for="courses">Vyberte tému testu</label>
       <select name="courses" id="courses" v-model="course">
         <option disabled value="">Témy</option>
@@ -25,19 +25,19 @@
     <base-card>
       <div class="form-control">
         <label for="q1">1. Otázka</label>
-        <textarea id="q1" v-model="q1.q" rows="4"></textarea>
+        <textarea id="q1" name="q1" v-model="q1.q" rows="4"></textarea>
       </div>
       <div class="form-control">
         <label for="q1a1">Odpoveď A</label>
-        <input type="text" id="q1a1" v-model="q1.a1" />
+        <input type="text" id="q1a1" name="q1a1" v-model="q1.a1" />
       </div>
       <div class="form-control">
         <label for="q1a2">Odpoveď B</label>
-        <input type="text" id="q1a2" v-model="q1.a2" />
+        <input type="text" id="q1a2" name="q1a2" v-model="q1.a2" />
       </div>
       <div class="form-control">
         <label for="q1a3">Odpoveď C</label>
-        <input type="text" id="q1a3" v-model="q1.a3" />
+        <input type="text" id="q1a3" name="q1a3" v-model="q1.a3" />
       </div>
       <div class="form-control">
         <p>Vyberte správnu odpoveď!</p>
@@ -45,7 +45,7 @@
         <input
           type="radio"
           id="q1gA"
-          name="good ans 1"
+          name="good_ans_1"
           value="a1"
           v-model="q1.goodA"
         />
@@ -54,7 +54,7 @@
         <input
           type="radio"
           id="q1gB"
-          name="good ans 1"
+          name="good_ans_1"
           value="a2"
           v-model="q1.goodA"
         />
@@ -63,7 +63,7 @@
         <input
           type="radio"
           id="q1gC"
-          name="good ans 1"
+          name="good_ans_1"
           value="a3"
           v-model="q1.goodA"
         />
@@ -138,8 +138,10 @@ export default {
         return;
       }
       
+
+
       console.log(this.title);
-      console.log(this.course);
+      console.log(this.courses);
       console.log(this.q1.q);
       console.log(this.q1.a1);
       console.log(this.q1.a2);
@@ -170,7 +172,7 @@ input[type="checkbox"] + label {
 
 input,
 textarea {
-  display: flexbox;
+  display: inline-flex;
   width: 15rem;
   border: 1px solid #ccc;
   font: inherit;
