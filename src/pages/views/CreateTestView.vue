@@ -7,8 +7,8 @@
   </section> -->
   <section>
     <base-card>
-      <h2>Vue Formulate Form</h2>
-      <vue-formulate></vue-formulate>
+      <h2>Vytvorte nový test</h2>
+      <vue-formulate @save-test="saveTest"></vue-formulate>
    </base-card>
   </section>
 </template>
@@ -20,6 +20,12 @@ export default {
   components:{
     //CreateTestForm,
     VueFormulate
+  },
+  methods:{
+    saveTest(data){
+      this.$store.dispatch('test/newTest', data);
+      //this.$router.replace('/');
+    },
   },
   
 }
