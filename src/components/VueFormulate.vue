@@ -630,7 +630,7 @@
         }"
       />
     </base-card>
-    <base-button>Vytvorit test</base-button>
+    <base-button>Vytvoriť test</base-button>
   </FormKit>
 </template>
 

@@ -42,6 +42,8 @@ a {
   border-radius: 30px;
   margin-right: 0.5rem;
   display: inline-block;
+  font-size: .85rem;
+  max-width: 165px;
 }
 
 a:hover,
@@ -73,4 +75,18 @@ button:active {
   /* background-color: #edd2ff; */
   background-color: beige;
 }
+@media (max-width: 700px) {
+    button, a{
+      font-size: .7rem;
+      max-width: 135px;
+    }
+  }
+  @media (max-width: 300px) {
+    button, a{
+      font-size: .55rem;
+      max-width: 115px;
+      
+      
+    }
+  }
 </style>

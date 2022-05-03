@@ -24,4 +24,15 @@
   max-width: 40rem;
   background-color: #f391e3;
 }
+
+  @media (max-width: 700px) {
+    .card, .card1{
+      max-width: 360px;
+    }
+  }
+  @media (max-width: 300px) {
+    .card, .card1{
+      max-width: 260px;
+    }
+  }
 </style>

@@ -50,7 +50,7 @@ if($_POST['action'] == 'register'){
     }
 }
 
-if($_POST['action'] == 'new_test'){
+if($_POST['action'] == 'new_test'){ //TODO check for the title if exists
     try{
         $testController-> addNewTest($_POST);
         echo json_encode("Test was Successfully uploaded to Database!");
