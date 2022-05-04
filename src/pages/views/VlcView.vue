@@ -22,10 +22,12 @@
           Rôzne vlnové dĺžky ľudský mozog interpretuje ako farby, od fialovej s
           najmenšou vlnovou dĺžkou, po červenú s najväčšou vlnovou dĺžkou. [5]
         </p>
+        <br />
         <span><img src="../../assets\img\0214-4.png" alt="vlc rozsah" /></span>
+        <p class="imgTitle">Spektrum viditeľného svetla [2]</p>
       </section>
       <section>
-        <br /><br />
+        <br />
         <h4>Viditeľná svetelná komunikácia</h4>
         <p>
           Spôsob prenosu údajov, ktorý využíva viditeľné svetlo medzi 400 a 800
@@ -235,12 +237,87 @@
       <section>
         <h2>Videá</h2>
         <iframe
-          src="https://www.youtube.com/embed/WeSbzsWuD08"
+          src="https://www.youtube.com/embed/O0PawPSdk28"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
+          ng-show="showvideo"
         ></iframe>
+        <p>
+          Light waves, visible and invisible - Lucianne Walkowicz (Ted-Ed),
+          2013, Animované video dlhé 6 minút, ktoré sa zaoberá s tým, že ako
+          vníma ľudské telo svetlo.
+        </p>
+        <br />
+        <iframe
+          src="https://www.youtube.com/embed/KnIualWf6Rs"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          ng-show="showvideo"
+        ></iframe>
+        <p>
+          GCSE Physics - Visible Light and Colour #71 (Cognito), 2020, 5
+          minutové video, ktoré vysvetluje ako funguje viditelné svetlo, a prečo
+          vidíme dané farby.
+        </p>
+        <br />
+        <iframe
+          src="https://www.youtube.com/embed/m4t7gTmBK3g"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          ng-show="showvideo"
+        ></iframe>
+        <p>
+          What is the Electromagnetic Spectrum? (MonkeySee), 2013, Dvojminútové
+          animované video, kde Emerald Robinson vysvetľuje, čo je
+          elektromagnetické spektrum.
+        </p>
+        <br />
+        <iframe
+          src="https://www.youtube.com/embed/BUYeQa_-ojk"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          ng-show="showvideo"
+        ></iframe>
+        <p>
+          What is Light - Physics (The Real Physics), 2017, Krátke, trojminútové
+          animované video o svetle.
+        </p>
+        <br />
+        <iframe
+          src="https://www.youtube.com/embed/1bpmI3wdqW8"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          ng-show="showvideo"
+        ></iframe>
+        <p>
+          ELECTROMAGNETIC SPECTRUM (7activestudio), 2017, Trojminútové animované
+          video, ktoré podrobnejšie vysvetľuje elektromagnetické vlny.
+        </p>
+        <br />
+        <iframe
+          src="https://www.youtube.com/embed/7F6fT5p5oFk"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          ng-show="showvideo"
+        ></iframe>
+        <p>
+          What is the ELECTROMAGNETIC SPECTRUM (MooMooMath and Science), 2020,
+          Krátke zostrihané video, ktoré sa zaoberá s veľkosťami vĺn v
+          jednotlivých segmentoch elektromagnetického spektra.
+        </p>
+        <br />
       </section>
       <br /><br />
       <base-button @click="moveUp">Späť na začiatok</base-button>
@@ -249,12 +326,75 @@
       <section>
         <h2>Referencie</h2>
         <ul>
-          <li>ref 1</li>
-          <li>ref 2</li>
-          <li>ref 3</li>
-          <li>ref 4</li>
-          <li>ref 5</li>
-          <li>ref 6</li>
+          <li>
+            [2] Rate and Performance Analysis of Indoor Optical Camera
+            Communications in Optical Wireless Channels, by: Willy Anugrah
+            Cahyadi, 5. dec. 2018.
+            <a
+              href="https://www.slideshare.net/willyac/thesis-presentation-wacv5slideshare"
+              >Viac</a
+            >
+          </li>
+          <br />
+          <li>
+            [5] Viditeľné svetlo, by: unknown, 5. október 2021
+            <a href="https://sk.wikipedia.org/wiki/Viditeľné _svetlo">Viac</a>
+          </li>
+          <br />
+          <li>[13] "Image Sensor Communication". VLC Consortium</li>
+          <br />
+          <li>
+            [14] "About Visible Light Communication". VLC Consortium. December
+            3, 2009.
+          </li>
+          <br />
+          <li>
+            [15] "Intelligent Transport System - Visible Light Communication".
+            VLC Consortium. January 28, 2010.
+          </li>
+          <br />
+          <li>
+            [16] Rodríguez, Juan; Lamar, Diego G.; Aller, Daniel G.; Miaja,
+            Pablo F.; Sebastián, Javier (April 2018). "Efficient Visible Light
+            Communication Transmitters Based on Switching-Mode dc-dc
+            Converters". Sensors. 18 (4): 1127. Bibcode:2018Senso..18.1127R.
+            doi:10.3390/s18041127. PMC 5948605. PMID 29642455.
+          </li>
+          <br />
+          <li>
+            [17] Sebastian, Javier; Lamar, Diego G.; Aller, Daniel G.;
+            Rodriguez, Juan; Miaja, Pablo F. (September 2018). "On the Role of
+            Power Electronics in Visible Light Communication". IEEE Journal of
+            Emerging and Selected Topics in Power Electronics. 6 (3): 1210-1223.
+            doi:10.1109/JESTPE.2018.2830878. hdl:10651/46845. ISSN 2168-6777.
+            S2CID 19092607.
+          </li>
+          <br />
+          <li>
+            [18] Rodreguez, Juan; Lamar, Diego G.; Aller, Daniel G.; Miaja,
+            Pablo F.; Sebastian, Javier (June 2018). "Power-Efficient VLC
+            Transmitter Able to Reproduce Multi-Carrier Modulation Schemes by
+            Using the Output Voltage Ripple of the HB-LED Driver". 2018 IEEE
+            19th Workshop on Control and Modeling for Power Electronics
+            (COMPEL). Padua: IEEE: 1-8. doi:10.1109/COMPEL.2018.8460175.
+            hdl:10651/48039. ISBN 978-1-5386-5541-2. S2CID 52289901.
+          </li>
+          <br />
+          <li>
+            [19] Aziz, Amena Ejaz; Wong, Kainam Thomas; Chen, Jung-Chieh (2017).
+            "Color-Shift Keying—How itItsargest Obtainable "Minimum Distance"
+            Depends on its Preset Operating Chromaticity and Constellation
+            Size". Journal of Lightwave Technology. 35 (13): 2724-2733.
+            Bibcode:2017JLwT...35.2724A. doi:10.1109/JLT.2017.2693363.
+            hdl:10397/76267. S2CID 13698944.
+          </li>
+          <br />
+          <li>
+            [20] Visible light communication
+            <a href="https://en.wikipedia.org/wiki/Visible_light_communication"
+              >Viac</a
+            >
+          </li>
         </ul>
       </section>
       <br /><br />
@@ -263,14 +403,17 @@
     <base-card>
       <section>
         <h2>Testy pre VLC</h2>
-        <ul>
-          <li>test 1</li>
-          <li>test 2</li>
-          <li>test 3</li>
-          <li>test 4</li>
-          <li>test 5</li>
-          <li>test 6</li>
+        <ul v-if="testTitles">
+          <test-item
+            v-for="test in displayTestTitlesForThisCourse"
+            :key="test.id"
+            :id="test.id"
+            :title="test.title"
+            :course="test.course"
+          ></test-item>
+          <!-- <li>{{displayTestTitlesForThisCourse}}</li> -->
         </ul>
+        <h3 v-else>No Tests found.</h3>
       </section>
       <br /><br />
       <base-button @click="moveUp">Späť na začiatok</base-button>
@@ -280,14 +423,54 @@
 
 <script>
 import "../../css/TopicPageLayout.css";
+import TestItem from '../../components/TestItem.vue';
+
 export default {
+  components:{
+    TestItem
+  },
   data() {
-    return {};
+    return {
+      titles:[],
+    };
+  },
+  computed: {
+    testTitles(){
+      console.log('HASTESTS: ',this.$store.getters['test/hasTests']);
+      return this.$store.getters['test/hasTests'];
+    },
   },
   methods: {
     moveUp() {
       window.scrollTo(0, 0);
     },
+    async displayTestTitlesForThisCourse() {
+      const actionPayload = new FormData();
+      actionPayload.append("action", "getTestTitles");
+      actionPayload.append("course", "vlc");
+
+      try {
+        await this.$store.dispatch("test/displayTestsInTopics", actionPayload);
+        const tests = await this.$store.getters["test/getTests"];
+        
+          
+
+        tests.forEach((test) => {
+          console.log(test.id);
+          console.log(test.title);
+          console.log(test.course);
+          
+        });
+        
+        return tests;
+      } catch (error) {
+        console.log("ERROR: ", error);
+      }
+    },
+
+  },
+  created() {
+    this.displayTestTitlesForThisCourse();
   },
 };
 </script>

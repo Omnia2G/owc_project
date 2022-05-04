@@ -23,9 +23,18 @@ export default {
   },
   methods:{
     saveTest(data){
-      this.$store.dispatch('test/newTest', data);
-      //this.$router.replace('/');
+      try{
+        this.$store.dispatch('test/createNewTest', data);
+        //this.$router.replace('/');
+      }
+      catch(err){
+        console.log(err);
+      }
+
+      
+     
     },
+    
   },
   
 }

@@ -15,8 +15,8 @@ class UserController{
         $this->conn = (new Database())->getConnection();
     }
 
-    public function login($username, string $role, string $password){
-        if($username && $role === '' && $password === ''){
+    public function login($username, string $role, string $token){
+        if($username && $role === '' && $token === ''){
             $query_data = array(
                 ':username' =>  $username,
                );
@@ -24,9 +24,9 @@ class UserController{
         }else{ // autologin
             $query_data = array(
                 ':role' => $role,
-                ':pw' =>  $password,
+                ':token' =>  $token,
                );
-            $stmt = $this->conn->prepare("SELECT * FROM `login` where pw = :pw and role = :role");
+            $stmt = $this->conn->prepare("SELECT * FROM `login` where token = :token and role = :role");
         }
         $stmt->execute($query_data);
         $stmt->setFetchMode(PDO::FETCH_CLASS, "User");
@@ -41,23 +41,46 @@ class UserController{
             ':email' =>  $person->getEmail(),
             ':pw' =>  $person->getPassword(),
             ':role' =>  $person->getRole(),
+            ':token' => sha1(time()),
            );
         $stmt = $this->conn->prepare(
-            "INSERT INTO `login` (firstname, lastname, username, email, pw, role)
-             values (:firstname, :lastname, :username, :email, :pw, :role)");
+            "INSERT INTO `login` (firstname, lastname, username, email, pw, role, token)
+             values (:firstname, :lastname, :username, :email, :pw, :role, :token)");
         $stmt->execute($query_data);
     }
 
-    public function checkIfUsernameExists(string $username):bool {
+    public function checkIfUsernameOrEmailExists(string $username, string $email):string {
         $stmt = $this->conn->prepare("SELECT username from `login` where username = :username;");
         $stmt->bindParam(":username", $username, PDO::PARAM_STR);
         $stmt->execute();
-        if($stmt->fetch(PDO::FETCH_COLUMN)){
-            return true;
-        }else{
-            return false;
+        $usernameExists = $stmt->fetch(PDO::FETCH_COLUMN);
+        $stmt = $this->conn->prepare("SELECT email from `login` where email = :email;");
+        $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+        $stmt->execute();
+        $emailexists = $stmt->fetch(PDO::FETCH_COLUMN);
+        if($usernameExists && $emailexists){
+            return 'username and email exists';
+        }
+        else if($usernameExists && !$emailexists){
+            return 'username exists';
+        }
+        else if(!$usernameExists && $emailexists){
+            return 'email exists';
+        }
+        else{
+            return 'none of them exists';
         }
     }
+    // public function checkIfEmailExists(string $email):bool {
+    //     $stmt = $this->conn->prepare("SELECT email from `login` where email = :email;");
+    //     $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+    //     $stmt->execute();
+    //     if($stmt->fetch(PDO::FETCH_COLUMN)){
+    //         return true;
+    //     }else{
+    //         return false;
+    //     }
+    // }
     
 
     // public function insertUser(User $person): int

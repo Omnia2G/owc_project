@@ -140,7 +140,7 @@ export default {
     border-radius: 10px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1000px) {
     .navbar {
         flex-direction: column;
         align-items: flex-start;

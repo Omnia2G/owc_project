@@ -273,12 +273,28 @@ export default {
         axios
         .post("http://localhost/owc_project/src/api/Actions.php", data)
         .then(res => {
-          if (res.data === true){ 
+          if (res.data === 'username and email exists'){ 
+            console.log(res.data);
+               setTimeout(() => {
+                 this.isLoading = false;
+                 this.error = "Entered 'Username' and 'Email' already exists, please choose another!";
+                }, 500);
+          }
+          else if (res.data === 'username exists'){ 
+            console.log(res.data);
                setTimeout(() => {
                  this.isLoading = false;
                  this.error = "Entered 'Username' already exists, please choose another!";
                 }, 500);
-          }else{
+          }
+          else if (res.data === 'email exists'){ 
+            console.log(res.data);
+               setTimeout(() => {
+                 this.isLoading = false;
+                 this.error = "Entered 'Email' already exists, please choose another!";
+                }, 500);
+          }
+          else{
             setTimeout(() => { 
               this.isLoading = false; 
               this.$router.replace('/login');

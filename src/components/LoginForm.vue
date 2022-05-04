@@ -96,7 +96,7 @@ export default {
         }, 500);
       } catch (_) {
         setTimeout(() => {
-          this.error = "Wrong 'username' or 'password' was entered! from modul";
+          this.error = "Wrong 'username' or 'password' was entered!";
           this.isLoading = false;
           this.username.val = "";
           this.password.val = "";       

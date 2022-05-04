@@ -24,13 +24,13 @@ export default { //dispatch
       //expiresIn = 10000;
       const expirationDate = new Date().getTime() + expiresIn;
 
-      localStorage.setItem('token', responseData.pw);
+      localStorage.setItem('token', responseData.token);
       localStorage.setItem('role', responseData.role);
       localStorage.setItem('tokenExpiration', expirationDate); //expirationDate
       
       context.commit("setUser", {
         userId: responseData.username,
-        token: responseData.pw,
+        token: responseData.token,
         userRole: responseData.role,
         isLoggedIn: true
       });
@@ -57,7 +57,7 @@ export default { //dispatch
   
     const data = new FormData();
       data.append("role", role);
-      data.append("password", token);
+      data.append("token", token);
       data.append("action", "autologin");
 
      axios
@@ -67,7 +67,7 @@ export default { //dispatch
             context.dispatch('autoLogout');
           }, expiresIn);
           //console.log("before SETUSER", responseUserId, token, role);
-          if ( res.data.username && role) {
+          if ( res.data.username && role && res.data.token === token) {
             context.commit("setUser", {
               token: token,
               userId: res.data.username,

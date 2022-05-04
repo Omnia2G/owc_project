@@ -1,5 +1,8 @@
 export default{
-    getTest(state){
+    getTests(state){
         return state.test;
-    }
+    },
+    hasTests(state){
+        return state.test.length > 0;
+    },
 };

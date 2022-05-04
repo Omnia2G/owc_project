@@ -8,7 +8,21 @@ class User{
     private string $email;
     private string $pw;
     private string $role;
+    private string $token;
 
+     /**
+     * @return string
+     */
+    public function getToken(){
+        return $this->token;
+    }
+     /**
+     * @param string $role
+     */
+    public function setToken($token): void
+    {
+        $this->token = $token;
+    }
     /**
      * @return string
      */

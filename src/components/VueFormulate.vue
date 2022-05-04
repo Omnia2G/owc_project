@@ -649,7 +649,7 @@ export default {
         data.append(key, value);
       }
       data.append("username", this.$store.getters.userId);
-      data.append("action", "new_test");
+      data.append("action", "createNewTest");
       this.$emit("save-test", data);
     },
   },
