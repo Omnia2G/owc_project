@@ -12,6 +12,8 @@ import IrcView from "../pages/views/IrcView.vue";
 import FsoView from "../pages/views/FsoView.vue";
 import UvcView from "../pages/views/UvcView.vue";
 import LifiView from "../pages/views/LifiView.vue";
+import TestPage from "../pages/TestPage.vue";
+import TestForm from '../components/TestForm.vue';
 
 import store from "../store/index.js";
 
@@ -19,23 +21,28 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: "/", name: "home", component: HomeView },
-    //{ path: '', name: '', component: }, //topics
-    { path: '/vlc', name: 'vlc', component: VlcView },
-    { path: '/occ', name: 'occ', component: OccView },
-    { path: '/irc', name: 'irc', component: IrcView },
-    { path: '/fso', name: 'fso', component: FsoView },
-    { path: '/uvc', name: 'uvc', component: UvcView },
-    { path: '/lifi', name: 'lifi', component: LifiView },
+    { path: "/vlc", name: "vlc", component: VlcView },
+    { path: "/occ", name: "occ", component: OccView },
+    { path: "/irc", name: "irc", component: IrcView },
+    { path: "/fso", name: "fso", component: FsoView },
+    { path: "/uvc", name: "uvc", component: UvcView },
+    { path: "/lifi", name: "lifi", component: LifiView },
     { path: "/about", name: "about", component: AboutView },
     { path: "/login", name: "login", component: LoginView },
     { path: "/register", name: "register", component: RegistrationView },
     {
+      path: "/test/:course",
+      component: TestPage,
+      props: true,
+      children: [
+        { path: ':id/:title', component: TestForm, props: true } // /test/course/id
+      ]
+    },
+    {
       path: "/createtest",
       name: "createtest",
       component: CreateTestView,
-      meta: { requiresAuth: true,
-        requiresTeacher: true
-      },
+      meta: { requiresAuth: true, requiresTeacher: true },
     },
     {
       path: "/adminpanel",
@@ -65,28 +72,33 @@ const router = createRouter({
 
 router.beforeEach((to, _, next) => {
   let role = store.getters.userRole;
-  let localRole = localStorage.getItem('role');
-  
+  let localRole = localStorage.getItem("role");
+
   if (to.meta.requiresAuth) {
     if (!role && !localRole) {
       //console.log('router NO ROLE');
-      router.replace('/login');
+      router.replace("/login");
     } else {
       if (to.meta.requiresAdmin) {
-        if (role === "admin" || localRole === 'admin') {
+        if (role === "admin" || localRole === "admin") {
           //console.log('router req admin ');
           return next();
         } else {
           //console.log('router req admin ELSE');
-          router.replace('/login');
+          router.replace("/login");
         }
       }
       if (to.meta.requiresTeacher) {
-        if (role === "teacher" || localRole === 'teacher' || role === 'admin' || localRole === 'admin') {
+        if (
+          role === "teacher" ||
+          localRole === "teacher" ||
+          role === "admin" ||
+          localRole === "admin"
+        ) {
           //console.log('router req admin || teacher ');
           return next();
         } else {
-          console.log('router req admin || teacher ELSE');
+          console.log("router req admin || teacher ELSE");
           //router.replace('/login');
         }
       }

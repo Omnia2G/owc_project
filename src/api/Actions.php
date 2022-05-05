@@ -8,16 +8,9 @@ $userController = new UserController();
 $testController = new TestController();
 
 if($_POST['action'] == 'login'){    
-    // $stmt = $conn->prepare("SELECT username, pw, role FROM `login` where username = :username and pw = :password");
-    // $stmt->execute($query_data);
-    // while($row = $stmt->fetch(PDO::FETCH_ASSOC))
-    // {
-    //  $data[] = $row;
-    // }
-    // echo json_encode($data);
-    // echo json_encode($stmt->fetch(PDO::FETCH_ASSOC));
     echo json_encode(($userController->login($_POST['username'],'',''))->expose());
 }
+
 if($_POST['action'] == 'autologin'){ 
     try{
         echo json_encode(($userController->login('',$_POST['role'], $_POST['token']))->expose());
@@ -67,6 +60,16 @@ if($_POST['action'] == 'createNewTest'){
 
 if($_POST['action'] == 'getTestTitles'){
     echo json_encode($testController->getTestTitlesByCourse($_POST['course']));
+}
+
+if($_POST['action'] == 'getCompleteTest'){
+    try{
+       $dbData = $testController->getCompleteTestByParams($_POST['id'],$_POST['course'],$_POST['title']);
+       echo json_encode($dbData);
+        // echo json_encode($testController->getCompleteTestByParams($_POST['id'],$_POST['course'],$_POST['title']));
+    }catch(PDOException $exception){
+        echo json_encode($exception->getMessage());
+    }
 }
 
 

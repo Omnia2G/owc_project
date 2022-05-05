@@ -28,23 +28,23 @@ class TestController{
             ['q9' => ':text', 'q9a1' => ':answera', 'q9a2' => ':answerb', 'q9a3' => ':answerc', 'q9_good_ans' => ':goodanswer'],
             ['q10' => ':text', 'q10a1' => ':answera', 'q10a2' => ':answerb', 'q10a3' => ':answerc', 'q10_good_ans' => ':goodanswer'],
         ];
-        $queryQuestionArr = array();
-        $queryTestArr = array(
+        $queryTestArr = array(  //insert into test
             ':username' => $array['username'],
             ':title' => $array['title'],
             ':course' => $array['course'],
         );
+        $stmt = $this->conn->prepare("INSERT INTO `tests` (username, title, course)
+             values (:username, :title, :course)");
+        $stmt->execute($queryTestArr);
+        $testId = $this->conn->lastInsertId();
+        $queryQuestionArr = array(); //insert into questions
         $stmt = $this->conn->prepare(
-            "INSERT INTO `questions` (text, answera, answerb, answerc, goodanswer)
-             values (:text, :answera, :answerb, :answerc, :goodanswer)");
-        $qIdKey = '';
+            "INSERT INTO `questions` (testid, text, answera, answerb, answerc, goodanswer)
+             values (:testid, :text, :answera, :answerb, :answerc, :goodanswer)");
         foreach($questionsHelp as $question){
+            $queryQuestionArr[':testid'] = $testId;
             foreach($question as $key => $value){
-                if($value == ':text'){
-                    $qIdKey = ':'.$key;
-                    $queryQuestionArr[$value] = $array[$key];
-                }
-                else if($value == ':goodanswer'){
+                if($value == ':goodanswer'){
                     $queryQuestionArr[$value] = $array[$array[$key]];
                 }
                 else{
@@ -52,22 +52,24 @@ class TestController{
                 }   
             }
             $stmt->execute($queryQuestionArr);
-            $queryTestArr[$qIdKey] = $this->conn->lastInsertId();
         }
-        $stmt = $this->conn->prepare(
-            "INSERT INTO `tests` (username, title, course, question1,
-            question2, question3, question4, question5, question6, question7, question8, question9, question10)
-             values (:username, :title, :course, :q1, :q2, :q3, :q4, :q5, :q6, :q7, :q8, :q9, :q10)");
-        $stmt->execute($queryTestArr);
     }
     
-   
    public function getTestTitlesByCourse(string $course){
         $stmt = $this->conn->prepare("SELECT id, title, course from `tests` where course = :course;");
         $stmt->bindParam(":course", $course, PDO::PARAM_STR);
         $stmt->execute();
-        //$stmt->setFetchMode(PDO::FETCH_COLUMN, 3);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+   }
+
+   public function getCompleteTestByParams(string $id, string $course, string $title){
+        $queryArr = array(
+            ':id' => $id,
+        );
+        $stmt = $this->conn->prepare("SELECT * FROM `tests` AS t INNER JOIN `questions` AS q ON t.id = q.testid
+                WHERE t.id = :id;");
+         $stmt->execute($queryArr);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);        
    }
     
     

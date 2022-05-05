@@ -33,7 +33,7 @@ export default {
 button,
 a {
   text-decoration: none;
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem .7rem;
   font: inherit;
   background-color: #3a0061;
   border: 1px solid #3a0061;
@@ -60,12 +60,17 @@ button:active {
   /* color: #3a0061; */
   color: rgb(0, 0, 0);
   border: none;
+  font-size: 1.2rem;
 }
 
 .outline {
   background-color: transparent;
-  border-color: #270041;
-  color: #270041;
+  border-color: #311146;
+  color: #020202;
+  padding: 0.2rem 0.4rem;
+  border-radius: 15px;
+  font-size: .7rem;
+  max-width: 110px;
 }
 
 .flat:hover,
