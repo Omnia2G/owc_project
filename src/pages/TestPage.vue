@@ -1,7 +1,7 @@
 <template>
   <base-card>
     <h2>Now is your chance to prove YOU are not DUMB ... af!!</h2>
-    <test-form :testArray="fullTest"></test-form>
+    <test-form :testArray="fullTest" :title="$route.params.title"></test-form>
     <base-button @click.prevent="foo">page</base-button>
   </base-card>
 </template>

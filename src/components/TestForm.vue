@@ -1,19 +1,39 @@
 <template>
   <base-card>
-    <FormKit type="form" :actions="false">
+    <!-- <FormKit type="form" :actions="false" v-model="test">
       <FormKitSchema :schema="schema" />
+    </FormKit> -->
+    <FormKit type="form" v-model="test" :actions="false" @submit="submitForm">
+      <FormKit
+        v-for="test in testArray"
+        :key="test.id"
+        type="checkbox"
+        :name="test.goodanswer"
+        :label="test.text"
+        help="Vyberte správnu odpoveď"
+        :options="{
+          answera: test.answera,
+          answerb: test.answerb,
+          answerc: test.answerc,
+        }"
+        validation="max:1"
+        :validation-messages="{
+          required: 'Vyberte iba 1 odpoveď',
+        }"
+      />
+       <base-button>Vyhodnotiť</base-button>
     </FormKit>
-    <base-button @click.prevent="foo">form</base-button>
+    <base-button @click="foo">array from DB</base-button>
   </base-card>
 </template>
 
 <script>
-import FormKitSchema from "@formkit/vue";
+// import FormKitSchema from "@formkit/vue";
 
 export default {
-  props: ["testArray"],
+  props: ["testArray", "title"],
   components: {
-    FormKitSchema,
+    //FormKitSchema,
   },
   data() {
     return {
@@ -21,7 +41,7 @@ export default {
       schema: [
         {
           $el: "h1",
-          children: "Test title...", //title
+          children: "Title: " + this.title, //title
         },
         {
           $el: "p",
@@ -39,7 +59,9 @@ export default {
           ],
           help: "Vyberte správnu odpoveď",
           validation: "max:1",
-          messages: { max: "Vyberte iba 1 odpoveď" },
+          validationMessages: {
+            max: "Vyberte iba 1 odpoveď",
+          },
         },
       ],
     };
@@ -48,6 +70,12 @@ export default {
     foo() {
       // console.log("FORM LOG: ", this.$route);
       console.log(this.testArray);
+    },
+    submitForm(){
+      for (const [key, value] of Object.entries(this.test)) {
+        console.log(key, value);
+      }
+      //console.log(this.test);
     },
   },
 };
