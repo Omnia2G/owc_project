@@ -1,81 +1,46 @@
 <template>
   <base-card>
-    <!-- <FormKit type="form" :actions="false" v-model="test">
-      <FormKitSchema :schema="schema" />
-    </FormKit> -->
-    <FormKit type="form" v-model="test" :actions="false" @submit="submitForm">
+    <FormKit type="form" v-model="answers" :actions="false" @submit="submitForm" incomplete-message="Formulár nie je korektne vyplnený!">
       <FormKit
         v-for="test in testArray"
-        :key="test.id"
+        :key="test.id" 
         type="checkbox"
-        :name="test.goodanswer"
+        :name="test.id.toString()"
         :label="test.text"
         help="Vyberte správnu odpoveď"
         :options="{
-          answera: test.answera,
-          answerb: test.answerb,
-          answerc: test.answerc,
+          [test.answera]: test.answera,
+          [test.answerb]: test.answerb,
+          [test.answerc]: test.answerc,
         }"
         validation="max:1"
         :validation-messages="{
-          required: 'Vyberte iba 1 odpoveď',
+          max: 'Vyberte iba 1 odpoveď',
         }"
       />
        <base-button>Vyhodnotiť</base-button>
     </FormKit>
-    <base-button @click="foo">array from DB</base-button>
   </base-card>
 </template>
 
 <script>
-// import FormKitSchema from "@formkit/vue";
-
 export default {
   props: ["testArray", "title"],
-  components: {
-    //FormKitSchema,
-  },
+  emits:['test-result'],
   data() {
     return {
-      test: [],
-      schema: [
-        {
-          $el: "h1",
-          children: "Title: " + this.title, //title
-        },
-        {
-          $el: "p",
-          children: "Text of the 1. question.",
-        },
-        {
-          $formkit: "checkbox",
-          name: "question1",
-          id: "q1",
-          label: "Answers",
-          options: [
-            { value: "q1answerA", label: "Answer A" },
-            { value: "q1answerB", label: "Answer B" },
-            { value: "q1answerC", label: "Answer C" },
-          ],
-          help: "Vyberte správnu odpoveď",
-          validation: "max:1",
-          validationMessages: {
-            max: "Vyberte iba 1 odpoveď",
-          },
-        },
-      ],
+      answers: [],
     };
   },
   methods: {
-    foo() {
-      // console.log("FORM LOG: ", this.$route);
-      console.log(this.testArray);
-    },
     submitForm(){
-      for (const [key, value] of Object.entries(this.test)) {
-        console.log(key, value);
+      let sum = 0;
+      for (const [index, [key, value]] of Object.entries(Object.entries(this.answers))) {
+        if(this.testArray[index].id.toString() === key && this.testArray[index].goodanswer === value[0]){
+          sum++;
+        }
       }
-      //console.log(this.test);
+      this.$emit("test-result", sum);
     },
   },
 };
