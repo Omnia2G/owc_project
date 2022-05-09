@@ -15,24 +15,25 @@ class UserController{
         $this->conn = (new Database())->getConnection();
     }
 
-    public function login($username, string $role, string $token){
-        if($username && $role === '' && $token === ''){
+    public function login(string $email, string $role, string $token){
+        if($email && $role === '' && $token === ''){
             $query_data = array(
-                ':username' =>  $username,
+                ':email' =>  $email,
                );
-            $stmt = $this->conn->prepare("SELECT * FROM `login` where username = :username");
+            $stmt = $this->conn->prepare("SELECT * FROM `login` where email = :email;");
         }else{ // autologin
             $query_data = array(
                 ':role' => $role,
                 ':token' =>  $token,
                );
-            $stmt = $this->conn->prepare("SELECT * FROM `login` where token = :token and role = :role");
+            $stmt = $this->conn->prepare("SELECT * FROM `login` where token = :token and role = :role;");
         }
         $stmt->execute($query_data);
         $stmt->setFetchMode(PDO::FETCH_CLASS, "User");
         $person = $stmt->fetch();
         return $person; 
     }
+
     public function registration(User $person){
         $query_data = array(
             ':firstname' =>  $person->getFirstname(),
@@ -57,14 +58,14 @@ class UserController{
         $stmt = $this->conn->prepare("SELECT email from `login` where email = :email;");
         $stmt->bindParam(":email", $email, PDO::PARAM_STR);
         $stmt->execute();
-        $emailexists = $stmt->fetch(PDO::FETCH_COLUMN);
-        if($usernameExists && $emailexists){
+        $emailExists = $stmt->fetch(PDO::FETCH_COLUMN);
+        if($usernameExists && $emailExists){
             return 'username and email exists';
         }
-        else if($usernameExists && !$emailexists){
+        else if($usernameExists && !$emailExists){
             return 'username exists';
         }
-        else if(!$usernameExists && $emailexists){
+        else if(!$usernameExists && $emailExists){
             return 'email exists';
         }
         else{

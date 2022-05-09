@@ -7,17 +7,27 @@ require_once "TestController.php";
 $userController = new UserController();
 $testController = new TestController();
 
-if($_POST['action'] == 'login'){    
-    echo json_encode(($userController->login($_POST['username'],'',''))->expose());
-}
-
-if($_POST['action'] == 'autologin'){ 
-    try{
-        echo json_encode(($userController->login('',$_POST['role'], $_POST['token']))->expose());
-    }catch(Error $exception){
-        echo json_encode($exception->getMessage());
+if($_POST['action'] == 'login' || $_POST['action'] == 'autologin'){
+    $person = null;
+    if($_POST['action'] == 'login'){
+        $person = $userController->login($_POST['email'],'',''); //login
+    }else{
+        $person = $userController->login('',$_POST['role'], $_POST['token']); //autologin
+    }
+    if($person){
+        echo json_encode($person->expose());
+    }else{
+        echo json_encode($person); // return false
     }
 }
+
+// if($_POST['action'] == 'autologin'){ 
+//     try{
+//         echo json_encode(($userController->login('',$_POST['role'], $_POST['token']))->expose());
+//     }catch(Error $exception){
+//         echo json_encode($exception->getMessage());
+//     }
+// }
 
 if($_POST['action'] == 'register'){
    $tmp = $userController->checkIfUsernameOrEmailExists($_POST['username'], $_POST['email']);
@@ -31,7 +41,7 @@ if($_POST['action'] == 'register'){
         echo json_encode('email exists');
     }
     else{ 
-        // username or email not exists
+        // username and email not exists
         $user = new User();
         $user->setFirstname($_POST['firstname']);
         $user->setLastname($_POST['lastname']);

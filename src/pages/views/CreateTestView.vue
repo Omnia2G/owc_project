@@ -5,27 +5,20 @@
   <base-dialog :show="isLoading" title="Checking the database..." fixed>
     <base-spinner></base-spinner>
   </base-dialog>
-  <!-- <section>
-    <base-card>
-      <h2>Vytvorte nový test!</h2>   
-      <create-test-form></create-test-form>
-    </base-card>
-  </section> -->
   <section>
     <base-card>
       <h2>Vytvorte nový test</h2>
-      <vue-formulate @save-test="saveTest"></vue-formulate>
+      <create-test-form @save-test="saveTest"></create-test-form>
    </base-card>
   </section>
 </template>
 
 <script>
-// import CreateTestForm from '../../components/CreateTestForm.vue';
-import VueFormulate from '../../components/VueFormulate.vue';
+import CreateTestForm from '../../components/CreateTestForm.vue';
+
 export default {
   components:{
-    //CreateTestForm,
-    VueFormulate
+    CreateTestForm,
   },
   data(){
     return{

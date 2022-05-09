@@ -1,7 +1,9 @@
 <template>
-  <base-dialog :show="!!error || !!results" title="Information" @close="handleError">
-    <p v-if="error">{{ error }}</p>
-    <p v-else>{{ results }}</p>
+  <base-dialog :show="!!error" title="Error occured!" @close="handleError">
+    <p>{{ error }}</p>
+  </base-dialog>
+  <base-dialog :show="!!results" title="Results" @close="handleResult">
+    <p>{{ results }}</p>
   </base-dialog>
   <base-dialog :show="isLoading" title="Evaluating..." fixed>
     <base-spinner></base-spinner>
@@ -40,11 +42,8 @@ export default {
       actionPayload.append("action", "getCompleteTest");
       try {
         await this.$store.dispatch("test/displayCompleteTest", actionPayload);
-        //const test = await this.$store.getters["test/getTests"];
-        //console.log(test);
         this.fullTest = await this.$store.getters["test/getTests"];
       } catch (error) {
-        //console.log("ERROR: ", error);
         this.error = error;
       }
     },
@@ -58,12 +57,10 @@ export default {
       }, 1500);
     },
     handleError() {
-      if(this.error){
-        this.error = null;
-      }else{
-        this.results = null;
-      }
-      
+      this.error = null;
+    },
+    handleResult() {
+      this.results = null;
     },
   },
   created() {

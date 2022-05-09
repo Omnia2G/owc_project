@@ -1,5 +1,11 @@
 <template>
-  <form @submit.prevent="submitTest">
+  <FormKit
+    type="form"
+    v-model="formValues"
+    @submit="saveFormkitForm"
+    :actions="false"
+    incomplete-message="Formulár nie je korektne vyplnený!"
+  >
     <base-card>
       <p>
         Tu sa dá vytvoriť test s 10 otázkami a odpoveďami typu A,B,C - pre
@@ -9,206 +15,660 @@
       <p>2.Krok: vyberte tému</p>
       <p>3.Krok: vyplňte formulár, a všade označte správnu odpoveď!</p>
       <p>4.Krok: odoslať formulár</p>
-      <label for="title">Titul testu</label>
-      <input type="text" id="title" name="title" v-model="title" /><br /><br />
-      <label for="courses">Vyberte tému testu</label>
-      <select name="courses" id="courses" v-model="course">
-        <option disabled value="">Témy</option>
-        <option value="vlc">VLC</option>
-        <option value="occ">OCC</option>
-        <option value="irc">IRC</option>
-        <option value="fso">FSO</option>
-        <option value="uvc">UVC</option>
-        <option value="lifi">LI-FI</option></select
-      ><br /><br />
+      <FormKit
+        type="text"
+        name="title"
+        label="Titul"
+        help="Titul pre nový test"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste titul!',
+        }"
+      />
+      <FormKit
+        type="select"
+        name="course"
+        label="Téma"
+        help="Vyberte tému testu!"
+        :options="{
+          vlc: 'VLC',
+          occ: 'OCC',
+          irc: 'IRC',
+          fso: 'FSO',
+          uvc: 'UVC',
+          lifi: 'LI-FI',
+        }"
+      />
     </base-card>
+    <!-- Otazka -->
     <base-card>
-      <div class="form-control">
-        <label for="q1">1. Otázka</label>
-        <textarea id="q1" name="q1" v-model="q1.q" rows="4"></textarea>
-      </div>
-      <div class="form-control">
-        <label for="q1a1">Odpoveď A</label>
-        <input type="text" id="q1a1" name="q1a1" v-model="q1.a1" />
-      </div>
-      <div class="form-control">
-        <label for="q1a2">Odpoveď B</label>
-        <input type="text" id="q1a2" name="q1a2" v-model="q1.a2" />
-      </div>
-      <div class="form-control">
-        <label for="q1a3">Odpoveď C</label>
-        <input type="text" id="q1a3" name="q1a3" v-model="q1.a3" />
-      </div>
-      <div class="form-control">
-        <p>Vyberte správnu odpoveď!</p>
-        <label for="q1gA">A</label>
-        <input
-          type="radio"
-          id="q1gA"
-          name="good_ans_1"
-          value="a1"
-          v-model="q1.goodA"
-        />
-
-        <label for="q1gB">B</label>
-        <input
-          type="radio"
-          id="q1gB"
-          name="good_ans_1"
-          value="a2"
-          v-model="q1.goodA"
-        />
-
-        <label for="q1gC">C</label>
-        <input
-          type="radio"
-          id="q1gC"
-          name="good_ans_1"
-          value="a3"
-          v-model="q1.goodA"
-        />
-        <p class="error" v-if="!q1.isValid">
-          Vyplňte všetky polia pre otázku 1
-        </p>
-      </div>
+      <FormKit
+        type="textarea"
+        name="q1"
+        label="Otázka 1"
+        help="Zadajte text otázky"
+        validation="required|length:0,200"
+        :validation-messages="{
+          length: 'Max dĺžka otázky je 200 znakov!',
+          required: 'Nezadali ste text k otázke!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q1a1"
+        label="Odpoveď A"
+        help="Zadajte odpoveď - A"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q1a2"
+        label="Odpoveď B"
+        help="Zadajte odpoveď - B"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q1a3"
+        label="Odpoveď C"
+        help="Zadajte odpoveď - C"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="radio"
+        name="q1_good_ans"
+        label="Správna odpoveď"
+        help="Označte správnu odpoveď k 1. otázke"
+        :options="{
+          q1a1: 'A',
+          q1a2: 'B',
+          q1a3: 'C',
+        }"
+        validation="required"
+        :validation-messages="{
+          required: 'Neoznačili ste správnu odpoveď!',
+        }"
+      />
+    </base-card>
+    <!-- Otazka -->
+    <base-card>
+      <FormKit
+        type="textarea"
+        name="q2"
+        label="Otázka 2"
+        help="Zadajte text otázky"
+        validation="required|length:0,200"
+        :validation-messages="{
+          length: 'Max dĺžka otázky je 200 znakov!',
+          required: 'Nezadali ste text k otázke!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q2a1"
+        label="Odpoveď A"
+        help="Zadajte odpoveď - A"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q2a2"
+        label="Odpoveď B"
+        help="Zadajte odpoveď - B"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q2a3"
+        label="Odpoveď C"
+        help="Zadajte odpoveď - C"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="radio"
+        name="q2_good_ans"
+        label="Správna odpoveď"
+        help="Označte správnu odpoveď k 2. otázke"
+        :options="{
+          q2a1: 'A',
+          q2a2: 'B',
+          q2a3: 'C',
+        }"
+        validation="required"
+        :validation-messages="{
+          required: 'Neoznačili ste správnu odpoveď!',
+        }"
+      />
+    </base-card>
+    <!-- Otazka -->
+    <base-card>
+      <FormKit
+        type="textarea"
+        name="q3"
+        label="Otázka 3"
+        help="Zadajte text otázky"
+        validation="required|length:0,200"
+        :validation-messages="{
+          length: 'Max dĺžka otázky je 200 znakov!',
+          required: 'Nezadali ste text k otázke!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q3a1"
+        label="Odpoveď A"
+        help="Zadajte odpoveď - A"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q3a2"
+        label="Odpoveď B"
+        help="Zadajte odpoveď - B"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q3a3"
+        label="Odpoveď C"
+        help="Zadajte odpoveď - C"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="radio"
+        name="q3_good_ans"
+        label="Správna odpoveď"
+        help="Označte správnu odpoveď k 3. otázke"
+        :options="{
+          q3a1: 'A',
+          q3a2: 'B',
+          q3a3: 'C',
+        }"
+        validation="required"
+        :validation-messages="{
+          required: 'Neoznačili ste správnu odpoveď!',
+        }"
+      />
+    </base-card>
+    <!-- Otazka -->
+    <base-card>
+      <FormKit
+        type="textarea"
+        name="q4"
+        label="Otázka 4"
+        help="Zadajte text otázky"
+        validation="required|length:0,200"
+        :validation-messages="{
+          length: 'Max dĺžka otázky je 200 znakov!',
+          required: 'Nezadali ste text k otázke!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q4a1"
+        label="Odpoveď A"
+        help="Zadajte odpoveď - A"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q4a2"
+        label="Odpoveď B"
+        help="Zadajte odpoveď - B"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q4a3"
+        label="Odpoveď C"
+        help="Zadajte odpoveď - C"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="radio"
+        name="q4_good_ans"
+        label="Správna odpoveď"
+        help="Označte správnu odpoveď k 4. otázke"
+        :options="{
+          q4a1: 'A',
+          q4a2: 'B',
+          q4a3: 'C',
+        }"
+        validation="required"
+        :validation-messages="{
+          required: 'Neoznačili ste správnu odpoveď!',
+        }"
+      />
+    </base-card>
+    <!-- Otazka -->
+    <base-card>
+      <FormKit
+        type="textarea"
+        name="q5"
+        label="Otázka 5"
+        help="Zadajte text otázky"
+        validation="required|length:0,200"
+        :validation-messages="{
+          length: 'Max dĺžka otázky je 200 znakov!',
+          required: 'Nezadali ste text k otázke!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q5a1"
+        label="Odpoveď A"
+        help="Zadajte odpoveď - A"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q5a2"
+        label="Odpoveď B"
+        help="Zadajte odpoveď - B"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q5a3"
+        label="Odpoveď C"
+        help="Zadajte odpoveď - C"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="radio"
+        name="q5_good_ans"
+        label="Správna odpoveď"
+        help="Označte správnu odpoveď k 5. otázke"
+        :options="{
+          q5a1: 'A',
+          q5a2: 'B',
+          q5a3: 'C',
+        }"
+        validation="required"
+        :validation-messages="{
+          required: 'Neoznačili ste správnu odpoveď!',
+        }"
+      />
+    </base-card>
+    <!-- Otazka -->
+    <base-card>
+      <FormKit
+        type="textarea"
+        name="q6"
+        label="Otázka 6"
+        help="Zadajte text otázky"
+        validation="required|length:0,200"
+        :validation-messages="{
+          length: 'Max dĺžka otázky je 200 znakov!',
+          required: 'Nezadali ste text k otázke!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q6a1"
+        label="Odpoveď A"
+        help="Zadajte odpoveď - A"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q6a2"
+        label="Odpoveď B"
+        help="Zadajte odpoveď - B"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q6a3"
+        label="Odpoveď C"
+        help="Zadajte odpoveď - C"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="radio"
+        name="q6_good_ans"
+        label="Správna odpoveď"
+        help="Označte správnu odpoveď k 6. otázke"
+        :options="{
+          q6a1: 'A',
+          q6a2: 'B',
+          q6a3: 'C',
+        }"
+        validation="required"
+        :validation-messages="{
+          required: 'Neoznačili ste správnu odpoveď!',
+        }"
+      />
+    </base-card>
+    <!-- Otazka -->
+    <base-card>
+      <FormKit
+        type="textarea"
+        name="q7"
+        label="Otázka 7"
+        help="Zadajte text otázky"
+        validation="required|length:0,200"
+        :validation-messages="{
+          length: 'Max dĺžka otázky je 200 znakov!',
+          required: 'Nezadali ste text k otázke!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q7a1"
+        label="Odpoveď A"
+        help="Zadajte odpoveď - A"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q7a2"
+        label="Odpoveď B"
+        help="Zadajte odpoveď - B"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q7a3"
+        label="Odpoveď C"
+        help="Zadajte odpoveď - C"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="radio"
+        name="q7_good_ans"
+        label="Správna odpoveď"
+        help="Označte správnu odpoveď k 7. otázke"
+        :options="{
+          q7a1: 'A',
+          q7a2: 'B',
+          q7a3: 'C',
+        }"
+        validation="required"
+        :validation-messages="{
+          required: 'Neoznačili ste správnu odpoveď!',
+        }"
+      />
+    </base-card>
+    <!-- Otazka -->
+    <base-card>
+      <FormKit
+        type="textarea"
+        name="q8"
+        label="Otázka 8"
+        help="Zadajte text otázky"
+        validation="required|length:0,200"
+        :validation-messages="{
+          length: 'Max dĺžka otázky je 200 znakov!',
+          required: 'Nezadali ste text k otázke!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q8a1"
+        label="Odpoveď A"
+        help="Zadajte odpoveď - A"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q8a2"
+        label="Odpoveď B"
+        help="Zadajte odpoveď - B"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q8a3"
+        label="Odpoveď C"
+        help="Zadajte odpoveď - C"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="radio"
+        name="q8_good_ans"
+        label="Správna odpoveď"
+        help="Označte správnu odpoveď k 8. otázke"
+        :options="{
+          q8a1: 'A',
+          q8a2: 'B',
+          q8a3: 'C',
+        }"
+        validation="required"
+        :validation-messages="{
+          required: 'Neoznačili ste správnu odpoveď!',
+        }"
+      />
+    </base-card>
+    <!-- Otazka -->
+    <base-card>
+      <FormKit
+        type="textarea"
+        name="q9"
+        label="Otázka 9"
+        help="Zadajte text otázky"
+        validation="required|length:0,200"
+        :validation-messages="{
+          length: 'Max dĺžka otázky je 200 znakov!',
+          required: 'Nezadali ste text k otázke!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q9a1"
+        label="Odpoveď A"
+        help="Zadajte odpoveď - A"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q9a2"
+        label="Odpoveď B"
+        help="Zadajte odpoveď - B"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q9a3"
+        label="Odpoveď C"
+        help="Zadajte odpoveď - C"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="radio"
+        name="q9_good_ans"
+        label="Správna odpoveď"
+        help="Označte správnu odpoveď k 9. otázke"
+        :options="{
+          q9a1: 'A',
+          q9a2: 'B',
+          q9a3: 'C',
+        }"
+        validation="required"
+        :validation-messages="{
+          required: 'Neoznačili ste správnu odpoveď!',
+        }"
+      />
+    </base-card>
+    <!-- Otazka -->
+    <base-card>
+      <FormKit
+        type="textarea"
+        name="q10"
+        label="Otázka 10"
+        help="Zadajte text otázky"
+        validation="required|length:0,200"
+        :validation-messages="{
+          length: 'Max dĺžka otázky je 200 znakov!',
+          required: 'Nezadali ste text k otázke!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q10a1"
+        label="Odpoveď A"
+        help="Zadajte odpoveď - A"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q10a2"
+        label="Odpoveď B"
+        help="Zadajte odpoveď - B"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="text"
+        name="q10a3"
+        label="Odpoveď C"
+        help="Zadajte odpoveď - C"
+        validation="required"
+        :validation-messages="{
+          required: 'Nezadali ste text pre odpoveď!',
+        }"
+      />
+      <FormKit
+        type="radio"
+        name="q10_good_ans"
+        label="Správna odpoveď"
+        help="Označte správnu odpoveď k 10. otázke"
+        :options="{
+          q10a1: 'A',
+          q10a2: 'B',
+          q10a3: 'C',
+        }"
+        validation="required"
+        :validation-messages="{
+          required: 'Neoznačili ste správnu odpoveď!',
+        }"
+      />
     </base-card>
     <base-button>Vytvoriť test</base-button>
-  </form>
+  </FormKit>
 </template>
 
 <script>
 export default {
+  emits: ["save-test"],
   data() {
     return {
-      title: "",
-      course: "",
-      q1: {
-        q: "",
-        a1: "",
-        a2: "",
-        a3: "",
-        goodA: "", //good answer for q1
-        isValid: true,
-      },
-    
-    q2:[
-        {text: 'q', val: 'question2'},
-        {text: 'a1', val: 'A'},
-        {text: 'a2', val: 'B'},
-        {text: 'a3', val: 'C'},
-        {text: 'goodA', val: 'B'},
-        {text: 'isValid', val: true},
-    ],
-    
-
-      formIsValid: false,
-      isLoading: false,
-      error: null,
+      formValues: {},
     };
   },
   methods: {
-      
-    validate() {
-      if (this.title === "" || this.course === "") {
-        this.formIsValid = false;
-        this.q1.isValid = false;
-      } else {
-        // title && course true
-        if (
-          this.q1.q === "" ||
-          this.q1.a1 === "" ||
-          this.q1.a2 === "" ||
-          this.q1.a3 === "" ||
-          this.q1.goodA === ""
-        ) {
-          this.q1.isValid = false;
-          this.formIsValid = false;
-        } else {
-          this.q1.isValid = true;
-          this.formIsValid = true;
-        }
+    saveFormkitForm() {
+      let data = new FormData();
+      for (const [key, value] of Object.entries(this.formValues)) {
+        data.append(key, value);
       }
-    },
-    clearValidity(input) {
-      this[input].isValid = true;
-    },
-    submitTest() {
-      this.validate();
-      if (!this.formIsValid) {
-        return;
-      }
-      
-
-
-      console.log(this.title);
-      console.log(this.courses);
-      console.log(this.q1.q);
-      console.log(this.q1.a1);
-      console.log(this.q1.a2);
-      console.log(this.q1.a3);
-      console.log(this.q1.goodA);
-   
+      data.append("username", this.$store.getters.userId);
+      data.append("action", "createNewTest");
+      this.$emit("save-test", data);
     },
   },
 };
 </script>
 
 <style scoped>
-.form-control {
-  margin: 0.5rem 0;
+/* [data-invalid] .formkit-inner {
+  border-color: red;
+  box-shadow: 0 0 0 1px red;
 }
 
-label {
-  font-weight: bold;
+[data-complete] .formkit-inner {
+  border-color: red;
+  box-shadow: 0 0 0 1px green;
+}
+[data-complete] .formkit-inner::after {
+  content: "✅";
   display: block;
-  margin-bottom: 0.5rem;
-}
-
-input[type="checkbox"] + label {
-  font-weight: normal;
-  display: inline;
-  margin: 0 0 0 0.5rem;
-}
-
-input,
-textarea {
-  display: inline-flex;
-  width: 15rem;
-  border: 1px solid #ccc;
-  font: inherit;
-}
-
-input:focus,
-textarea:focus {
-  background-color: #f0e6fd;
-  outline: none;
-  border-color: #3d008d;
-}
-
-input[type="radio"] {
-  display: inline;
-  width: auto;
-  border: none;
-}
-
-input[type="checkbox"]:focus {
-  outline: #3d008d solid 1px;
-}
-
-h3 {
-  margin: 0.5rem 0;
-  font-size: 1rem;
-}
-
-.invalid label {
-  color: red;
-}
-
-.invalid input,
-.invalid textarea {
-  border: 1px solid red;
-}
-.error {
-  color: red;
-}
+  padding: 0.5em;
+} */
 </style>
