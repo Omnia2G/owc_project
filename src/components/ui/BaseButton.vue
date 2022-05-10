@@ -54,6 +54,19 @@ button:active {
   border-color: #270041;
 }
 
+.delete{
+  background-color: red;
+  color: black;
+  padding: 0.2rem 0.4rem;
+  border-radius: 15px;
+  font-size: .7rem;
+  max-width: 110px;
+}
+.delete:hover,
+.delete:active{
+  background-color: #da795c;
+}
+
 .flat {
   /* background-color: transparent; */
   background-color: white;

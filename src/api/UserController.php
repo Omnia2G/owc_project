@@ -72,16 +72,13 @@ class UserController{
             return 'none of them exists';
         }
     }
-    // public function checkIfEmailExists(string $email):bool {
-    //     $stmt = $this->conn->prepare("SELECT email from `login` where email = :email;");
-    //     $stmt->bindParam(":email", $email, PDO::PARAM_STR);
-    //     $stmt->execute();
-    //     if($stmt->fetch(PDO::FETCH_COLUMN)){
-    //         return true;
-    //     }else{
-    //         return false;
-    //     }
-    // }
+
+    public function getAllUsers() {
+        $stmt = $this->conn->prepare("SELECT * from `login`;");
+        $stmt->execute();
+        //$stmt->setFetchMode(PDO::FETCH_CLASS, "User");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);    
+    }
     
 
     // public function insertUser(User $person): int

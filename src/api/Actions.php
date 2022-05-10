@@ -21,14 +21,6 @@ if($_POST['action'] == 'login' || $_POST['action'] == 'autologin'){
     }
 }
 
-// if($_POST['action'] == 'autologin'){ 
-//     try{
-//         echo json_encode(($userController->login('',$_POST['role'], $_POST['token']))->expose());
-//     }catch(Error $exception){
-//         echo json_encode($exception->getMessage());
-//     }
-// }
-
 if($_POST['action'] == 'register'){
    $tmp = $userController->checkIfUsernameOrEmailExists($_POST['username'], $_POST['email']);
    if($tmp == 'username and email exists'){
@@ -82,7 +74,13 @@ if($_POST['action'] == 'getCompleteTest'){
     }
 }
 
-
+if($_POST['action'] == 'getAllUsers'){ 
+    try{
+        echo json_encode($userController->getAllUsers());
+    }catch(Error $exception){
+        echo json_encode($exception->getMessage());
+    }
+}
 
 
 
