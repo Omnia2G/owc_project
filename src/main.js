@@ -11,11 +11,13 @@ import BaseDialog from './components/ui/BaseDialog.vue';
 import { plugin, defaultConfig } from '@formkit/vue';
 import '@formkit/themes/genesis';
 
+
 const app = createApp(App);
 
 app.use(router);
 app.use(store);
 app.use(plugin, defaultConfig);
+
 
 app.component('base-card', BaseCard);
 app.component('base-button', BaseButton);

@@ -3,8 +3,7 @@
     <h2>Users</h2>
     <table class="table">
       <thead>
-        <th>Username
-        </th>
+        <th>Username</th>
         <th>Email</th>
         <th>Role</th>
         <th>Actions</th>
@@ -30,11 +29,12 @@
 
 
 export default {
-
-
   props: ["posts"],
   data() {
-    return {};
+    return {
+      
+      
+    };
   },
   methods: {
     show() {
@@ -53,7 +53,6 @@ export default {
 </script>
 
 <style scoped>
-
 :root {
   --fs-400: 1rem;
   --fs-300: 0.7rem;
