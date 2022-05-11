@@ -12,4 +12,13 @@ export default {
     context.commit('setUsers', responseData);
   },
 
+  deleteUser(context, payload){
+     fetch("http://localhost/owc_project/src/api/Actions.php", {
+      method: 'POST',
+      body: payload,
+    });
+    context.commit('deleteUser',payload.get('id'));
+  },
+
+
 }

@@ -8,8 +8,6 @@ export default{
             userId: null,
             token: null,
             userRole: null,
-            // isTeacher: false,
-            // isAdmin: false,
             isLoggedIn: false,
             didAutoLogout: false
         };

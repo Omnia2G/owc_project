@@ -8,5 +8,5 @@ export default{ //commit
     },
     setAutoLogout(state){
         state.didAutoLogout = true;
-    }
+    },
 };

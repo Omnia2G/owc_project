@@ -76,10 +76,28 @@
       }"
     />
     <FormKit
+      v-if="admin == 'admin'"
       type="radio"
       name="role"
       v-model="role"
-      label="Zaregistrovať sa ako:"
+      label="Sign In as:"
+      help="Vyberte ako sa chcete zaregistrovať"
+      :options="{
+        admin: 'Admin',
+        teacher: 'Učiteľ',
+        student: 'Študent',
+      }"
+      validation="required"
+      :validation-messages="{
+        required: 'Neoznačili ste rolu!',
+      }"
+    />
+    <FormKit
+      v-else
+      type="radio"
+      name="role"
+      v-model="role"
+      label="Sign In as:"
       help="Vyberte ako sa chcete zaregistrovať"
       :options="{
         teacher: 'Učiteľ',
@@ -105,6 +123,7 @@
 
 <script>
 export default {
+  props:['admin'],
   emits: ["register-user"],
   data() {
     return {

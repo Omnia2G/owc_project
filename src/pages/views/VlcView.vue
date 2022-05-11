@@ -1,4 +1,7 @@
 <template>
+<base-dialog :show="!!error" title="Error occured!" @close="handleError">
+    <p>{{ error }}</p>
+  </base-dialog>
   <section>
     <base-card>
       <h1>Viditeľná sveteľna komunikácia</h1>
@@ -400,7 +403,7 @@
       <br /><br />
       <base-button @click="moveUp">Späť na začiatok</base-button>
     </base-card>
-    <base-card>
+    <base-card v-if="isLoggedIn">
       <section>
         <h2>Testy pre VLC</h2>
         <ul v-if="testTitles">
@@ -431,11 +434,15 @@ export default {
   data() {
     return {
       titles:[],
+      error: null,
     };
   },
   computed: {
     testTitles(){
       return this.$store.getters['test/hasTests'];
+    },
+    isLoggedIn() {
+      return this.$store.getters.isLoggedIn;
     },
   },
   methods: {
@@ -447,16 +454,18 @@ export default {
       actionPayload.append("action", "getTestTitles");
       actionPayload.append("course", "vlc");
       try {
-        await this.$store.dispatch("test/displayTestTitlesInTopics", actionPayload);
-        const tests = await this.$store.getters["test/getTests"];
-        for(let test of tests){
-          this.titles.push({['id']: test.id, ['title']: test.title, ['course']: test.course});
-        }
+        await this.$store.dispatch("test/fetchTests", actionPayload);
+        this.titles = await this.$store.getters["test/getTests"];
+        // for(let test of tests){
+        //   this.titles.push({['id']: test.id, ['title']: test.title, ['course']: test.course});
+        // }
       } catch (error) {
-        console.log("ERROR: ", error);
+        this.error = error;
       }
     },
-
+    handleError() {
+      this.error = null;
+    },
   },
   created() {
     this.displayTestTitlesForThisCourse();

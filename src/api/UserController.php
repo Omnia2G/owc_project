@@ -74,57 +74,18 @@ class UserController{
     }
 
     public function getAllUsers() {
-        $stmt = $this->conn->prepare("SELECT * from `login`;");
+        $stmt = $this->conn->prepare("SELECT * from `login` order by username ASC;");
         $stmt->execute();
-        //$stmt->setFetchMode(PDO::FETCH_CLASS, "User");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);    
     }
     
-
-    // public function insertUser(User $person): int
-    // {
-    //     $stmt = $this->conn->prepare("insert into user (name, surname, email, username, password) values (:name, :surname, :email, :username, :password);");
-    //     $name = $person->getName();
-    //     $surname = $person->getSurname();
-    //     $email = $person->getEmail();
-    //     $username = $person->getUsername();
-    //     $password = $person->getPassword();
-
-    //     $stmt->bindParam(":name", $name, PDO::PARAM_STR);
-    //     $stmt->bindParam(":surname", $surname, PDO::PARAM_STR);
-    //     $stmt->bindParam(":email", $email, PDO::PARAM_STR);
-    //     $stmt->bindParam(":username", $username, PDO::PARAM_STR);
-    //     $stmt->bindParam(":password", $password, PDO::PARAM_STR);
-
-    //     $stmt->execute();
-    //     return $this->conn->lastInsertId();
-    // }
-
-    // public function getUserEmail($username):string{
-    //     $stmt = $this->conn->prepare("select user.email from user where user.username=:username;");
-    //     $stmt->bindParam(":username", $username, PDO::PARAM_STR);
-    //     $stmt->execute();
-    //     //$stmt->setFetchMode(PDO::FETCH_CLASS, "User");
-    //     $tmp_email = $stmt->fetch();
-    //     return $tmp_email[0];
-    // }
-
-    // public function logUser($username, $email, $logintype):void{
-    //     $stmt = $this->conn->prepare("insert into login (username, email, logintype, logintime) values (:username, :email, :logintype, :logintime);");
-    //     $stmt->bindParam(":username", $username, PDO::PARAM_STR);
-    //     $stmt->bindParam(":email", $email, PDO::PARAM_STR);
-    //     $stmt->bindParam(":logintype", $logintype, PDO::PARAM_STR);
-    //     date_default_timezone_set('Europe/Bratislava');
-    //     $logintime = date("d-m-Y h:i:s a", time());
-    //     $stmt->bindParam(":logintime", $logintime, PDO::PARAM_STR);
-    //     $stmt->execute();
-    // }
-
-
-   
-
-
-
+    public function deleteUser(int $id){
+        $queryArr = array(
+            ':id' => $id,
+        );
+        $stmt = $this->conn->prepare("DELETE FROM `login` WHERE id = :id;");
+        $stmt->execute($queryArr);
+    }
 
 
 }

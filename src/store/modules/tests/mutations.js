@@ -2,4 +2,8 @@ export default{
     setTest(state, payload){
         state.test = payload;
     },
+    deleteTest(state, payload){  
+        let index = state.test.indexOf(state.test.find((test) => test.id == payload));
+        state.test.splice(index, 1);
+    },
 };

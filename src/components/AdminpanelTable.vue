@@ -1,15 +1,17 @@
 <template>
   <base-card>
     <h2>Users</h2>
-    <table class="table">
+    <v-table theme="dark" fixed-header height="200px" density="compact">
       <thead>
-        <th>Username</th>
-        <th>Email</th>
-        <th>Role</th>
-        <th>Actions</th>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
       </thead>
       <tbody>
-        <tr v-for="user in posts" :key="user.id">
+        <tr v-for="user in users" :key="user.id">
           <td data-label="Username">{{ user.username }}</td>
           <td data-label="Email">{{ user.email }}</td>
           <td data-label="Role">{{ user.role }}</td>
@@ -20,100 +22,54 @@
           </td>
         </tr>
       </tbody>
-    </table>
-    <base-button @click="show">Show all users</base-button>
+    </v-table>
+    <br><br><br>
+    <h2>Tests</h2>
+     <v-table theme="dark" fixed-header height="200px" density="compact">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Title</th>
+          <th>Course</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="test in tests" :key="test.id">
+          <td>{{ test.username }}</td>
+          <td>{{ test.title }}</td>
+          <td>{{ test.course }}</td>
+          <td>
+            <base-button class="delete" @click="deleteTest(test.id)"
+              >Delete</base-button
+            >
+          </td>
+        </tr>
+      </tbody>
+    </v-table>
+    <br><br><br>
+    
   </base-card>
 </template>
 
 <script>
-
-
 export default {
-  props: ["posts"],
+  props: ["users", "tests"],
+  emits:['delete-user', 'delete-test'],
   data() {
     return {
-      
-      
+      page: 1,
     };
   },
   methods: {
-    show() {
-      for (let user of this.posts) {
-        console.log(user.id);
-        console.log(user.username);
-        console.log(user.role);
-        console.log(user.email);
-      }
-    },
     deleteUser(id) {
-      console.log("USER id: ", id);
+      this.$emit("delete-user", id);
+    },
+    deleteTest(id){
+      this.$emit("delete-test", id);
     },
   },
 };
 </script>
 
-<style scoped>
-:root {
-  --fs-400: 1rem;
-  --fs-300: 0.7rem;
-}
 
-.table {
-  width: 50%;
-  margin-bottom: 10px;
-  border-collapse: collapse;
-}
-.table td,
-.table th {
-  padding: 10px 10px;
-  border: 2px solid black;
-  text-align: center;
-}
-
-.table th {
-  background-color: rgb(8, 8, 80);
-  color: white;
-}
-
-.table tbody tr:nth-child(even) {
-  background-color: #e7e2e2;
-}
-
-@media (max-width: 700px) {
-  .table thead {
-    display: none;
-  }
-  .table,
-  .table tbody,
-  .table tr,
-  .table td {
-    display: block;
-    width: 100%;
-  }
-  .table tr,
-  .table td {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-  .table tr {
-    margin-bottom: 15px;
-  }
-  .table td {
-    text-align: right;
-    padding-left: 35%;
-    position: relative;
-    font-size: 15px;
-  }
-
-  .table td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 0;
-    width: 50%;
-    padding-left: 15px;
-    font-size: 15px;
-    font-weight: bold;
-    text-align: left;
-  }
-}
-</style>

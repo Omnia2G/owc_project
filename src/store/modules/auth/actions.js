@@ -20,7 +20,7 @@ export default {
       responseData.email === payload.get("email") &&
       bcrypt.compareSync(payload.get("password"), responseData.pw)
     ) {
-      expiresIn = 10800000; // 3h - autologout //// timer 7000 = 7s
+      expiresIn = 10800000; // 3h - autologout
       //expiresIn = 10000;
       const expirationDate = new Date().getTime() + expiresIn;
 
@@ -63,7 +63,6 @@ export default {
         timer = setTimeout(() => {
           context.dispatch("autoLogout");
         }, expiresIn);
-        //console.log("before SETUSER", responseUserId, token, role);
         if (res.data.username && role && res.data.token === token) {
           context.commit("setUser", {
             token: token,

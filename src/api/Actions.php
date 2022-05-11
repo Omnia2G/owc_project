@@ -66,7 +66,7 @@ if($_POST['action'] == 'getTestTitles'){
 
 if($_POST['action'] == 'getCompleteTest'){
     try{
-       $dbData = $testController->getCompleteTestByParams($_POST['id'],$_POST['course'],$_POST['title']);
+       $dbData = $testController->getCompleteTestByParams($_POST['id']);
        echo json_encode($dbData);
         // echo json_encode($testController->getCompleteTestByParams($_POST['id'],$_POST['course'],$_POST['title']));
     }catch(PDOException $exception){
@@ -82,6 +82,27 @@ if($_POST['action'] == 'getAllUsers'){
     }
 }
 
+if($_POST['action'] == 'getAllTests'){ 
+    try{
+        echo json_encode($testController->getAllTests());
+    }catch(Error $exception){
+        echo json_encode($exception->getMessage());
+    }
+}
 
+if($_POST['action'] == 'deleteTest'){ 
+    try{
+        $testController->deleteTest($_POST['id']);
+    }catch(Error $exception){
+        echo json_encode($exception->getMessage());
+    }
+}
 
+if($_POST['action'] == 'deleteUser'){ 
+    try{
+        $userController->deleteUser($_POST['id']);
+    }catch(Error $exception){
+        echo json_encode($exception->getMessage());
+    }
+}
 ?>

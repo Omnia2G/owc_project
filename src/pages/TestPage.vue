@@ -9,7 +9,7 @@
     <base-spinner></base-spinner>
   </base-dialog>
   <base-card>
-    <h2>Now is your chance to prove YOU are not DUMB ... af!!</h2>
+    <h2>Good Luck</h2>
     <test-form
       :testArray="fullTest"
       :title="$route.params.title"
@@ -41,7 +41,7 @@ export default {
       actionPayload.append("title", this.$route.params.title);
       actionPayload.append("action", "getCompleteTest");
       try {
-        await this.$store.dispatch("test/displayCompleteTest", actionPayload);
+        await this.$store.dispatch("test/fetchTests", actionPayload);
         this.fullTest = await this.$store.getters["test/getTests"];
       } catch (error) {
         this.error = error;
