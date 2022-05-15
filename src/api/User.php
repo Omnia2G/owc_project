@@ -17,7 +17,7 @@ class User{
         return $this->token;
     }
      /**
-     * @param string $role
+     * @param string $token
      */
     public function setToken($token): void
     {
