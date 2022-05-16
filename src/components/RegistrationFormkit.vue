@@ -109,6 +109,7 @@
       }"
     />
     <FormKit
+      v-if="!edit"
       type="checkbox"
       label="Terms of service"
       validation="required|accepted"
@@ -117,14 +118,16 @@
         accepted: 'Musíte prijať podmienky!',
       }"
     />
-    <base-button>Registrácia</base-button>
+    <!-- <base-button v-if="edit">Save Data</base-button>
+    <base-button v-else>Registrácia</base-button> -->
+    <base-button>{{ edit ? "Save Data" : "Registrácia" }}</base-button>
   </FormKit>
 </template>
 
 <script>
 export default {
-  props:['admin'],
-  emits: ["register-user"],
+  props: ["admin", "user", "edit"],
+  emits: ["register-user", "edit-user"],
   data() {
     return {
       firstname: null,
@@ -144,9 +147,26 @@ export default {
       data.append("email", this.email);
       data.append("password", this.password1);
       data.append("role", this.role);
-      data.append("action", "register");
-      this.$emit("register-user", data);
+      if (this.edit) {
+        data.append("action", "editUser");
+        data.append("id", this.user.id);
+        data.append("oldUsername", this.user.username);
+        data.append("oldEmail", this.user.email);
+        this.$emit("edit-user", data);
+      } else {
+        data.append("action", "register");
+        this.$emit("register-user", data);
+      }
     },
+  },
+  mounted() {
+    if (this.user) {
+      this.firstname = this.user.firstname;
+      this.lastname = this.user.lastname;
+      this.username = this.user.username;
+      this.email = this.user.email;
+      this.role = this.user.role;
+    }
   },
 };
 </script>

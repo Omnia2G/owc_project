@@ -87,5 +87,55 @@ class UserController{
         $stmt->execute($queryArr);
     }
 
+    public function editUser(User $person){
+        $query_data = array(
+            ':id' => $person->getId(),
+            ':firstname' =>  $person->getFirstname(),
+            ':lastname' =>  $person->getLastname(),
+            ':username' =>  $person->getUsername(),
+            ':email' =>  $person->getEmail(),
+            ':pw' =>  $person->getPassword(),
+            ':role' =>  $person->getRole(),
+           );
+        $stmt = $this->conn->prepare(
+            "UPDATE `login` SET firstname = :firstname, lastname = :lastname, username = :username, email = :email, pw = :pw, role = :role
+            WHERE id = :id;");
+        $stmt->execute($query_data);
+    }
+
+    public function checkEmail(string $email, int $id):bool {
+        $query_data = array(
+            ':id' => $id,
+            ':email' =>  $email,
+        );
+        $stmt = $this->conn->prepare(
+            "SELECT email FROM `login` WHERE email = :email AND id NOT IN (:id);");
+        $stmt->execute($query_data);
+        $res = $stmt->fetch(PDO::FETCH_COLUMN);
+        if($res){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function checkUsername( string $username, int $id):bool {
+        $query_data = array(
+            ':id' => $id,
+            ':username' =>  $username,
+        );
+        $stmt = $this->conn->prepare(
+            "SELECT username FROM `login` WHERE username = :username AND id NOT IN (:id);");
+        $stmt->execute($query_data);
+        $res = $stmt->fetch(PDO::FETCH_COLUMN);
+        if($res){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+   
 
 }

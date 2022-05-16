@@ -36,8 +36,11 @@
           <li>
             <router-link to="/about">O nás</router-link>
           </li>
+          <li v-if="isLoggedIn">
+            <router-link to="">Student panel</router-link>
+          </li>
           <li v-if="activeRole === 'teacher' || activeRole === 'admin'">
-            <router-link to="/createtest">Nový test</router-link>
+            <router-link to="/createtest">Teacher Panel</router-link>
           </li>
           <li v-if="activeRole === 'admin'">
             <router-link to="/adminpanel">Admin Panel</router-link>

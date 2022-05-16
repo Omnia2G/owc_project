@@ -636,6 +636,7 @@
 
 <script>
 export default {
+  props: ["test", "edit"],
   emits: ["save-test"],
   data() {
     return {

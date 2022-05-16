@@ -5,7 +5,6 @@ export default{
     token(state){
         return state.token;
     },
-    
     userRole(state){
         return state.userRole;
     },
@@ -15,5 +14,6 @@ export default{
     
     isLoggedIn(state){
         return state.isLoggedIn;
-    }
+    },
+    
 };

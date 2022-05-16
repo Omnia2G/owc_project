@@ -9,7 +9,7 @@ export default{
             token: null,
             userRole: null,
             isLoggedIn: false,
-            didAutoLogout: false
+            didAutoLogout: false,
         };
     },
     mutations,
