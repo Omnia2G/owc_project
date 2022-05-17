@@ -14,7 +14,7 @@
       <h2>Edit Test Data</h2>
       <br />
       <div class="modal-body">
-        <create-test-form></create-test-form>
+        <create-test-form :test="test" :edit="true" @edit-test="saveEditedTest"></create-test-form>
       </div>
     </base-card>
   </v-overlay>
@@ -53,7 +53,7 @@
       <registration-formkit
         :user="user"
         :edit="true"
-        @register-user="editPersonalData"
+        @edit-user="editPersonalData"
       ></registration-formkit>
     </base-card>
   </section>
@@ -97,7 +97,9 @@ export default {
         testsPayload.append("action", "getTestsByUsername");
         await this.$store.dispatch("test/fetchTests", testsPayload);
         this.tests = await this.$store.getters["test/getTests"];
-      } catch (error) {
+        console.log(this.tests);
+      }
+      catch (error) {
         this.error = error;
       }
     },
@@ -146,7 +148,7 @@ export default {
         await this.$store.dispatch("userRegistration", data);
         setTimeout(() => {
           this.isLoading = false;
-          location.reload();
+          this.$router.replace("/");//location.reload();
         }, 600);
       } catch (err) {
         setTimeout(() => {
@@ -155,10 +157,24 @@ export default {
         }, 600);
       }
     },
-    loadEditTest(id) {
+    async loadEditTest(id) {
       window.scrollTo(0, 0);
+      //this.test = this.tests.find((test) => test.id == id);
+      const testsPayload = new FormData();
+        testsPayload.append("id", id);
+        testsPayload.append("action", "getCompleteTestById");
+      try{
+        await this.$store.dispatch("test/fetchCompleteTest", testsPayload);
+        this.test = await this.$store.getters["test/getCompleteTest"];
+        //console.log(this.test);
+      }
+      catch (error) {
+        this.error = error;
+      }
       this.editTestOverlay = true;
-      this.test = this.tests.find((test) => test.id == id);
+    },
+    saveEditedTest(data){
+      console.log('SAVE EDITED DATA: ',data);
     },
   },
 };

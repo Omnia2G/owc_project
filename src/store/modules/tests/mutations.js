@@ -6,4 +6,7 @@ export default{
         let index = state.test.indexOf(state.test.find((test) => test.id == payload));
         state.test.splice(index, 1);
     },
+    setCompleteTest(state, payload){
+        state.completeTest = payload;
+    },
 };

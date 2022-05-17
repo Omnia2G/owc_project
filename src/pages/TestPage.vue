@@ -39,7 +39,7 @@ export default {
       actionPayload.append("id", this.$route.params.id);
       actionPayload.append("course", this.$route.params.course);
       actionPayload.append("title", this.$route.params.title);
-      actionPayload.append("action", "getCompleteTest");
+      actionPayload.append("action", "getCompleteTestById");
       try {
         await this.$store.dispatch("test/fetchTests", actionPayload);
         this.fullTest = await this.$store.getters["test/getTests"];

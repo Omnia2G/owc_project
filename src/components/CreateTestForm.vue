@@ -630,14 +630,14 @@
         }"
       />
     </base-card>
-    <base-button>Vytvoriť test</base-button>
+    <base-button>{{edit ? 'Save edited test' : 'Vytvoriť test'}}</base-button>
   </FormKit>
 </template>
 
 <script>
 export default {
   props: ["test", "edit"],
-  emits: ["save-test"],
+  emits: ["save-test","edit-test"],
   data() {
     return {
       formValues: {},
@@ -649,11 +649,30 @@ export default {
       for (const [key, value] of Object.entries(this.formValues)) {
         data.append(key, value);
       }
-      data.append("username", this.$store.getters.userId);
-      data.append("action", "createNewTest");
-      this.$emit("save-test", data);
+      if (this.edit) {
+        data.append("username", this.test[0].username);
+        data.append("action", "editTest");
+        console.log('FORMVALUES',this.formValues);
+      } else {
+        data.append("username", this.$store.getters.userId);
+        data.append("action", "createNewTest");
+        this.$emit("save-test", data);
+      }
     },
   },
+  mounted(){
+    console.log('COMPLETE TEST: ',this.test);
+    // console.log('TITLE: ',this.test[0].title);
+    // console.log('COURSE: ',this.test[0].course);
+    // for(let [key, value] of Object.entries(this.test)){
+    //   console.log('QUESTION: ', ++key);
+    //   console.log(value.text);
+    //   console.log(value.answera);
+    //   console.log(value.answerb);
+    //   console.log(value.answerc);
+    //   console.log(value.goodanswer);
+    // }
+  }
 };
 </script>
 

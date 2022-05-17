@@ -101,7 +101,11 @@ export default {
 
   async userRegistration(_, payload) {
     payload.set("password", bcrypt.hashSync(payload.get("password"), 10));
-    console.log("BEFORE POST ");
+    // console.log(payload.get('oldUsername'));
+    // console.log(payload.get('username'));
+    // console.log(payload.get('oldEmail'));
+    // console.log(payload.get('email'));
+    // console.log(payload.get('//////////'));
     const res = await fetch(
       "http://localhost/owc_project/src/api/Actions.php",
       {
@@ -109,9 +113,9 @@ export default {
         body: payload,
       }
     );
-    console.log("AFTER POST ");
+
     const responseData = await res.json();
-    console.log("RES: ", responseData);
+    // console.log("RES: ", responseData);
 
     if (!res.ok) {
       throw new Error("Stala sa nejaká chyba, skúste znova!");

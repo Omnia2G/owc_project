@@ -7,6 +7,7 @@ export default{
     state(){
         return{
             test:[],
+            completeTest:[],
         };
     },
     mutations,

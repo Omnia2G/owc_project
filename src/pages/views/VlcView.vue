@@ -26,7 +26,9 @@
           najmenšou vlnovou dĺžkou, po červenú s najväčšou vlnovou dĺžkou. [5]
         </p>
         <br />
-        <span><img src="../../assets\img\0214-4.png" alt="vlc rozsah" /></span>
+        
+         
+        <span><img src="../../assets/img/0214-4.png" alt="vlc rozsah" /></span>
         <p class="imgTitle">Spektrum viditeľného svetla [2]</p>
       </section>
       <section>

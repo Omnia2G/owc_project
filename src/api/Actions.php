@@ -68,12 +68,22 @@ if($_POST['action'] == 'getTestsByUsername'){
    echo json_encode($testController->getTestTitlesByUsername($_POST['username']));
 }
 
-if($_POST['action'] == 'getCompleteTest'){
-    try{
-       $dbData = $testController->getCompleteTestByParams($_POST['id']);
-       echo json_encode($dbData);
-    }catch(PDOException $exception){
-        echo json_encode($exception->getMessage());
+if($_POST['action'] == 'getCompleteTestById' || $_POST['action'] == 'getCompleteTestsByUsername'){
+    if($_POST['action'] == 'getCompleteTestById'){
+        try{
+        $dbData = $testController->getCompleteTestByParams($_POST['id'], '');
+        echo json_encode($dbData);
+        }catch(PDOException $exception){
+            echo json_encode($exception->getMessage());
+        }
+    }
+    if($_POST['action'] == 'getCompleteTestsByUsername'){
+        try{
+        $dbData = $testController->getCompleteTestByParams('', $_POST['username']);
+        echo json_encode($dbData);
+        }catch(PDOException $exception){
+            echo json_encode($exception->getMessage());
+        }
     }
 }
 
@@ -119,23 +129,28 @@ if($_POST['action'] == 'editUser'){
         if($tmp == 'username and email exists'){
             echo json_encode('username and email exists');
         }
+        else if($tmp == 'username exists'){
+            echo json_encode('username exists');
+        }
+        else if($tmp == 'email exists'){
+            echo json_encode('email exists');
+        }
         else{
             $tmp = false;
-        }
-    }
-    else if($_POST['oldUsername'] == $_POST['username'] && $_POST['oldEmail'] != $_POST['email']){
-        $email = $userController->checkEmail($_POST['email'], $_POST['id']);
-        if($email){
-            echo json_encode('email exists');
         }
     }
     else if($_POST['oldUsername'] != $_POST['username'] && $_POST['oldEmail'] == $_POST['email']){
         $username = $userController->checkUsername($_POST['username'], $_POST['id']);
         if($username){
-            echo json_encode('username exists');
+            echo json_encode("username exists");
         }
     }
-    
+    else if($_POST['oldUsername'] == $_POST['username'] && $_POST['oldEmail'] != $_POST['email']){
+        $email = $userController->checkEmail($_POST['email'], $_POST['id']);
+        if($email){
+            echo json_encode("email exists");
+        }
+    }
     if(!$username && !$email && !$tmp){
         $user->setId($_POST['id']);
         $user->setFirstname($_POST['firstname']);

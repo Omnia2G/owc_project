@@ -62,17 +62,26 @@ class TestController{
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
    }
 
-   public function getCompleteTestByParams(string $id){
-        $queryArr = array(
-            ':id' => $id,
-        );
-        $stmt = $this->conn->prepare("SELECT * FROM `tests` AS t INNER JOIN `questions` AS q ON t.id = q.testid
-                WHERE t.id = :id;");
+   public function getCompleteTestByParams(string $id, string $username){
+       if($id != '' && $username == ''){
+            $queryArr = array(
+                ':id' => $id,
+            );
+            $stmt = $this->conn->prepare("SELECT * FROM `tests` AS t INNER JOIN `questions` AS q ON t.id = q.testid
+             WHERE t.id = :id;");
+       }
+       if($id == '' && $username != ''){
+            $queryArr = array(
+                ':username' => $username,
+            );
+            $stmt = $this->conn->prepare("SELECT * FROM `tests` AS t INNER JOIN `questions` AS q ON t.id = q.testid
+             WHERE t.username = ':username';");
+       }
         $stmt->execute($queryArr);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);        
    }
    
-   public function getAllTests(){
+   public function getAllTests(){ //TODO questions missing
         $stmt = $this->conn->prepare("SELECT * from `tests`;");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
