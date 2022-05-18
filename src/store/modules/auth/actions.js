@@ -4,8 +4,8 @@ let timer;
 
 export default {
   async login(context, payload) {
-    // let url = "http://localhost/owc_project/src/api/Actions.php";
-    let url = "../../api/Actions.php";
+    let url = "http://localhost/owc_project/src/api/Actions.php";
+    // let url = "../../api/Actions.php";
     const res = await fetch(url, {
       method: "POST",
       body: payload,
