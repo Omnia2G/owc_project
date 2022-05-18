@@ -106,7 +106,7 @@ export default {
         await this.$store.dispatch("userRegistration", data);
         setTimeout(() => {
           this.isLoading = false;
-          location.reload();
+          this.$router.replace('/');//location.reload();
         }, 600);
       } catch (err) {
         setTimeout(() => {
