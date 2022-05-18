@@ -1,11 +1,13 @@
 import axios from "axios";
 import bcrypt from "bcryptjs";
+
 let timer;
 
 export default {
   async login(context, payload) {
     let url = "http://localhost/owc_project/src/api/Actions.php";
-    // let url = "../../api/Actions.php";
+    // let url = "https://orosz.marketingy.eu/owc_project/src/api/actions.php";
+    
     const res = await fetch(url, {
       method: "POST",
       body: payload,

@@ -92,6 +92,36 @@
         required: 'Neoznačili ste rolu!',
       }"
     />
+      <FormKit
+      v-else-if="teacher == 'teacher'"
+      type="radio"
+      name="role"
+      v-model="role"
+      label="Sign In as:"
+      help="Vyberte ako sa chcete zaregistrovať"
+      :options="{
+        teacher: 'Učiteľ',
+      }"
+      validation="required"
+      :validation-messages="{
+        required: 'Neoznačili ste rolu!',
+      }"
+    />
+      <FormKit
+      v-else-if="student == 'student'"
+      type="radio"
+      name="role"
+      v-model="role"
+      label="Sign In as:"
+      help="Vyberte ako sa chcete zaregistrovať"
+      :options="{
+        student: 'Študent',
+      }"
+      validation="required"
+      :validation-messages="{
+        required: 'Neoznačili ste rolu!',
+      }"
+    />
     <FormKit
       v-else
       type="radio"
@@ -126,7 +156,7 @@
 
 <script>
 export default {
-  props: ["admin", "user", "edit"],
+  props: ["admin", "user", "edit", "teacher", "student"],
   emits: ["register-user", "edit-user"],
   data() {
     return {

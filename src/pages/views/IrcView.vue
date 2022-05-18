@@ -1,5 +1,8 @@
 <template>
-  <section>
+  <base-dialog :show="!!error" title="Error occured!" @close="handleError">
+    <p>{{ error }}</p>
+  </base-dialog>
+  <section class="view">
     <base-card>
       <h1>Infračervená svetelná komunikácia</h1>
       <h3>Infrared communication (IRC)</h3>
@@ -37,8 +40,12 @@
           </li>
           <li>FIR - ďaleké (far) infračervené žiarenie 15 - 1000 μm. [6]</li>
         </ul>
-        <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
-        <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
+        <span
+          ><img
+            src="https://orosz.marketingy.eu/owc_project/src/assets/img/0214-3.png"
+            alt="Pásmo Infračerveného žiarenia"
+        /></span>
+        <p class="imgTitle">Pásmo Infračerveného žiarenia [2]</p>
       </section>
       <section>
         <br /><br />
@@ -59,8 +66,6 @@
           C - pásmo sa využíva napríklad na nočné videnie, meranie tepla na
           diaľku, vykurovanie alebo nahrievanie (sauny, varenie). [6]
         </p>
-        <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
-        <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
       </section>
       <section>
         <br /><br />
@@ -70,8 +75,6 @@
           bezdrôtovej komunikácie a slúži ako cenovo výhodný spôsob bezdrôtového
           prenosu niekoľkých bitov dát. [23]
         </p>
-        <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
-        <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
       </section>
       <section>
         <br /><br />
@@ -83,31 +86,60 @@
           iných zdrojov, ako sú žiarovky a samotné slnko alebo čokoľvek s teplom
           uvoľňuje IR vlny, čo je jedna z ťažkostí pri IR komunikácií. Medzi
           odosielateľom a príjemcom sa zvyčajne neuskutočňuje žiadny handshake,
-          žiadna autentifikácia ani autorizácia. [23] Pri používaní diaľkového
-          ovládača televízora, na prenos informácií do televízora sa používa IR
-          LED. Infračervený prijímač v televízore musí správne vybrať signály z
-          diaľkového ovládača spomedzi všetkých okolitých infračervených
-          signálov. Aby sa to mohlo uskutočniť, práve z tohto dôvodu je IR
-          signál modulovaný. Modulácia signálu je ako priradenie vzoru k dátam,
-          aby prijímač vedel, že čo má počúvať. [24] Bežná modulačná schéma pre
-          IR komunikáciu je modulácia 38 kHz. Existuje len veľmi málo prírodných
-          zdrojov, ktoré majú pravidelnosť signálu 38 kHz, takže IR vysielač
-          odosielajúci dáta na tejto frekvencií vyniká medzi okolitým IR.
-          Najbežnejšie sú 38kHz modulované IR dáta, ale možno použiť aj iné
-          frekvencie. [24] Zariadenia, ktoré umožňujú infračervenú komunikáciu,
-          sa nazývajú zariadenia IrDA a vyrábajú sa podľa stanovených štandardov
-          IrDA. [23]
+          žiadna autentifikácia ani autorizácia. [23]
+        </p>
+        <p>
+          Pri používaní diaľkového ovládača televízora, na prenos informácií do
+          televízora sa používa IR LED. Infračervený prijímač v televízore musí
+          správne vybrať signály z diaľkového ovládača spomedzi všetkých
+          okolitých infračervených signálov. Aby sa to mohlo uskutočniť, práve z
+          tohto dôvodu je IR signál modulovaný. Modulácia signálu je ako
+          priradenie vzoru k dátam, aby prijímač vedel, že čo má počúvať. [24]
+        </p>
+        <p>
+          Bežná modulačná schéma pre IR komunikáciu je modulácia 38 kHz.
+          Existuje len veľmi málo prírodných zdrojov, ktoré majú pravidelnosť
+          signálu 38 kHz, takže IR vysielač odosielajúci dáta na tejto
+          frekvencií vyniká medzi okolitým IR. Najbežnejšie sú 38kHz modulované
+          IR dáta, ale možno použiť aj iné frekvencie. [24]
+        </p>
+        <p>
+          Zariadenia, ktoré umožňujú infračervenú komunikáciu, sa nazývajú
+          zariadenia IrDA a vyrábajú sa podľa stanovených štandardov IrDA. [23]
         </p>
         <p>
           Pri stlačení tlačidla na diaľkovom ovládači, vysielací IR LED na
           zlomok sekundy veľmi rýchlo zabliká a prenesie zakódované údaje do
-          prijímača. [24] Tento modulovaný signál je presne to, čo prijímací
-          systém vidí. Účelom prijímacieho zariadenia je však demodulovať signál
-          a vydávať binárny priebeh, ktorý je možné prečítať mikrokontrolérom.
-          [24] Riadením rozostupu medzi prenášanými modulovanými signálmi môže
-          byť priebeh načítaný vstupným kolíkom na mikrokontroléri a dekódovaný
-          ako sériový bitový tok. [24]
+          prijímača. [24]
         </p>
+        <span
+          ><img
+            src="https://orosz.marketingy.eu/owc_project/src/assets/img/ir transmitter.png"
+            alt="Modulovaný signál"
+        /></span>
+        <p class="imgTitle">Modulovaný signál [24]</p>
+        <p>
+          Tento modulovaný signál je presne to, čo prijímací systém vidí. Účelom
+          prijímacieho zariadenia je však demodulovať signál a vydávať binárny
+          priebeh, ktorý je možné prečítať mikrokontrolérom. [24]
+        </p>
+        <span
+          ><img
+            src="https://orosz.marketingy.eu/owc_project/src/assets/img/ir receiver.png"
+            alt="Demodulovaný signál"
+        /></span>
+        <p class="imgTitle">Demodulovaný signál [24]</p>
+        <p>
+          Riadením rozostupu medzi prenášanými modulovanými signálmi môže byť
+          priebeh načítaný vstupným kolíkom na mikrokontroléri a dekódovaný ako
+          sériový bitový tok. [24]
+        </p>
+        <span
+          ><img
+            src="https://orosz.marketingy.eu/owc_project/src/assets/img/ir receiver.png"
+            alt="Fungovanie IR vysielača a prijímača"
+        /></span>
+        <p class="imgTitle">Fungovanie IR vysielača a prijímača [24]</p>
         <p>
           IrDa prijímače komunikujú pomocou impulzov infračerveného svetla
           prenášaného v smerovo zameranom kuželi, ktorý siaha do uhla 15o na
@@ -120,13 +152,16 @@
           je najmenší spoločný menovateľ pre všetky zariadenia a ako taký sa
           používa na vyjednávanie medzi komunikačnými zariadeniami). Protokol
           ultra rýchle infračervené (UFIR) podporuje prenosovú rýchlosť až 100
-          Mb/s. [27] Infračervené laserové systémy možno použiť aj na
-          komunikáciu na veľké vzdialenosti (až do približne 2,4 kilometrov) s
-          maximálnou projektovanou dátovou rýchlosťou 16 Mb/s. Takéto systémy sú
-          striktne point-to-point (LoS) systémy a sú citlivé na hmlu a iné
-          atmosférické podmienky. Typické aplikácie zahŕňajú prenosové spojenia
-          medzi budovami pre metropolitné siete alebo siete v areáli akademickej
-          obce a vysielacie a prijímacie zariadenia sú zvyčajne umiestnené na
+          Mb/s. [27]
+        </p>
+        <p>
+          Infračervené laserové systémy možno použiť aj na komunikáciu na veľké
+          vzdialenosti (až do približne 2,4 kilometrov) s maximálnou
+          projektovanou dátovou rýchlosťou 16 Mb/s. Takéto systémy sú striktne
+          point-to-point (LoS) systémy a sú citlivé na hmlu a iné atmosférické
+          podmienky. Typické aplikácie zahŕňajú prenosové spojenia medzi
+          budovami pre metropolitné siete alebo siete v areáli akademickej obce
+          a vysielacie a prijímacie zariadenia sú zvyčajne umiestnené na
           strechách, aby poskytovali priame spojenie bez prekážok. Pre
           bezdrôtovú LAN konektivitu možno použiť difúzne (alebo nelineárne)
           systémy, v ktorých je spojenie medzi vysielačom a prijímačom
@@ -134,6 +169,8 @@
           ako sú steny a stropy. Vysielač využíva širokouhlý vysielací lúč a
           prijímač má širokouhlý detektor. Špecifikácie pre infračervené
           bezdrôtové siete LAN sú zahrnuté v štandarde IEEE 802.11. [27]
+        </p>
+        <p>
           Infračervené vysielacie zariadenie, buď svetelná dióda (LED) alebo
           laserová dióda, premieňa elektrický signál na optický signál. LED
           diódy majú prirodzene širokú prenosovú cestu a sú vhodné pre aplikácie
@@ -148,8 +185,6 @@
           požiadavke, aby vysielače mali vlnovú dĺžku špičkového výkonu medzi
           850 a 950 nanometrami. [27]
         </p>
-        <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
-        <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
       </section>
       <section>
         <br /><br />
@@ -161,28 +196,28 @@
             všeobecného princípu fungovania. Táto technológia je relatívne
             jednoduchšia na implementáciu ako iné bezdrôtové komunikačné
             technológie. Používa sa teda v rade prenosných zariadení. [25]
-          </li><br>
+          </li>
           <li>
             <span><strong>Lacná technológia: </strong></span>
             Jednoduchosť IR komunikácie sa ďalej premieta do nízkych nákladov na
             implementáciu. To je dôvod, prečo ide o najpoužívanejšiu bezdrôtovú
             komunikačnú technológiu pre aplikácie s krátkym dosahom a aplikácie
             typu one-on-one use case. [25]
-          </li><br>
+          </li>
           <li>
             <span><strong>Obmedzené zachytenie: </strong></span>
             Infračervené žiarenie sa šíri priamočiarym spôsobom a má krátky
             dosah. Riziká odpočúvania a rušenia sú nízke v porovnaní s inými
             bezdrôtovými komunikačnými technológiami, ako sú Bluetooth, Wi-Fi a
             Wi-Fi Direct. [25]
-          </li><br>
+          </li>
           <li>
             <span><strong>Energetická účinnosť: </strong></span>
             LED dióda používaná pri odosielaní infračervených lúčov má nízke
             požiadavky na energiu. Ďalej je možné celý IrDA vysielač
             prevádzkovať s malými a nenabíjateľnými batériami. Tieto batérie
             môžu vydržať mesiace. [25]
-          </li><br>
+          </li>
           <li>
             <span><strong>Rozsiahle aplikácie: </strong></span>
             Okrem vzdialených senzorov má IR komunikačná technológia ďalšie
@@ -194,8 +229,6 @@
             [25]
           </li>
         </ul>
-        <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
-        <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
       </section>
       <section>
         <br /><br />
@@ -210,7 +243,7 @@
             byť vysielač IrDA zosúladený s prijímačom IrDA. Napríklad diaľkové
             ovládanie televízora nebude fungovať, ak nebude vysielané priamo na
             obrazovku televízora. [25]
-          </li><br>
+          </li>
           <li>
             <span><strong>Krátky dosah prenosu: </strong></span>
             Infračervené žiarenie má tiež kratšie vlnové dĺžky ako mikrovlny a
@@ -221,7 +254,7 @@
             metrov alebo menej. Okrem obmedzenia priamej viditeľnosti je
             blízkosť bezdrôtovej komunikácie cez infračervené rozhranie značne
             obmedzená. [25]
-          </li><br>
+          </li>
           <li>
             <span><strong>Prekážky: </strong></span>
             Existuje tiež skutočnosť, že infračervené žiarenie nepreniká pevnými
@@ -231,7 +264,7 @@
             vysielače sa tiež môžu navzájom rušiť. Výkon zariadenia môže
             ovplyvniť vzdialenosť aj prítomnosť prekážok alebo interferencií.
             [25]
-          </li><br>
+          </li>
           <li>
             <span><strong>Bezpečnostné problémy: </strong></span>
             IR komunikácia je samozrejme značne zabezpečená kvôli prekážkam,
@@ -242,8 +275,6 @@
             ovládaných zariadení. [25]
           </li>
         </ul>
-        <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
-        <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
       </section>
       <section>
         <br /><br />
@@ -269,8 +300,6 @@
           Prenos IR údajov z jedného zariadenia do druhého sa niekedy označuje
           ako sústredenie do zväzku. [26]
         </p>
-        <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
-        <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
       </section>
       <br /><br />
       <base-button @click="moveUp">Späť na začiatok</base-button>
@@ -282,31 +311,80 @@
       <br /><br />
       <base-button @click="moveUp">Späť na začiatok</base-button>
     </base-card>
-    <base-card>
+    <base-card v-if="isLoggedIn">
       <section>
-        <h2>Referencie</h2>
-        <ul>
-          <li>ref 1</li>
-          <li>ref 2</li>
-          <li>ref 3</li>
-          <li>ref 4</li>
-          <li>ref 5</li>
-          <li>ref 6</li>
+        <h2>Testy pre IRC</h2>
+        <ul v-if="testTitles">
+          <test-title
+            v-for="test in titles"
+            :key="test.id"
+            :id="test.id"
+            :title="test.title"
+            :course="test.course"
+          ></test-title>
         </ul>
+        <h3 v-else><i>Tests not found for this course.</i></h3>
       </section>
       <br /><br />
       <base-button @click="moveUp">Späť na začiatok</base-button>
     </base-card>
     <base-card>
       <section>
-        <h2>Testy pre IRC</h2>
+        <h2>Referencie</h2>
         <ul>
-          <li>test 1</li>
-          <li>test 2</li>
-          <li>test 3</li>
-          <li>test 4</li>
-          <li>test 5</li>
-          <li>test 6</li>
+          <li>
+            [2] Rate and Performance Analysis of Indoor Optical Camera
+            Communications in Optical Wireless Channels, by: Willy Anugrah
+            Cahyadi, 5. dec. 2018.
+            <a
+              href="https://www.slideshare.net/willyac/thesis-presentation-wacv5slideshare"
+              >Viac</a
+            >
+          </li>
+          <li>
+            [6] Infračervené žiarenie, 3. november 2021
+            <a href="https://sk.wikipedia.org/wiki/Infračervené_žiarenie"
+              >Viac</a
+            >
+          </li>
+          <li>
+            [23] Understanding the Basics of Infrared Communications, 1/6/2021,
+            by Maker.io Staff
+            <a
+              href="https://www.digikey.sk/en/maker/blogs/2021/understanding-the-basics-of-infraredcommunications"
+              >Viac</a
+            >
+          </li>
+          <li>
+            [24] IR Communication, by: MEMBER #23999
+            <a href="https://learn.sparkfun.com/tutorials/ir-communication/all"
+              >Viac</a
+            >
+          </li>
+          <li>
+            [25] Infrared Communication: Advantages and Disadvantages, Posted on
+            March 13, 2021 by Marion Davies
+            <a
+              href="https://www.konsyse.com/articles/infrared-communication-advantages-and-disadvantages/"
+              >Viac</a
+            >
+          </li>
+          <li>
+            [26] infrared transmission, By TechTarget Contributor
+            <a
+              href="https://www.techtarget.com/searchnetworking/definition/infrared-transmission"
+              >Viac</a
+            >
+          </li>
+          <li>
+            [27] Infrared Communications Systems, Author: Christopher J. Wells,
+            Published: 28-01-2009
+            <a
+              href="https://www.technologyuk.net/telecommunications/communicationtechnologies/
+                infrared-communication.shtml"
+              >Viac</a
+            >
+          </li>
         </ul>
       </section>
       <br /><br />
@@ -316,31 +394,47 @@
 </template>
 
 <script>
-import BaseCard from "../../components/ui/BaseCard.vue";
-import BaseButton from "../../components/ui/BaseButton.vue";
+import TestTitle from "../../components/TestTitle.vue";
+
 export default {
-  components: { BaseButton, BaseCard },
+  components: {
+    TestTitle,
+  },
+  data() {
+    return {
+      titles: [],
+      error: null,
+    };
+  },
+  created() {
+    this.loadTestTitlesForThisCourse();
+  },
+  computed: {
+    testTitles() {
+      return this.$store.getters["test/hasTests"];
+    },
+    isLoggedIn() {
+      return this.$store.getters.isLoggedIn;
+    },
+  },
   methods: {
     moveUp() {
       window.scrollTo(0, 0);
     },
+    async loadTestTitlesForThisCourse() {
+      const actionPayload = new FormData();
+      actionPayload.append("action", "getTestTitles");
+      actionPayload.append("course", "irc");
+      try {
+        await this.$store.dispatch("test/fetchTests", actionPayload);
+        this.titles = await this.$store.getters["test/getTests"];
+      } catch (error) {
+        this.error = error;
+      }
+    },
+    handleError() {
+      this.error = null;
+    },
   },
 };
 </script>
-
-<style scoped>
-h4, h5 {
-  margin-left: 15px;
-  text-align: left;
-}
-p {
-  margin-left: 15px;
-  margin-right: 15px;
-  text-align: left;
-}
-ul li {
-  margin-left: 1rem;
-  margin-right: 2rem;
-  text-align: left;
-}
-</style>

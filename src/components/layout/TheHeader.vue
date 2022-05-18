@@ -36,8 +36,8 @@
           <li>
             <router-link to="/about">O nás</router-link>
           </li>
-          <li v-if="isLoggedIn">
-            <router-link to="">Student panel</router-link>
+          <li v-if="activeRole === 'student' || activeRole === 'admin'">
+            <router-link to="/student">Student Portal</router-link>
           </li>
           <li v-if="activeRole === 'teacher' || activeRole === 'admin'">
             <router-link to="/createtest">Teacher Panel</router-link>
@@ -197,6 +197,7 @@ export default {
   height: 100%;
 }
  .dropdown span{
+   width: 100%;
    font-size: 1.5rem;
  }
 /* Dropdown Content (Hidden by Default) */

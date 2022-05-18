@@ -1,8 +1,8 @@
 <template>
-<base-dialog :show="!!error" title="Error occured!" @close="handleError">
+  <base-dialog :show="!!error" title="Error occured!" @close="handleError">
     <p>{{ error }}</p>
   </base-dialog>
-  <section>
+  <section class="view">
     <base-card>
       <h1>Viditeľná sveteľna komunikácia</h1>
       <h3>Visible Light Communication (VLC)</h3>
@@ -26,9 +26,13 @@
           najmenšou vlnovou dĺžkou, po červenú s najväčšou vlnovou dĺžkou. [5]
         </p>
         <br />
-        
-         
-        <span><img src="../../assets/img/0214-4.png" alt="vlc rozsah" /></span>
+
+        <!-- <span><img src="../../assets/img/0214-4.png" alt="vlc rozsah" /></span> -->
+        <span
+          ><img
+            src="https://orosz.marketingy.eu/owc_project/src/assets/img/0214-4.png"
+            alt="Spektrum viditeľného svetla"
+        /></span>
         <p class="imgTitle">Spektrum viditeľného svetla [2]</p>
       </section>
       <section>
@@ -250,9 +254,9 @@
           ng-show="showvideo"
         ></iframe>
         <p>
-          Light waves, visible and invisible - Lucianne Walkowicz (Ted-Ed),
-          2013, Animované video dlhé 6 minút, ktoré sa zaoberá s tým, že ako
-          vníma ľudské telo svetlo.
+          Light waves, visible and invisible - Lucianne Walkowicz (auth:
+          Ted-Ed), 2013, Animované video dlhé 6 minút, ktoré sa zaoberá s tým,
+          že ako vníma ľudské telo svetlo.
         </p>
         <br />
         <iframe
@@ -264,49 +268,9 @@
           ng-show="showvideo"
         ></iframe>
         <p>
-          GCSE Physics - Visible Light and Colour #71 (Cognito), 2020, 5
+          GCSE Physics - Visible Light and Colour #71 (auth: Cognito), 2020, 5
           minutové video, ktoré vysvetluje ako funguje viditelné svetlo, a prečo
           vidíme dané farby.
-        </p>
-        <br />
-        <iframe
-          src="https://www.youtube.com/embed/m4t7gTmBK3g"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          ng-show="showvideo"
-        ></iframe>
-        <p>
-          What is the Electromagnetic Spectrum? (MonkeySee), 2013, Dvojminútové
-          animované video, kde Emerald Robinson vysvetľuje, čo je
-          elektromagnetické spektrum.
-        </p>
-        <br />
-        <iframe
-          src="https://www.youtube.com/embed/BUYeQa_-ojk"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          ng-show="showvideo"
-        ></iframe>
-        <p>
-          What is Light - Physics (The Real Physics), 2017, Krátke, trojminútové
-          animované video o svetle.
-        </p>
-        <br />
-        <iframe
-          src="https://www.youtube.com/embed/1bpmI3wdqW8"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          ng-show="showvideo"
-        ></iframe>
-        <p>
-          ELECTROMAGNETIC SPECTRUM (7activestudio), 2017, Trojminútové animované
-          video, ktoré podrobnejšie vysvetľuje elektromagnetické vlny.
         </p>
         <br />
         <iframe
@@ -318,11 +282,59 @@
           ng-show="showvideo"
         ></iframe>
         <p>
-          What is the ELECTROMAGNETIC SPECTRUM (MooMooMath and Science), 2020,
-          Krátke zostrihané video, ktoré sa zaoberá s veľkosťami vĺn v
+          What is the ELECTROMAGNETIC SPECTRUM (auth: MooMooMath and Science),
+          2020, Krátke zostrihané video, ktoré sa zaoberá s veľkosťami vĺn v
           jednotlivých segmentoch elektromagnetického spektra.
         </p>
         <br />
+        <iframe
+          src="https://www.youtube.com/embed/fZjTZ-eu6rc"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          ng-show="showvideo"
+        ></iframe>
+        <p>
+          An introduction to Visible Light Communication (VLC) (auth: IMDEA
+          Networks Institute), 2018, Krátke 2 minútové video, kde doktorand
+          Ander Galisteo z univerzity Universidad Carlos III de Madrid, hovorí o
+          potenciále vlc komunikácie.
+        </p>
+        <br />
+        <iframe
+          src="https://www.youtube.com/embed/Iyzpt3bKTTI"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          ng-show="showvideo"
+        ></iframe>
+        <p>
+          Understanding Modulation! | ICT #7 (Lesics), 2020, Dlhšie animované
+          video, ktoré vysvetľuje čo je modulácia, prečo sa to používa s
+          uvedením modulácie ASK (kľúčovanie amplitúdového prepínača), FSK
+          (kľúčovanie frekvenčného spínača), PSK (kľúčovanie fázového spínača),
+          QAM (kvadratúrna amplitúdová modulácia).
+        </p>
+        <br />
+      </section>
+      <br /><br />
+      <base-button @click="moveUp">Späť na začiatok</base-button>
+    </base-card>
+    <base-card v-if="isLoggedIn">
+      <section>
+        <h2>Testy pre VLC</h2>
+        <ul v-if="testTitles">
+          <test-title
+            v-for="test in titles"
+            :key="test.id"
+            :id="test.id"
+            :title="test.title"
+            :course="test.course"
+          ></test-title>
+        </ul>
+         <h3 v-else><i>Tests not found for this course.</i></h3>
       </section>
       <br /><br />
       <base-button @click="moveUp">Späť na začiatok</base-button>
@@ -340,24 +352,24 @@
               >Viac</a
             >
           </li>
-          <br />
+          
           <li>
             [5] Viditeľné svetlo, by: unknown, 5. október 2021
             <a href="https://sk.wikipedia.org/wiki/Viditeľné _svetlo">Viac</a>
           </li>
-          <br />
+          
           <li>[13] "Image Sensor Communication". VLC Consortium</li>
-          <br />
+          
           <li>
             [14] "About Visible Light Communication". VLC Consortium. December
             3, 2009.
           </li>
-          <br />
+          
           <li>
             [15] "Intelligent Transport System - Visible Light Communication".
             VLC Consortium. January 28, 2010.
           </li>
-          <br />
+          
           <li>
             [16] Rodríguez, Juan; Lamar, Diego G.; Aller, Daniel G.; Miaja,
             Pablo F.; Sebastián, Javier (April 2018). "Efficient Visible Light
@@ -365,7 +377,7 @@
             Converters". Sensors. 18 (4): 1127. Bibcode:2018Senso..18.1127R.
             doi:10.3390/s18041127. PMC 5948605. PMID 29642455.
           </li>
-          <br />
+          
           <li>
             [17] Sebastian, Javier; Lamar, Diego G.; Aller, Daniel G.;
             Rodriguez, Juan; Miaja, Pablo F. (September 2018). "On the Role of
@@ -374,7 +386,7 @@
             doi:10.1109/JESTPE.2018.2830878. hdl:10651/46845. ISSN 2168-6777.
             S2CID 19092607.
           </li>
-          <br />
+          
           <li>
             [18] Rodreguez, Juan; Lamar, Diego G.; Aller, Daniel G.; Miaja,
             Pablo F.; Sebastian, Javier (June 2018). "Power-Efficient VLC
@@ -384,7 +396,7 @@
             (COMPEL). Padua: IEEE: 1-8. doi:10.1109/COMPEL.2018.8460175.
             hdl:10651/48039. ISBN 978-1-5386-5541-2. S2CID 52289901.
           </li>
-          <br />
+          
           <li>
             [19] Aziz, Amena Ejaz; Wong, Kainam Thomas; Chen, Jung-Chieh (2017).
             "Color-Shift Keying—How itItsargest Obtainable "Minimum Distance"
@@ -393,7 +405,7 @@
             Bibcode:2017JLwT...35.2724A. doi:10.1109/JLT.2017.2693363.
             hdl:10397/76267. S2CID 13698944.
           </li>
-          <br />
+          
           <li>
             [20] Visible light communication
             <a href="https://en.wikipedia.org/wiki/Visible_light_communication"
@@ -405,43 +417,25 @@
       <br /><br />
       <base-button @click="moveUp">Späť na začiatok</base-button>
     </base-card>
-    <base-card v-if="isLoggedIn">
-      <section>
-        <h2>Testy pre VLC</h2>
-        <ul v-if="testTitles">
-          <test-title
-            v-for="test in titles"
-            :key="test.id"
-            :id="test.id"
-            :title="test.title"
-            :course="test.course"
-          ></test-title>
-        </ul>
-        <h3 v-else>No Tests found.</h3>
-      </section>
-      <br /><br />
-      <base-button @click="moveUp">Späť na začiatok</base-button>
-    </base-card>
   </section>
 </template>
 
 <script>
-import "../../css/TopicPageLayout.css";
-import TestTitle from '../../components/TestTitle.vue';
+import TestTitle from "../../components/TestTitle.vue";
 
 export default {
-  components:{
-    TestTitle
+  components: {
+    TestTitle,
   },
   data() {
     return {
-      titles:[],
+      titles: [],
       error: null,
     };
   },
   computed: {
-    testTitles(){
-      return this.$store.getters['test/hasTests'];
+    testTitles() {
+      return this.$store.getters["test/hasTests"];
     },
     isLoggedIn() {
       return this.$store.getters.isLoggedIn;
@@ -474,3 +468,5 @@ export default {
   },
 };
 </script>
+
+

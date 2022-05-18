@@ -1,54 +1,88 @@
-h4 {
-    margin-left: 15px;
-    text-align: left;
-  }
-  p {
+
+.view h1, h2, h3{
+  padding-top: 1rem;
+}
+.view h2{
+  padding-bottom: 2rem;
+}
+.view h4{
+  margin-left: 2rem;
+  padding-bottom: 1rem;
+  text-align: left;
+}
+.view h5{
+  margin-left: 2rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  text-align: left;
+}
+.view p {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  text-align: left;
+  padding-bottom: .5rem;
+}
+.view ul li {
+  margin-left: 3rem;
+  margin-right: 1.5rem;
+  padding-bottom: .5rem;
+  text-align: left;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+/* .view span{
+  padding-top: 4rem;
+} */
+.view img {
+  padding-top: 1rem;
+  max-width: 450px;
+  max-height: 300px;
+  width: auto;
+  height: auto;
+}
+.view iframe{
+  width: 560px;
+  height: 320px;
+  padding-bottom: .5rem;
+}
+
+.view .imgTitle{
+  text-align: center;
+  font-size: .9rem;
+  padding-top: .2rem;
+  padding-bottom: 1rem;
+}
+
+@media (max-width: 700px) {
+  .view img {
     margin-left: 15px;
     margin-right: 15px;
-    text-align: left;
+    max-width: 300px;
+    max-height: 200px;
   }
-  ul li {
-    margin-left: 20px;
-    margin-right: 20px;
-    text-align: justify;
+  .view iframe{
+    width: 315px;
+    height: 210px;
   }
-  img {
-    max-width: 450px;
-    max-height: 300px;
-    width: auto;
-    height: auto;
+  .view ul li {
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
-  iframe{
-    width: 560px;
-    height: 320px;
+}
+@media (max-width: 350px) {
+  .view img {
+    margin-left: 15px;
+    margin-right: 15px;
+    max-width: 210px;
+    max-height: 175px;
   }
-
-  .imgTitle{
-    text-align: center;
-    font-size: .9rem;
-  }
-  
-  @media (max-width: 700px) {
-    img {
-      margin-left: 15px;
-      margin-right: 15px;
-      max-width: 300px;
-      max-height: 200px;
+  .view iframe{
+      width: 210px;
+      height: 175px;
     }
-    iframe{
-        width: 315px;
-        height: 210px;
-      }
+    .view ul li {
+    margin-left: 1rem;
+    margin-right: .5rem;
   }
-  @media (max-width: 350px) {
-    img {
-      margin-left: 15px;
-      margin-right: 15px;
-      max-width: 210px;
-      max-height: 175px;
-    }
-    iframe{
-        width: 210px;
-        height: 175px;
-      }
-  }
+}

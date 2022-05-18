@@ -53,6 +53,7 @@
       <registration-formkit
         :user="user"
         :edit="true"
+        :teacher="'teacher'"
         @edit-user="editPersonalData"
       ></registration-formkit>
     </base-card>
