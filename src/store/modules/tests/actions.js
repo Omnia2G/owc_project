@@ -4,12 +4,12 @@ export default{
           method: 'POST',
           body: payload,
         });
-         await res.json();
+         const responseData = await res.json();
         
         if (!res.ok) {
-          throw new Error("Something went wrong during the test creation, try again!");
+          throw new Error("Something went wrong, try again!");
         }
-        if(res.data === 'title exists for this course'){
+        if(responseData === 'title exists for this course'){
           throw new Error("This title exists for this course!");
         }
     },
@@ -20,7 +20,7 @@ export default{
         body: payload,
       });
       if (!res.ok) {
-        throw new Error("Something went wrong the test initialization, try again!");
+        throw new Error("Something went wrong with the test initialization, try again!");
       }
       const responseData = await res.json();
       context.commit('setTest', responseData);

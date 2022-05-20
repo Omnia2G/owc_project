@@ -98,7 +98,6 @@ export default {
         testsPayload.append("action", "getTestsByUsername");
         await this.$store.dispatch("test/fetchTests", testsPayload);
         this.tests = await this.$store.getters["test/getTests"];
-        console.log(this.tests);
       }
       catch (error) {
         this.error = error;
@@ -120,7 +119,6 @@ export default {
       }
     },
     deleteTest(id) {
-      // console.log(id);
       const payload = new FormData();
       payload.append("id", id);
       payload.append("action", "deleteTest");
@@ -160,14 +158,12 @@ export default {
     },
     async loadEditTest(id) {
       window.scrollTo(0, 0);
-      //this.test = this.tests.find((test) => test.id == id);
       const testsPayload = new FormData();
         testsPayload.append("id", id);
         testsPayload.append("action", "getCompleteTestById");
       try{
         await this.$store.dispatch("test/fetchCompleteTest", testsPayload);
         this.test = await this.$store.getters["test/getCompleteTest"];
-        //console.log(this.test);
       }
       catch (error) {
         this.error = error;
@@ -176,6 +172,8 @@ export default {
     },
     saveEditedTest(data){
       console.log('SAVE EDITED DATA: ',data);
+      //editTestOverlay = false;
+      //this.saveTest(data);
     },
   },
 };

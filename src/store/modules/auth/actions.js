@@ -6,10 +6,11 @@ let timer;
 export default {
   async login(context, payload) {
     let url = "http://localhost/owc_project/src/api/Actions.php";
-    // let url = "https://orosz.marketingy.eu/owc_project/src/api/actions.php";
+    // let url = 'https://orosz.marketingy.eu/owc_project/src/api/actions.php';
     
     const res = await fetch(url, {
-      method: "POST",
+      method: 'POST',
+      //mode: 'no-cors',
       body: payload,
     });
     const responseData = await res.json();
@@ -104,11 +105,6 @@ export default {
 
   async userRegistration(_, payload) {
     payload.set("password", bcrypt.hashSync(payload.get("password"), 10));
-    // console.log(payload.get('oldUsername'));
-    // console.log(payload.get('username'));
-    // console.log(payload.get('oldEmail'));
-    // console.log(payload.get('email'));
-    // console.log(payload.get('//////////'));
     const res = await fetch(
       "http://localhost/owc_project/src/api/Actions.php",
       {
@@ -118,7 +114,6 @@ export default {
     );
 
     const responseData = await res.json();
-    // console.log("RES: ", responseData);
 
     if (!res.ok) {
       throw new Error("Stala sa nejaká chyba, skúste znova!");

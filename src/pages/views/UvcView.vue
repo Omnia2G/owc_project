@@ -1,5 +1,8 @@
 <template>
-  <section>
+   <base-dialog :show="!!error" title="Error occured!" @close="handleError">
+    <p>{{ error }}</p>
+  </base-dialog>
+  <section class="view">
     <base-card>
       <h1>Ultrafialová komunikácia</h1>
       <h3>Ultraviolet Communication (UVC)</h3>
@@ -7,22 +10,16 @@
         <br /><br />
         <h4>Úvod</h4>
         <p>in progress...</p>
-        <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
-        <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
       </section>
       <section>
         <br /><br />
         <h4>2. Odsek</h4>
         <p>in progress...</p>
-        <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
-        <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
       </section>
       <section>
         <br /><br />
         <h4>3. Odsek</h4>
         <p>in progress...</p>
-        <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
-        <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
       </section>
       <section>
         <br /><br />
@@ -37,8 +34,6 @@
           <li>Laditeľné vákuové ultrafialové žiarenie (VUV)</li>
           <li>Plazmatické a synchrotrónové zdroje extrémneho UV žiarenia</li>
         </ul>
-        <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
-        <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
       </section>
       <section>
         <br /><br />
@@ -50,30 +45,28 @@
           [37]
         </p>
         <ul>
-          <li>13,5 nm: Extrémna ultrafialová litografia</li><br>
+          <li>13,5 nm: Extrémna ultrafialová litografia</li>
           <li>
             30-200 nm: Fotoionizácia, ultrafialová fotoelektrónová
             spektroskopia, výroba štandardných integrovaných obvodov
             fotolitografiou
-          </li><br>
-          <li>230-365 nm: UV-ID, sledovanie štítkov, čiarové kódy</li><br>
-          <li>230-400 nm: Optické senzory, rôzne prístrojové vybavenie</li><br>
+          </li>
+          <li>230-365 nm: UV-ID, sledovanie štítkov, čiarové kódy</li>
+          <li>230-400 nm: Optické senzory, rôzne prístrojové vybavenie</li>
           <li>
             240-280 nm: Dezinfekcia, dekontaminácia povrchov a vody (absorpcia
             DNA má vrchol pri 260 nm), germicídne lampy [36]
-          </li><br>
-          <li>200-400 nm: Forenzná analýza, detekcia drog</li><br>
-          <li>270-360 nm: Analýza proteínov, sekvenovanie DNA, objav liekov</li><br>
-          <li>280-400 nm: Lekárske zobrazovanie buniek</li><br>
-          <li>300-320 nm: Svetelná terapia v medicíne</li><br>
-          <li>300-365 nm: Vytvrdzovanie polymérov a atramentov do tlačiarní</li><br>
+          </li>
+          <li>200-400 nm: Forenzná analýza, detekcia drog</li>
+          <li>270-360 nm: Analýza proteínov, sekvenovanie DNA, objav liekov</li>
+          <li>280-400 nm: Lekárske zobrazovanie buniek</li>
+          <li>300-320 nm: Svetelná terapia v medicíne</li>
+          <li>300-365 nm: Vytvrdzovanie polymérov a atramentov do tlačiarní</li>
           <li>
             350-370 nm: ploštice (muchy sú najviac priťahované svetlom pri 365
             nm) [38]
           </li>
         </ul>
-        <!-- <span><img src="../../assets/img/0214-4.JPG" alt="vlc rozsah"></span> -->
-        <!-- <span><img src="http://localhost/owc_project/src/assets/img/0214-4.jpg" alt="vlc rozsah"></span> -->
       </section>
     </base-card>
     <base-card>
@@ -83,31 +76,28 @@
       <br /><br />
       <base-button @click="moveUp">Späť na začiatok</base-button>
     </base-card>
-    <base-card>
+    <base-card v-if="isLoggedIn">
       <section>
-        <h2>Referencie</h2>
-        <ul>
-          <li>ref 1</li>
-          <li>ref 2</li>
-          <li>ref 3</li>
-          <li>ref 4</li>
-          <li>ref 5</li>
-          <li>ref 6</li>
+        <h2>Testy pre UVC</h2>
+        <ul v-if="testTitles">
+          <test-title
+            v-for="test in titles"
+            :key="test.id"
+            :id="test.id"
+            :title="test.title"
+            :course="test.course"
+          ></test-title>
         </ul>
+        <h3 v-else><i>Tests not found for this course.</i></h3>
       </section>
       <br /><br />
       <base-button @click="moveUp">Späť na začiatok</base-button>
     </base-card>
     <base-card>
       <section>
-        <h2>Testy pre UVC</h2>
+        <h2>Referencie</h2>
         <ul>
-          <li>test 1</li>
-          <li>test 2</li>
-          <li>test 3</li>
-          <li>test 4</li>
-          <li>test 5</li>
-          <li>test 6</li>
+          <li>[]ref 1</li>
         </ul>
       </section>
       <br /><br />
@@ -117,31 +107,47 @@
 </template>
 
 <script>
-import BaseCard from "../../components/ui/BaseCard.vue";
-import BaseButton from "../../components/ui/BaseButton.vue";
+import TestTitle from "../../components/TestTitle.vue";
+
 export default {
-  components: { BaseButton, BaseCard },
+  components: {
+    TestTitle,
+  },
+  data() {
+    return {
+      titles: [],
+      error: null,
+    };
+  },
+  created() {
+    this.loadTestTitlesForThisCourse();
+  },
+  computed: {
+    testTitles() {
+      return this.$store.getters["test/hasTests"];
+    },
+    isLoggedIn() {
+      return this.$store.getters.isLoggedIn;
+    },
+  },
   methods: {
     moveUp() {
       window.scrollTo(0, 0);
     },
+    async loadTestTitlesForThisCourse() {
+      const actionPayload = new FormData();
+      actionPayload.append("action", "getTestTitles");
+      actionPayload.append("course", "uvc");
+      try {
+        await this.$store.dispatch("test/fetchTests", actionPayload);
+        this.titles = await this.$store.getters["test/getTests"];
+      } catch (error) {
+        this.error = error;
+      }
+    },
+    handleError() {
+      this.error = null;
+    },
   },
 };
 </script>
-
-<style scoped>
-h4 {
-  margin-left: 15px;
-  text-align: left;
-}
-p {
-  margin-left: 15px;
-  margin-right: 15px;
-  text-align: left;
-}
-ul li {
-  margin-left: 1rem;
-  margin-right: 2rem;
-  text-align: left;
-}
-</style>

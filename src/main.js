@@ -36,6 +36,7 @@ app.use(store);
 app.use(plugin, defaultConfig);
 
 
+
 app.component("base-card", BaseCard);
 app.component("base-button", BaseButton);
 app.component("base-badge", BaseBadge);

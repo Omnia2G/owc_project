@@ -136,7 +136,7 @@
         </p>
         <span
           ><img
-            src="https://orosz.marketingy.eu/owc_project/src/assets/img/ir receiver.png"
+            src="https://orosz.marketingy.eu/owc_project/src/assets/img/ir communication.png"
             alt="Fungovanie IR vysielača a prijímača"
         /></span>
         <p class="imgTitle">Fungovanie IR vysielača a prijímača [24]</p>
@@ -307,6 +307,60 @@
     <base-card>
       <section>
         <h2>Videá</h2>
+        <iframe
+          src="https://www.youtube.com/embed/uXeM6jRk6w8"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          ng-show="showvideo"
+        ></iframe>
+        <p>
+          The infrared explained! (Thunderf00t), 2019, 6 minutové video, ktoré
+          vysvetluje ako funguje infračervené žiarenie.
+        </p>
+        <br />
+        <iframe
+          src="https://www.youtube.com/embed/PtWFCzDpveQ"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          ng-show="showvideo"
+        ></iframe>
+        <p>
+          What is infrared light ? │LYNRED (LYNRED), 2020, Trojminutové
+          animované video, ktoré podrobnejšie vysvetluje IR.
+        </p>
+        <br />
+        <iframe
+          src="https://www.youtube.com/embed/hD9jT24oE40"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          ng-show="showvideo"
+        ></iframe>
+        <p>
+          Infrared data transmission explained (Straco Pty Ltd), 2016, Kratšie
+          ukážkové video, v ktorom Maximilian Keller vysvetľuje prenos údajov
+          pomocou infračervenej technológie.
+        </p>
+        <br />
+        <iframe
+          src="https://www.youtube.com/embed/H0AmmNS67p8"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          ng-show="showvideo"
+        ></iframe>
+        <p>
+          IR Wireless Audio Transfer (Electronoobs), 2020, Dlhšie video, ktoré
+          detailnejšie vysvetľuje infračervenú komunikáciu na jednom projekte,
+          kde sa s použitím IR prenáša zvuk. Poukáže aj na niektoré výhody
+          IR, ako aj na rozdiel medzi optickým bezdrôtovým a káblovým spojením.
+        </p>
       </section>
       <br /><br />
       <base-button @click="moveUp">Späť na začiatok</base-button>

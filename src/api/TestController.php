@@ -45,12 +45,13 @@ class TestController{
         foreach($questionsHelp as $question){
             $queryQuestionArr[':testid'] = $testId;
             foreach($question as $key => $value){
-                if($value == ':goodanswer'){
-                    $queryQuestionArr[$value] = $array[$array[$key]];
-                }
-                else{
-                    $queryQuestionArr[$value] = $array[$key];
-                }   
+                // if($value == ':goodanswer'){
+                //     $queryQuestionArr[$value] = $array[$array[$key]];
+                // }
+                // else{
+                //     $queryQuestionArr[$value] = $array[$key];
+                // }
+                $queryQuestionArr[$value] = $array[$key];   
             }
             $stmt->execute($queryQuestionArr);
         }

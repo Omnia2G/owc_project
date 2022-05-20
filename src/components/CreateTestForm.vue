@@ -630,49 +630,124 @@
         }"
       />
     </base-card>
-    <base-button>{{edit ? 'Save edited test' : 'Vytvoriť test'}}</base-button>
+    <base-button>{{ edit ? "Save edited test" : "Vytvoriť test" }}</base-button>
   </FormKit>
 </template>
 
 <script>
 export default {
   props: ["test", "edit"],
-  emits: ["save-test","edit-test"],
+  emits: ["save-test", "edit-test"],
   data() {
     return {
       formValues: {},
+      questionsHelp: [
+        {
+          text: "q1",
+          answera: "q1a1",
+          answerb: "q1a2",
+          answerc: "q1a3",
+          goodanswer: "q1_good_ans",
+        },
+        {
+          text: "q2",
+          answera: "q2a1",
+          answerb: "q2a2",
+          answerc: "q2a3",
+          goodanswer: "q2_good_ans",
+        },
+        {
+          text: "q3",
+          answera: "q3a1",
+          answerb: "q3a2",
+          answerc: "q3a3",
+          goodanswer: "q3_good_ans",
+        },
+        {
+          text: "q4",
+          answera: "q4a1",
+          answerb: "q4a2",
+          answerc: "q4a3",
+          goodanswer: "q4_good_ans",
+        },
+        {
+          text: "q5",
+          answera: "q5a1",
+          answerb: "q5a2",
+          answerc: "q5a3",
+          goodanswer: "q5_good_ans",
+        },
+        {
+          text: "q6",
+          answera: "q6a1",
+          answerb: "q6a2",
+          answerc: "q6a3",
+          goodanswer: "q6_good_ans",
+        },
+        {
+          text: "q7",
+          answera: "q7a1",
+          answerb: "q7a2",
+          answerc: "q7a3",
+          goodanswer: "q7_good_ans",
+        },
+        {
+          text: "q8",
+          answera: "q8a1",
+          answerb: "q8a2",
+          answerc: "q8a3",
+          goodanswer: "q8_good_ans",
+        },
+        {
+          text: "q9",
+          answera: "q9a1",
+          answerb: "q9a2",
+          answerc: "q9a3",
+          goodanswer: "q9_good_ans",
+        },
+        {
+          text: "q10",
+          answera: "q10a1",
+          answerb: "q10a2",
+          answerc: "q10a3",
+          goodanswer: "q10_good_ans",
+        },
+      ],
     };
   },
   methods: {
     saveFormkitForm() {
       let data = new FormData();
-      for (const [key, value] of Object.entries(this.formValues)) {
+      for (let [key, value] of Object.entries(this.formValues)) {
         data.append(key, value);
       }
       if (this.edit) {
         data.append("username", this.test[0].username);
         data.append("action", "editTest");
-        console.log('FORMVALUES',this.formValues);
+        this.$emit("edit-test", data);
       } else {
         data.append("username", this.$store.getters.userId);
         data.append("action", "createNewTest");
         this.$emit("save-test", data);
       }
     },
+    loadDetailsForEdit(){
+      let i = 0;
+      this.formValues["title"] = this.test[0]["title"];
+      this.formValues["course"] = this.test[0]["course"];
+      for (let item of this.questionsHelp) {
+        for (let [key, value] of Object.entries(item)) {
+          this.formValues[value] = this.test[i][key];
+        }
+        ++i;
+      }
+    },
   },
-  mounted(){
-    console.log('COMPLETE TEST: ',this.test);
-    // console.log('TITLE: ',this.test[0].title);
-    // console.log('COURSE: ',this.test[0].course);
-    // for(let [key, value] of Object.entries(this.test)){
-    //   console.log('QUESTION: ', ++key);
-    //   console.log(value.text);
-    //   console.log(value.answera);
-    //   console.log(value.answerb);
-    //   console.log(value.answerc);
-    //   console.log(value.goodanswer);
-    // }
-  }
+  mounted() {
+    if (this.test) {
+      this.loadDetailsForEdit();
+    }
+  },
 };
 </script>
 
