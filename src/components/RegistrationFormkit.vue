@@ -92,7 +92,7 @@
         required: 'Neoznačili ste rolu!',
       }"
     />
-      <FormKit
+      <!-- <FormKit
       v-else-if="teacher == 'teacher'"
       type="radio"
       name="role"
@@ -121,9 +121,9 @@
       :validation-messages="{
         required: 'Neoznačili ste rolu!',
       }"
-    />
+    /> -->
     <FormKit
-      v-else
+      v-if="!isLoggedIn"
       type="radio"
       name="role"
       v-model="role"
@@ -167,6 +167,11 @@ export default {
       password1: null,
       role: [],
     };
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isLoggedIn;
+    },
   },
   methods: {
     saveRegistrationForm() {

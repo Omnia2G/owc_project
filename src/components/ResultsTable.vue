@@ -9,7 +9,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="test in tests" :key="test.id">
+        <tr v-for="test in results" :key="test.id">
           <td>{{ test.testtitle }}</td>
           <td>{{ test.course }}</td>
           <td>{{ test.points }}</td>
@@ -21,11 +21,7 @@
 
 <script>
 export default {
-  props: ["tests"],
-  data() {
-    return {
-    };
-  },
+  props: ["results"],
 };
 </script>
 

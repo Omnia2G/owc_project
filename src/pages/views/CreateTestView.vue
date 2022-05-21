@@ -14,7 +14,11 @@
       <h2>Edit Test Data</h2>
       <br />
       <div class="modal-body">
-        <create-test-form :test="test" :edit="true" @edit-test="saveEditedTest"></create-test-form>
+        <create-test-form
+          :test="test"
+          :edit="true"
+          @edit-test="saveEditedTest"
+        ></create-test-form>
       </div>
     </base-card>
   </v-overlay>
@@ -24,11 +28,12 @@
       <base-card>
         <h2>My Tests</h2>
         <br />
-        <teacher-table
+        <tests-table
           :tests="tests"
+          :tableheads="testTableheads"
           @edit-test="loadEditTest"
           @delete-test="deleteTest"
-        ></teacher-table>
+        ></tests-table>
         <br /><br />
         <base-button @click="toggleNewTest">{{
           openNewTest ? "Zatvorit novy test" : "Novy test"
@@ -50,25 +55,27 @@
     <base-card v-if="personalDetails">
       <h2>Upravit osobne udaje</h2>
       <br />
+      <base-card>
       <registration-formkit
         :user="user"
         :edit="true"
         :teacher="'teacher'"
         @edit-user="editPersonalData"
       ></registration-formkit>
+      </base-card>
     </base-card>
   </section>
 </template>
 
 <script>
 import CreateTestForm from "../../components/CreateTestForm.vue";
-import TeacherTable from "../../components/TeacherTable.vue";
+import TestsTable from "../../components/TestsTable.vue";
 import RegistrationFormkit from "../../components/RegistrationFormkit.vue";
 
 export default {
   components: {
     CreateTestForm,
-    TeacherTable,
+    TestsTable,
     RegistrationFormkit,
   },
   data() {
@@ -76,6 +83,7 @@ export default {
       tests: [],
       test: [],
       user: [],
+      testTableheads: ["Title", "Course", "Username"],
       isLoading: false,
       error: null,
       openNewTest: false,
@@ -92,14 +100,15 @@ export default {
       usersPayload.append("action", "getAllUsers");
       try {
         await this.$store.dispatch("adminpanel/loadAllUsers", usersPayload);
-        this.user = await this.$store.getters["adminpanel/getUsers"].find((user) => user.username == this.$store.getters['userId']);
+        this.user = await this.$store.getters["adminpanel/getUsers"].find(
+          (user) => user.username == this.$store.getters["userId"]
+        );
         const testsPayload = new FormData();
         testsPayload.append("username", this.user.username);
         testsPayload.append("action", "getTestsByUsername");
         await this.$store.dispatch("test/fetchTests", testsPayload);
         this.tests = await this.$store.getters["test/getTests"];
-      }
-      catch (error) {
+      } catch (error) {
         this.error = error;
       }
     },
@@ -147,7 +156,7 @@ export default {
         await this.$store.dispatch("userRegistration", data);
         setTimeout(() => {
           this.isLoading = false;
-          this.$router.replace("/");//location.reload();
+          this.$router.replace("/"); //location.reload();
         }, 600);
       } catch (err) {
         setTimeout(() => {
@@ -159,19 +168,18 @@ export default {
     async loadEditTest(id) {
       window.scrollTo(0, 0);
       const testsPayload = new FormData();
-        testsPayload.append("id", id);
-        testsPayload.append("action", "getCompleteTestById");
-      try{
+      testsPayload.append("id", id);
+      testsPayload.append("action", "getCompleteTestById");
+      try {
         await this.$store.dispatch("test/fetchCompleteTest", testsPayload);
         this.test = await this.$store.getters["test/getCompleteTest"];
-      }
-      catch (error) {
+      } catch (error) {
         this.error = error;
       }
       this.editTestOverlay = true;
     },
-    saveEditedTest(data){
-      console.log('SAVE EDITED DATA: ',data);
+    saveEditedTest(data) {
+      console.log("SAVE EDITED DATA: ", data);
       //editTestOverlay = false;
       //this.saveTest(data);
     },

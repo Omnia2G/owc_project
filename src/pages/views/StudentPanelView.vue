@@ -9,45 +9,48 @@
     <base-card>
       <h1>Personal achievements and details</h1>
       <base-card>
-        <h2>My Tests</h2>
+        <h2>My Results</h2>
         <br />
-        <student-table
-          :tests="tests"
-        ></student-table>
-        <br /><br />
-        <base-button @click="toggleEditDeatails">{{
+        <results-table
+          :points="points"
+        ></results-table>
+        <br />
+      </base-card>
+      <base-button @click="toggleEditDeatails">{{
           personalDetails ? "Zatvorit osobne udaje" : "Upravit osobne udaje"
         }}</base-button>
-      </base-card>
     </base-card>
   </section>
   <section>
     <base-card v-if="personalDetails">
       <h2>Upravit osobne udaje</h2>
       <br />
+      <base-card>
       <registration-formkit
         :user="user"
         :edit="true"
         :student="'student'"
         @edit-user="editPersonalData"
       ></registration-formkit>
+      </base-card>
     </base-card>
   </section>
 </template>
 
 <script>
 import RegistrationFormkit from "../../components/RegistrationFormkit.vue";
-import StudentTable from '../../components/StudentTable.vue';
+import ResultsTable from '../../components/ResultsTable.vue';
 
 export default {
   components: {
     RegistrationFormkit,
-    StudentTable
+    ResultsTable
   },
   data() {
     return {
       tests: [],
       user: [],
+      points:[],
       isLoading: false,
       error: null,
       personalDetails: false,

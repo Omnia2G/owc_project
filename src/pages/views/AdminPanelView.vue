@@ -36,15 +36,34 @@
   </v-overlay>
   <section>
     <base-card>
+    <br>
       <h1>Admin panel</h1>
-      <adminpanel-table
-        :users="users"
-        :tests="tests"
-        @delete-user="deleteUser"
-        @delete-test="deleteTest"
-        @edit-user="loadEditUser"
-        @edit-test="loadEditTest"
-      ></adminpanel-table>
+      <base-card>
+        <h2>Users</h2>
+        <br />
+        <users-table
+          :users="users"
+          @delete-user="deleteUser"
+          @edit-user="loadEditUser"
+        ></users-table>
+        <br>
+        <h2>Tests</h2>
+        <br />
+        <tests-table
+          :tests="tests"
+          :tableheads="testTableheads"
+          @edit-test="loadEditTest"
+          @delete-test="deleteTest"
+        ></tests-table>
+        <br>
+         <h2>Results</h2>
+        <br />
+         <results-table
+          :points="points"
+        ></results-table>
+        <br>
+      </base-card>
+      <base-button @click="moveUp">Späť na začiatok</base-button>
     </base-card>
     <base-card>
       <h2>Add new Admin (or User)</h2>
@@ -60,15 +79,19 @@
 </template>
 
 <script>
-import AdminpanelTable from "../../components/AdminpanelTable.vue";
+import UsersTable from "../../components/UsersTable.vue";
+import TestsTable from "../../components/TestsTable.vue";
+import ResultsTable from "../../components/ResultsTable.vue";
 import RegistrationFormkit from "../../components/RegistrationFormkit.vue";
-import CreateTestForm from '../../components/CreateTestForm.vue';
+import CreateTestForm from "../../components/CreateTestForm.vue";
 
 export default {
   components: {
-    AdminpanelTable,
+    UsersTable,
     RegistrationFormkit,
     CreateTestForm,
+    TestsTable,
+    ResultsTable
   },
   data() {
     return {
@@ -76,6 +99,8 @@ export default {
       tests: [],
       user: [],
       test: [],
+      points:[],
+      testTableheads: ["Title", "Course", "Username"],
       isLoading: false,
       error: null,
       editUserOverlay: false,
@@ -106,7 +131,7 @@ export default {
         await this.$store.dispatch("userRegistration", data);
         setTimeout(() => {
           this.isLoading = false;
-          this.$router.replace('/');//location.reload();
+          this.$router.replace("/"); //location.reload();
         }, 600);
       } catch (err) {
         setTimeout(() => {

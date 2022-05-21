@@ -2,10 +2,7 @@
      <v-table theme="dark" fixed-header height="200px" density="compact">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Course</th>
-          <th>Username</th>
-          <th>Actions</th>
+          <th v-for="th in tableheads" :key="th">{{th}}</th>
         </tr>
       </thead>
       <tbody>
@@ -28,7 +25,7 @@
 
 <script>
 export default {
-  props: ["tests"],
+  props: ["tests", "tableheads"],
   emits:['delete-test', 'edit-test'],
   data() {
     return {
