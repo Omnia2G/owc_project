@@ -5,12 +5,11 @@ let timer;
 
 export default {
   async login(context, payload) {
-    let url = "http://localhost/owc_project/src/api/Actions.php";
-    // let url = 'https://orosz.marketingy.eu/owc_project/src/api/actions.php';
+    // let url = "http://localhost/owc_project/src/api/Actions.php";
+    let url = 'https://orosz.marketingy.eu/owc_project/src/api/Actions.php';
     
     const res = await fetch(url, {
       method: 'POST',
-      //mode: 'no-cors',
       body: payload,
     });
     const responseData = await res.json();
@@ -62,7 +61,8 @@ export default {
     data.append("action", "autologin");
     
     axios
-      .post("http://localhost/owc_project/src/api/Actions.php", data)
+      // .post("http://localhost/owc_project/src/api/Actions.php", data)
+      .post("https://orosz.marketingy.eu/owc_project/src/api/Actions.php", data)
       .then((res) => {
         timer = setTimeout(() => {
           context.dispatch("autoLogout");
@@ -106,7 +106,8 @@ export default {
   async userRegistration(_, payload) {
     payload.set("password", bcrypt.hashSync(payload.get("password"), 10));
     const res = await fetch(
-      "http://localhost/owc_project/src/api/Actions.php",
+      // "http://localhost/owc_project/src/api/Actions.php",
+      "https://orosz.marketingy.eu/owc_project/src/api/Actions.php",
       {
         method: "POST",
         body: payload,
