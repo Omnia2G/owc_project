@@ -36,7 +36,7 @@ export default {
     submitForm(){ //with evaluation
       let sum = 0;
       for (const [index, [key, value]] of Object.entries(Object.entries(this.answers))) {
-        if(this.testArray[index].id.toString() === key && this.testArray[index].goodanswer === value[0]){
+        if(this.testArray[index].id === key && this.testArray[index].goodanswer === value[0]){
           sum++;
         }
       }
