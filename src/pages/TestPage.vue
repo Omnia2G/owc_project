@@ -52,7 +52,7 @@ export default {
       setTimeout(() => {
         this.isLoading = false;
         this.results = "Your test result are: " + sum + " points!";
-        //TODO save into DB - leaderboard
+        //TODO save into DB
         //this.$router.replace("/");
       }, 1500);
     },

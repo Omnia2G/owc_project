@@ -1,13 +1,11 @@
 import axios from "axios";
 import bcrypt from "bcryptjs";
+import { url } from '../../../js/url.js';
 
 let timer;
 
 export default {
   async login(context, payload) {
-    // let url = "http://localhost/owc_project/src/api/Actions.php";
-    let url = 'https://orosz.marketingy.eu/owc_project/src/api/Actions.php';
-    
     const res = await fetch(url, {
       method: 'POST',
       body: payload,
@@ -61,8 +59,7 @@ export default {
     data.append("action", "autologin");
     
     axios
-      // .post("http://localhost/owc_project/src/api/Actions.php", data)
-      .post("https://orosz.marketingy.eu/owc_project/src/api/Actions.php", data)
+      .post(url, data)
       .then((res) => {
         timer = setTimeout(() => {
           context.dispatch("autoLogout");
@@ -105,10 +102,7 @@ export default {
 
   async userRegistration(_, payload) {
     payload.set("password", bcrypt.hashSync(payload.get("password"), 10));
-    const res = await fetch(
-      // "http://localhost/owc_project/src/api/Actions.php",
-      "https://orosz.marketingy.eu/owc_project/src/api/Actions.php",
-      {
+    const res = await fetch(url,{
         method: "POST",
         body: payload,
       }

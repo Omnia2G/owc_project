@@ -30,7 +30,11 @@
     <base-card>
       <h2>Edit Test Data</h2>
       <div class="modal-body">
-        <create-test-form></create-test-form>
+        <create-test-form
+        :test="test"
+          :edit="true"
+          @edit-test="saveEditedTest"
+        ></create-test-form>
       </div>
     </base-card>
   </v-overlay>
@@ -70,6 +74,7 @@
       <base-card>
         <registration-formkit
           :admin="'admin'"
+          :edit="false"
           @register-user="addNewOrEditUser"
         ></registration-formkit>
       </base-card>
@@ -131,7 +136,8 @@ export default {
         await this.$store.dispatch("userRegistration", data);
         setTimeout(() => {
           this.isLoading = false;
-          this.$router.replace("/"); //location.reload();
+          this.$router.replace("/"); 
+          //location.reload();
         }, 600);
       } catch (err) {
         setTimeout(() => {
@@ -177,10 +183,23 @@ export default {
       this.editUserOverlay = false;
       this.addNewOrEditUser(data);
     },
-    loadEditTest(id) {
+    async loadEditTest(id) {
+      const testsPayload = new FormData();
+      testsPayload.append("id", id);
+      testsPayload.append("action", "getCompleteTestById");
+      try {
+        await this.$store.dispatch("test/fetchCompleteTest", testsPayload);
+        this.test = await this.$store.getters["test/getCompleteTest"];
+      } catch (error) {
+        this.error = error;
+      }
       window.scrollTo(0, 0);
       this.editTestOverlay = true;
-      this.test = this.tests.find((test) => test.id == id);
+    },
+    saveEditedTest(data) {
+      console.log("SAVE EDITED DATA: ", data);
+      //editTestOverlay = false;
+      //this.saveTest(data);
     },
   },
 };

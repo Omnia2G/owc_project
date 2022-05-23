@@ -166,7 +166,6 @@ export default {
       }
     },
     async loadEditTest(id) {
-      window.scrollTo(0, 0);
       const testsPayload = new FormData();
       testsPayload.append("id", id);
       testsPayload.append("action", "getCompleteTestById");
@@ -176,6 +175,7 @@ export default {
       } catch (error) {
         this.error = error;
       }
+      window.scrollTo(0, 0);
       this.editTestOverlay = true;
     },
     saveEditedTest(data) {

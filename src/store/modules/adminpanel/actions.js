@@ -1,8 +1,9 @@
+import { url } from '../../../js/url.js';
 export default {
 
     async loadAllUsers(context, payload){
     // const res = await fetch("http://localhost/owc_project/src/api/Actions.php", {
-    const res = await fetch("https://orosz.marketingy.eu/owc_project/src/api/Actions.php", {
+    const res = await fetch(url, {
       method: 'POST',
       body: payload,
     });
@@ -15,7 +16,7 @@ export default {
 
   deleteUser(context, payload){
     //  fetch("http://localhost/owc_project/src/api/Actions.php", {
-     fetch("https://orosz.marketingy.eu/owc_project/src/api/Actions.php", {
+     fetch(url, {
       method: 'POST',
       body: payload,
     });

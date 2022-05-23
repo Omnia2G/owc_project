@@ -1,11 +1,12 @@
 <template>
   <base-card>
+    <h2>{{title}}</h2><br>
     <FormKit type="form" v-model="answers" :actions="false" @submit="submitForm" incomplete-message="Formulár nie je korektne vyplnený!">
       <FormKit
         v-for="test in testArray"
         :key="test.id" 
         type="checkbox"
-        :name="test.id.toString()"
+        :name="test.id"
         :label="test.text"
         help="Vyberte správnu odpoveď"
         :options="{
@@ -36,7 +37,7 @@ export default {
     submitForm(){ //with evaluation
       let sum = 0;
       for (const [index, [key, value]] of Object.entries(Object.entries(this.answers))) {
-        if(this.testArray[index].id === key && this.testArray[index].goodanswer === value[0]){
+        if(this.testArray[index].id === key && this.testArray[index].goodansval === value[0]){
           sum++;
         }
       }

@@ -123,7 +123,7 @@
       }"
     /> -->
     <FormKit
-      v-if="!isLoggedIn"
+      v-if="!isLoggedIn && admin != 'admin'"
       type="radio"
       name="role"
       v-model="role"
@@ -148,15 +148,13 @@
         accepted: 'Musíte prijať podmienky!',
       }"
     />
-    <!-- <base-button v-if="edit">Save Data</base-button>
-    <base-button v-else>Registrácia</base-button> -->
     <base-button>{{ edit ? "Save Data" : "Registrácia" }}</base-button>
   </FormKit>
 </template>
 
 <script>
 export default {
-  props: ["admin", "user", "edit", "teacher", "student"],
+  props: ["admin", "user", "edit"],
   emits: ["register-user", "edit-user"],
   data() {
     return {

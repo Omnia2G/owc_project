@@ -40,18 +40,19 @@ class TestController{
         $testId = $this->conn->lastInsertId();
         $queryQuestionArr = array(); //insert into questions
         $stmt = $this->conn->prepare(
-            "INSERT INTO `questions` (testid, text, answera, answerb, answerc, goodanswer)
-             values (:testid, :text, :answera, :answerb, :answerc, :goodanswer)");
+            "INSERT INTO `questions` (testid, text, answera, answerb, answerc, goodanswer, goodansval)
+             values (:testid, :text, :answera, :answerb, :answerc, :goodanswer, :goodansval)");
         foreach($questionsHelp as $question){
             $queryQuestionArr[':testid'] = $testId;
             foreach($question as $key => $value){
-                // if($value == ':goodanswer'){
-                //     $queryQuestionArr[$value] = $array[$array[$key]];
-                // }
-                // else{
-                //     $queryQuestionArr[$value] = $array[$key];
-                // }
-                $queryQuestionArr[$value] = $array[$key];   
+                if($value == ':goodanswer'){
+                    $queryQuestionArr[$value] = $array[$key];
+                    $queryQuestionArr[':goodansval'] = $array[$array[$key]];
+                }
+                else{
+                    $queryQuestionArr[$value] = $array[$key];
+                }
+                //$queryQuestionArr[$value] = $array[$key];   
             }
             $stmt->execute($queryQuestionArr);
         }
