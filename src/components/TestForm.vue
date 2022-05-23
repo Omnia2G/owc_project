@@ -35,13 +35,19 @@ export default {
   },
   methods: {
     submitForm(){ //with evaluation
-      let sum = 0;
+      let points = 0;
+      let data = new FormData();
+      data.append('username', this.$store.getters['userId']);
+      data.append('course', this.testArray[0].course);
+      data.append('testtitle', this.title);
       for (const [index, [key, value]] of Object.entries(Object.entries(this.answers))) {
         if(this.testArray[index].id === key && this.testArray[index].goodansval === value[0]){
-          sum++;
+          points++;
         }
       }
-      this.$emit("test-result", sum);
+      data.append('points', points);
+      data.append('action', 'save-testresult')
+      this.$emit("test-result", data);
     },
   },
 };

@@ -12,7 +12,7 @@
         <h2>My Results</h2>
         <br />
         <results-table
-          :points="points"
+          :results="results"
         ></results-table>
         <br />
       </base-card>
@@ -50,7 +50,7 @@ export default {
     return {
       tests: [],
       user: [],
-      points:[],
+      results:[],
       isLoading: false,
       error: null,
       personalDetails: false,
@@ -63,9 +63,14 @@ export default {
     async loadData() {
       const usersPayload = new FormData();
       usersPayload.append("action", "getAllUsers");
+      const resultsPayload = new FormData();
       try {
         await this.$store.dispatch("adminpanel/loadAllUsers", usersPayload);
         this.user = await this.$store.getters["adminpanel/getUsers"].find((user) => user.username == this.$store.getters['userId']);
+        resultsPayload.append('username', this.$store.getters['userId']);
+        resultsPayload.append('action', 'get-testResultsByUsername');
+        await this.$store.dispatch("test/testResults", resultsPayload);
+        this.results = await this.$store.getters["test/getResults"];
       }
       catch (error) {
         this.error = error;

@@ -99,11 +99,35 @@ class TestController{
    }
 
    public function getTestTitlesByUsername(string $username){
-    $stmt = $this->conn->prepare("SELECT * from `tests` where username = :username;");
-    $stmt->bindParam(":username", $username, PDO::PARAM_STR);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+        $stmt = $this->conn->prepare("SELECT * from `tests` where username = :username;");
+        $stmt->bindParam(":username", $username, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+   }
+
+   public function saveTestResult($username, $course, $testtitle, $points){
+        $queryArr = array(
+            ':username' => $username,
+            ':course' => $course,
+            ':testtitle' => $testtitle,
+            ':points' => $points
+        );
+        $stmt = $this->conn->prepare("INSERT INTO `results` (username, course, testtitle, points)
+            values (:username, :course, :testtitle, :points)");
+        $stmt->execute($queryArr);
+   }
+
+   public function getResultsByUsernameOrAllResults(string $username){
+       if($username != ''){
+            $stmt = $this->conn->prepare("SELECT * from `results` where username = :username;");
+            $stmt->bindParam(":username", $username, PDO::PARAM_STR);
+       }
+       else{
+            $stmt = $this->conn->prepare("SELECT * from `results`;");
+       }
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+   }
 
     
     

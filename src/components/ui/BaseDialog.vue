@@ -1,6 +1,6 @@
 <template>
   <teleport to="body">
-    <div v-if="show" @click="tryClose" class="backdrop"></div>
+    <div v-if="show" class="backdrop"></div>
     <transition name="dialog">
       <dialog open v-if="show">
         <header>

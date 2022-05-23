@@ -5,7 +5,7 @@
   <base-dialog :show="!!results" title="Results" @close="handleResult">
     <p>{{ results }}</p>
   </base-dialog>
-  <base-dialog :show="isLoading" title="Evaluating..." fixed>
+  <base-dialog :show="isLoading" title="Evaluating...">
     <base-spinner></base-spinner>
   </base-dialog>
   <base-card>
@@ -47,13 +47,12 @@ export default {
         this.error = error;
       }
     },
-    testResult(sum) {
+    testResult(data) {
       this.isLoading = true;
       setTimeout(() => {
+        this.results = "Your test result are: " + data.get('points') + " points!";
+        this.$store.dispatch('test/saveTestResults', data);
         this.isLoading = false;
-        this.results = "Your test result are: " + sum + " points!";
-        //TODO save into DB
-        //this.$router.replace("/");
       }, 1500);
     },
     handleError() {
@@ -61,6 +60,17 @@ export default {
     },
     handleResult() {
       this.results = null;
+      let role = this.$store.getters['userRole'];
+      if(role === 'student'){
+        this.$router.replace("/student");
+      }
+      else if(role === 'teacher'){
+        this.$router.replace("/createtest");
+      }
+      else if(role === 'admin'){
+        this.$router.replace("/adminpanel");
+      }
+      window.scrollTo(0, 0);
     },
   },
   created() {

@@ -100,6 +100,14 @@ if($_POST['action'] == 'getAllUsers'){
     }
 }
 
+if($_POST['action'] == 'getUserByUsername'){ 
+    try{
+        echo json_encode($userController->getUserByUsername($_POST['username']));
+    }catch(Error $exception){
+        echo json_encode($exception->getMessage());
+    }
+}
+
 if($_POST['action'] == 'getAllTests'){ 
     try{
         echo json_encode($testController->getAllTests());
@@ -171,5 +179,35 @@ if($_POST['action'] == 'editUser'){
             echo json_encode($exception->getMessage());
         }
     }
+}
+
+if($_POST['action'] == 'save-testresult'){
+    try{
+        $testController->saveTestResult($_POST['username'], $_POST['course'], $_POST['testtitle'], $_POST['points']);
+        //echo json_encode($_POST);
+    }
+    catch(PDOException $exception){
+        echo json_encode($exception->getMessage());
+    }
+}
+
+if($_POST['action'] == 'get-testResultsByUsername' || $_POST['action'] == 'get-testResults'){
+    if($_POST['action'] == 'get-testResultsByUsername'){ // for student
+        try{
+            echo json_encode($testController->getResultsByUsernameOrAllResults($_POST['username']));
+        }
+        catch(Error $exception){
+            echo json_encode($exception->getMessage());
+        }
+    }
+    else{ //all results for admin
+        try{
+            echo json_encode($testController->getResultsByUsernameOrAllResults(''));
+        }
+        catch(Error $exception){
+            echo json_encode($exception->getMessage());
+        }
+    }
+    
 }
 ?>

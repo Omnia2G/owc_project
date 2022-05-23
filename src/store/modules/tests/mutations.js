@@ -9,4 +9,8 @@ export default{
     setCompleteTest(state, payload){
         state.completeTest = payload;
     },
+    setResults(state, payload){
+        //state.results.push(...payload);
+        state.results = payload;
+    }
 };

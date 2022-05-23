@@ -46,4 +46,27 @@ export default{
       const responseData = await res.json();
       context.commit('setCompleteTest', responseData);
     },
+
+    async saveTestResults(_, payload){
+      const res = await fetch(url, {
+        method: 'POST',
+        body: payload,
+      });
+      if (!res.ok) {
+        throw new Error("Something went wrong, try again!");
+      }
+    },
+
+    async testResults(context, payload){
+      const res = await fetch(url, {
+        method: 'POST',
+        body: payload,
+      });
+      if (!res.ok) {
+        throw new Error("Something went wrong, try again!");
+      }
+      const responseData = await res.json();
+      context.commit('setResults', responseData);
+    },
+
 };

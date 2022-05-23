@@ -8,6 +8,7 @@ export default{
         return{
             test:[],
             completeTest:[],
+            results:[],
         };
     },
     mutations,
