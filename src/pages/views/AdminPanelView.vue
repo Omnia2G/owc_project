@@ -31,7 +31,7 @@
       <h2>Edit Test Data</h2>
       <div class="modal-body">
         <create-test-form
-        :test="test"
+          :test="test"
           :edit="true"
           @edit-test="saveEditedTest"
         ></create-test-form>
@@ -40,7 +40,7 @@
   </v-overlay>
   <section>
     <base-card>
-    <br>
+      <br />
       <h1>Admin panel</h1>
       <base-card>
         <h2>Users</h2>
@@ -50,7 +50,7 @@
           @delete-user="deleteUser"
           @edit-user="loadEditUser"
         ></users-table>
-        <br>
+        <br />
         <h2>Tests</h2>
         <br />
         <tests-table
@@ -59,13 +59,11 @@
           @edit-test="loadEditTest"
           @delete-test="deleteTest"
         ></tests-table>
-        <br>
-         <h2>Results</h2>
         <br />
-         <results-table
-          :results="results"
-        ></results-table>
-        <br>
+        <h2>Results</h2>
+        <br />
+        <results-table :results="results"></results-table>
+        <br />
       </base-card>
       <base-button @click="moveUp">Späť na začiatok</base-button>
     </base-card>
@@ -96,7 +94,7 @@ export default {
     RegistrationFormkit,
     CreateTestForm,
     TestsTable,
-    ResultsTable
+    ResultsTable,
   },
   data() {
     return {
@@ -104,7 +102,7 @@ export default {
       tests: [],
       user: [],
       test: [],
-      results:[],
+      results: [],
       testTableheads: ["Title", "Course", "Username"],
       isLoading: false,
       error: null,
@@ -122,7 +120,7 @@ export default {
       const testsPayload = new FormData();
       testsPayload.append("action", "getAllTests");
       const resultsPayload = new FormData();
-      resultsPayload.append('action', 'get-testResults');
+      resultsPayload.append("action", "get-testResults");
       try {
         await this.$store.dispatch("adminpanel/loadAllUsers", usersPayload);
         this.users = await this.$store.getters["adminpanel/getUsers"];
@@ -140,8 +138,7 @@ export default {
         await this.$store.dispatch("userRegistration", data);
         setTimeout(() => {
           this.isLoading = false;
-          this.$router.replace("/"); 
-          //location.reload();
+          this.moveUp();
         }, 600);
       } catch (err) {
         setTimeout(() => {
@@ -161,6 +158,12 @@ export default {
       payload.append("id", id);
       payload.append("action", "deleteUser");
       try {
+        let useUnderDelete = this.users.find((user) => user.id == id);
+        if (this.$store.getters["userId"] == useUnderDelete.username) {
+          setTimeout(() => {
+            this.$store.dispatch("autoLogout");
+          }, 600);
+        }
         this.$store.dispatch("adminpanel/deleteUser", payload);
         this.users = this.$store.getters["adminpanel/getUsers"];
       } catch (err) {
@@ -202,8 +205,8 @@ export default {
     },
     saveEditedTest(data) {
       console.log("SAVE EDITED DATA: ", data);
-      //editTestOverlay = false;
-      //this.saveTest(data);
+      this.editTestOverlay = false;
+      /////////////////////
     },
   },
 };

@@ -100,7 +100,7 @@ export default {
     context.commit("setAutoLogout");
   },
 
-  async userRegistration(_, payload) {
+  async userRegistration(context, payload) {
     payload.set("password", bcrypt.hashSync(payload.get("password"), 10));
     const res = await fetch(url,{
         method: "POST",
@@ -118,16 +118,21 @@ export default {
         //"Entered 'Username' and 'Email' already exists, please choose another!"
         "Zadané 'Používateľské meno' a 'Email' sú obsadené!"
       );
-    } else if (responseData === "username exists") {
+    }
+    else if (responseData === "username exists") {
       throw new Error(
         // "Entered 'Username' already exists, please choose another!"
         "Zadané 'Používateľské meno' je obsadené!"
       );
-    } else if (responseData === "email exists") {
+    }
+    else if (responseData === "email exists") {
       throw new Error(
         // "Entered 'Email' already exists, please choose another!"
         "Zadaný 'Email' je obsadený!"
       );
+    }
+    else{
+      context.commit('adminpanel/updateUser', payload);
     }
   },
 };

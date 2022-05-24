@@ -91,7 +91,10 @@ export default {
         await this.$store.dispatch("userRegistration", data);
         setTimeout(() => {
           this.isLoading = false;
-          this.$router.replace("/");//location.reload();
+          this.user = this.$store.getters["adminpanel/getUsers"].find(
+          (user) => user.id == data.get('id'));
+          this.moveUp();
+          this.personalDetails = false
         }, 600);
       } catch (err) {
         setTimeout(() => {

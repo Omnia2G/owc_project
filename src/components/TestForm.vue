@@ -41,7 +41,7 @@ export default {
       data.append('course', this.testArray[0].course);
       data.append('testtitle', this.title);
       for (const [index, [key, value]] of Object.entries(Object.entries(this.answers))) {
-        if(this.testArray[index].id === key && this.testArray[index].goodansval === value[0]){
+        if(this.testArray[index].id == key && this.testArray[index].goodansval === value[0]){
           points++;
         }
       }

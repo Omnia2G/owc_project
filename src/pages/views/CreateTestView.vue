@@ -101,7 +101,7 @@ export default {
       try {
         await this.$store.dispatch("adminpanel/loadAllUsers", usersPayload);
         this.user = await this.$store.getters["adminpanel/getUsers"].find(
-          (user) => user.username == this.$store.getters["userId"]
+          (user) => user.token == this.$store.getters["token"]
         );
         const testsPayload = new FormData();
         testsPayload.append("username", this.user.username);
@@ -118,7 +118,8 @@ export default {
         this.$store.dispatch("test/createNewTest", data);
         setTimeout(() => {
           this.isLoading = false;
-          this.$router.replace("/");
+          //////////////////////
+          //this.$router.replace("/");
         }, 600);
       } catch (err) {
         setTimeout(() => {
@@ -156,7 +157,10 @@ export default {
         await this.$store.dispatch("userRegistration", data);
         setTimeout(() => {
           this.isLoading = false;
-          this.$router.replace("/"); //location.reload();
+          this.user = this.$store.getters["adminpanel/getUsers"].find(
+          (user) => user.id == data.get('id'));
+          this.moveUp();
+          this.personalDetails = false
         }, 600);
       } catch (err) {
         setTimeout(() => {
@@ -180,7 +184,6 @@ export default {
     },
     saveEditedTest(data) {
       console.log("SAVE EDITED DATA: ", data);
-      //editTestOverlay = false;
       //this.saveTest(data);
     },
   },
