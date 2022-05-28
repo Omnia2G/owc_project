@@ -51,9 +51,6 @@ class User{
     {
         $this->id = $id;
     }
-
-
-
     /**
      * @return string
      */
@@ -127,7 +124,4 @@ class User{
     public function expose() {
         return get_object_vars($this);
     }
-
-
-
 }

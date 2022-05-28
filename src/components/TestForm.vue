@@ -6,9 +6,8 @@
         v-for="test in testArray"
         :key="test.id" 
         type="checkbox"
-        :name="test.id"
+        :name="test.id.toString()"
         :label="test.text"
-        help="Vyberte správnu odpoveď"
         :options="{
           [test.answera]: test.answera,
           [test.answerb]: test.answerb,

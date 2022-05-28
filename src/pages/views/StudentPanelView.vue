@@ -29,7 +29,6 @@
       <registration-formkit
         :user="user"
         :edit="true"
-        :student="'student'"
         @edit-user="editPersonalData"
       ></registration-formkit>
       </base-card>

@@ -55,14 +55,41 @@ if($_POST['action'] == 'register'){
     }
 }
 
-if($_POST['action'] == 'createNewTest'){
-     //TODO check for the title if exists for this course
-    try{
-        $testController-> addNewTest($_POST);
-        echo json_encode("Test was Successfully uploaded to Database!");
-    }catch(PDOException $exception){
-        echo json_encode($exception->getMessage());
+if($_POST['action'] == 'createNewTest' || $_POST['action'] == 'editTest'){
+    $titleExists = null;
+    if($_POST['action'] == 'createNewTest'){
+        $titleExists = $testController->checkTestTitleExistsForCourse($_POST['title'], $_POST['course']);
+        if($titleExists){
+            echo json_encode('Title exists for this course');
+        }
+        try{
+            $testController-> addNewTestOrEdit($_POST, 'create');
+            echo json_encode("Test was Successfully uploaded to Database!");
+        }
+        catch(PDOException $exception){
+            echo json_encode($exception->getMessage());
+        }
     }
+    else{
+        if($_POST['title'] != $_POST['oldTitle'] && $_POST['course'] == $_POST['oldCourse'] ||
+            $_POST['title'] == $_POST['oldTitle'] && $_POST['course'] != $_POST['oldCourse'] ||
+            $_POST['title'] != $_POST['oldTitle'] && $_POST['course'] != $_POST['oldCourse']
+        ){
+            $titleExists = $testController->checkTestTitleExistsForCourse($_POST['title'], $_POST['course']);
+        }
+        if($titleExists){
+            echo json_encode('Title exists for this course');
+        }
+         else{
+            try{
+                $testController-> addNewTestOrEdit($_POST, 'edit');
+                echo json_encode("Test was Successfully updated!");
+            }
+            catch(PDOException $exception){
+                echo json_encode($exception->getMessage());
+            }
+         }
+     }
 }
 
 if($_POST['action'] == 'getTestTitles'){
@@ -210,4 +237,7 @@ if($_POST['action'] == 'get-testResultsByUsername' || $_POST['action'] == 'get-t
     }
     
 }
+
+
+
 ?>

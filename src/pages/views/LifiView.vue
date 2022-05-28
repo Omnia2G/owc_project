@@ -642,13 +642,13 @@ export default {
     },
   },
   methods: {
-    moveUp() {
+    moveUp(){
       window.scrollTo(0, 0);
     },
     async loadTestTitlesForThisCourse() {
       const actionPayload = new FormData();
       actionPayload.append("action", "getTestTitles");
-      actionPayload.append("course", "uvc");
+      actionPayload.append("course", "lifi");
       try {
         await this.$store.dispatch("test/fetchTests", actionPayload);
         this.titles = await this.$store.getters["test/getTests"];

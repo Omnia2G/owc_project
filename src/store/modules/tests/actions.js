@@ -1,6 +1,6 @@
 import { url } from '../../../js/url.js';
 export default{
-    async createNewTest(_, payload){
+    async createNewTest(context, payload){
         const res = await fetch(url, {
           method: 'POST',
           body: payload,
@@ -10,8 +10,11 @@ export default{
         if (!res.ok) {
           throw new Error("Something went wrong, try again!");
         }
-        if(responseData === 'title exists for this course'){
+        if(responseData === 'Title exists for this course'){
           throw new Error("This title exists for this course!");
+        }
+        if(payload.get('action') === 'editTest'){
+          context.commit('updateTest', payload);
         }
     },
 

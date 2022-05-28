@@ -713,6 +713,7 @@ export default {
           goodanswer: "q10_good_ans",
         },
       ],
+      ids:[],
     };
   },
   methods: {
@@ -723,6 +724,9 @@ export default {
       }
       if (this.edit) {
         data.append("username", this.test[0].username);
+        data.append("oldTitle", this.test[0].title);
+        data.append("oldCourse", this.test[0].course);
+        data.append('ids', JSON.stringify(this.ids));
         data.append("action", "editTest");
         this.$emit("edit-test", data);
       } else {
@@ -733,6 +737,7 @@ export default {
     },
     loadDetailsForEdit(){
       let i = 0;
+      let ids = [];
       this.formValues["title"] = this.test[0]["title"];
       this.formValues["course"] = this.test[0]["course"];
       for (let item of this.questionsHelp) {
@@ -741,6 +746,11 @@ export default {
         }
         ++i;
       }
+      ids.push(this.test[0].testid);
+       for (let item of this.test) {
+       ids.push(item.id);
+      }
+      this.ids = ids;
     },
   },
   mounted() {
@@ -751,19 +761,3 @@ export default {
 };
 </script>
 
-<style scoped>
-/* [data-invalid] .formkit-inner {
-  border-color: red;
-  box-shadow: 0 0 0 1px red;
-}
-
-[data-complete] .formkit-inner {
-  border-color: red;
-  box-shadow: 0 0 0 1px green;
-}
-[data-complete] .formkit-inner::after {
-  content: "✅";
-  display: block;
-  padding: 0.5em;
-} */
-</style>

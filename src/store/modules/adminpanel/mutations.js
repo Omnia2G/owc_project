@@ -25,7 +25,7 @@ export default {
     if (index) { //edit
         state.users[index] = tmpUserArray;
     }
-    if(state.users.length != 0) { 
+    if(index < 0 && state.users.length != 0) { 
         state.users[state.users.length] = tmpUserArray;
     }
   },

@@ -59,7 +59,6 @@
       <registration-formkit
         :user="user"
         :edit="true"
-        :teacher="'teacher'"
         @edit-user="editPersonalData"
       ></registration-formkit>
       </base-card>
@@ -112,16 +111,18 @@ export default {
         this.error = error;
       }
     },
-    saveTest(data) {
+    async saveTest(data) {
       this.isLoading = true;
       try {
-        this.$store.dispatch("test/createNewTest", data);
+        await this.$store.dispatch("test/createNewTest", data);
+        this.tests = await this.$store.getters["test/getTests"];
         setTimeout(() => {
+          this.moveUp();
+          this.openNewTest = false;
           this.isLoading = false;
-          //////////////////////
-          //this.$router.replace("/");
         }, 600);
-      } catch (err) {
+      }
+      catch (err) {
         setTimeout(() => {
           this.isLoading = false;
           this.error = err;
@@ -183,8 +184,8 @@ export default {
       this.editTestOverlay = true;
     },
     saveEditedTest(data) {
-      console.log("SAVE EDITED DATA: ", data);
-      //this.saveTest(data);
+      this.editTestOverlay = false;
+      this.saveTest(data);
     },
   },
 };

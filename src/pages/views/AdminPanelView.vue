@@ -203,10 +203,21 @@ export default {
       window.scrollTo(0, 0);
       this.editTestOverlay = true;
     },
-    saveEditedTest(data) {
-      console.log("SAVE EDITED DATA: ", data);
+    async saveEditedTest(data) {
       this.editTestOverlay = false;
-      /////////////////////
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch("test/createNewTest", data);
+        this.tests = await this.$store.getters["test/getTests"];
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 600);
+      } catch (err) {
+        setTimeout(() => {
+          this.isLoading = false;
+          this.error = err;
+        }, 600);
+      }
     },
   },
 };
