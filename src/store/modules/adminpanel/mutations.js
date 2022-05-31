@@ -13,7 +13,7 @@ export default {
       state.users.find((user) => user.id == payload.get("id"))
     );
     let tmpUserArray = [];
-    tmpUserArray["id"] = +payload.get("id"); //+ convert string to int
+    tmpUserArray["id"] = +payload.get("id"); //+ string to int
     tmpUserArray["firstname"] = payload.get("firstname");
     tmpUserArray["lastname"] = payload.get("lastname");
     tmpUserArray["username"] = payload.get("username");

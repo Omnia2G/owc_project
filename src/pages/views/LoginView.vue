@@ -1,5 +1,5 @@
 <template>
-<base-dialog :show="!!error" title="An Error occurred" @close="handleError">
+  <base-dialog :show="!!error" title="An Error occurred" @close="handleError">
     <p>{{ error }}</p>
   </base-dialog>
   <base-dialog :show="isLoading" title="Authenticating..." fixed>
@@ -14,21 +14,21 @@
 </template>
 
 <script>
-import LoginFormkit from '../../components/LoginFormkit.vue';
+import LoginFormkit from "../../components/LoginFormkit.vue";
 
 export default {
   components: {
     LoginFormkit,
   },
-  data(){
-    return{
+  data() {
+    return {
       isLoading: false,
       error: null,
     };
   },
   methods: {
     async saveLogin(data) {
-     this.isLoading = true;
+      this.isLoading = true;
       try {
         await this.$store.dispatch("login", data);
         setTimeout(() => {
@@ -38,11 +38,11 @@ export default {
       } catch (err) {
         setTimeout(() => {
           this.isLoading = false;
-          this.error = err;//"Wrong 'username' or 'password' was entered!";       
+          this.error = err;
         }, 800);
       }
     },
-     handleError() {
+    handleError() {
       this.error = null;
     },
   },

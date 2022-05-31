@@ -34,15 +34,25 @@
           @edit-test="loadEditTest"
           @delete-test="deleteTest"
         ></tests-table>
+        <br />
+        <br />
+        <h2>Results of my Tests</h2>
+        <br />
+        <results-table :results="results"></results-table>
+        <br />
+        <br />
+        <h2>My Results</h2>
+        <br />
+        <results-table :results="myResults"></results-table>
         <br /><br />
         <base-button @click="toggleNewTest">{{
           openNewTest ? "Zatvorit novy test" : "Novy test"
         }}</base-button>
-        <br /><br />
-        <base-button @click="toggleEditDeatails">{{
-          personalDetails ? "Zatvorit osobne udaje" : "Upravit osobne udaje"
-        }}</base-button>
+        <br />
       </base-card>
+      <base-button @click="toggleEditDeatails">{{
+        personalDetails ? "Zatvorit osobne udaje" : "Upravit osobne udaje"
+      }}</base-button>
     </base-card>
   </section>
   <section>
@@ -56,11 +66,11 @@
       <h2>Upravit osobne udaje</h2>
       <br />
       <base-card>
-      <registration-formkit
-        :user="user"
-        :edit="true"
-        @edit-user="editPersonalData"
-      ></registration-formkit>
+        <registration-formkit
+          :user="user"
+          :edit="true"
+          @edit-user="editPersonalData"
+        ></registration-formkit>
       </base-card>
     </base-card>
   </section>
@@ -70,18 +80,22 @@
 import CreateTestForm from "../../components/CreateTestForm.vue";
 import TestsTable from "../../components/TestsTable.vue";
 import RegistrationFormkit from "../../components/RegistrationFormkit.vue";
+import ResultsTable from "../../components/ResultsTable.vue";
 
 export default {
   components: {
     CreateTestForm,
     TestsTable,
     RegistrationFormkit,
+    ResultsTable,
   },
   data() {
     return {
       tests: [],
       test: [],
       user: [],
+      results: [],
+      myResults: [],
       testTableheads: ["Title", "Course", "Username"],
       isLoading: false,
       error: null,
@@ -97,6 +111,10 @@ export default {
     async loadData() {
       const usersPayload = new FormData();
       usersPayload.append("action", "getAllUsers");
+      const resultsPayload = new FormData();
+      resultsPayload.append("action", "get-testResults-teacher");
+      const myres = new FormData();
+      myres.append("action", "get-testResultsByUsername");
       try {
         await this.$store.dispatch("adminpanel/loadAllUsers", usersPayload);
         this.user = await this.$store.getters["adminpanel/getUsers"].find(
@@ -107,6 +125,12 @@ export default {
         testsPayload.append("action", "getTestsByUsername");
         await this.$store.dispatch("test/fetchTests", testsPayload);
         this.tests = await this.$store.getters["test/getTests"];
+        resultsPayload.append("username", this.user.username);
+        await this.$store.dispatch("test/testResults", resultsPayload);
+        this.results = await this.$store.getters["test/getResults"];
+        myres.append("username", this.user.username);
+        await this.$store.dispatch("test/fetchMyTestResults", myres);
+        this.myResults = await this.$store.getters["test/getMyTestResults"];
       } catch (error) {
         this.error = error;
       }
@@ -121,8 +145,7 @@ export default {
           this.openNewTest = false;
           this.isLoading = false;
         }, 600);
-      }
-      catch (err) {
+      } catch (err) {
         setTimeout(() => {
           this.isLoading = false;
           this.error = err;
@@ -159,9 +182,10 @@ export default {
         setTimeout(() => {
           this.isLoading = false;
           this.user = this.$store.getters["adminpanel/getUsers"].find(
-          (user) => user.id == data.get('id'));
+            (user) => user.id == data.get("id")
+          );
           this.moveUp();
-          this.personalDetails = false
+          this.personalDetails = false;
         }, 600);
       } catch (err) {
         setTimeout(() => {
@@ -190,13 +214,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.modal-body {
-  width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  max-height: calc(100vh - 210px);
-  overflow-y: auto;
-}
-</style>

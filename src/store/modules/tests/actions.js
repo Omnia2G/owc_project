@@ -72,4 +72,19 @@ export default{
       context.commit('setResults', responseData);
     },
 
+    updateResultsAfterUserDelete(context, payload){
+      context.commit('deleteUserFromResults', payload);
+    },
+
+    async fetchMyTestResults(context, payload){
+      const res = await fetch(url, {
+        method: 'POST',
+        body: payload,
+      });
+      if (!res.ok) {
+        throw new Error("Something went wrong, try again!");
+      }
+      const responseData = await res.json();
+      context.commit('setMyTestResults', responseData);
+    },
 };

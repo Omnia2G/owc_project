@@ -86,3 +86,11 @@
     margin-right: .5rem;
   }
 }
+
+.modal-body {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-height: calc(100vh - 210px);
+  overflow-y: auto;
+}

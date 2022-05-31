@@ -11,4 +11,7 @@ export default{
     getResults(state){
         return state.results;
     },
+    getMyTestResults(state){
+        return state.myResults;
+    },
 };

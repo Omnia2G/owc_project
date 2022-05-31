@@ -62,12 +62,14 @@ if($_POST['action'] == 'createNewTest' || $_POST['action'] == 'editTest'){
         if($titleExists){
             echo json_encode('Title exists for this course');
         }
-        try{
-            $testController-> addNewTestOrEdit($_POST, 'create');
-            echo json_encode("Test was Successfully uploaded to Database!");
-        }
-        catch(PDOException $exception){
-            echo json_encode($exception->getMessage());
+        else{
+            try{
+                $testController-> addNewTestOrEdit($_POST, 'create');
+                echo json_encode("Test was Successfully uploaded to Database!");
+            }
+            catch(PDOException $exception){
+                echo json_encode($exception->getMessage());
+            }
         }
     }
     else{
@@ -211,14 +213,16 @@ if($_POST['action'] == 'editUser'){
 if($_POST['action'] == 'save-testresult'){
     try{
         $testController->saveTestResult($_POST['username'], $_POST['course'], $_POST['testtitle'], $_POST['points']);
-        //echo json_encode($_POST);
     }
     catch(PDOException $exception){
         echo json_encode($exception->getMessage());
     }
 }
 
-if($_POST['action'] == 'get-testResultsByUsername' || $_POST['action'] == 'get-testResults'){
+if($_POST['action'] == 'get-testResultsByUsername' ||
+    $_POST['action'] == 'get-testResults' ||
+    $_POST['action'] == 'get-testResults-teacher'
+    ){
     if($_POST['action'] == 'get-testResultsByUsername'){ // for student
         try{
             echo json_encode($testController->getResultsByUsernameOrAllResults($_POST['username']));
@@ -227,7 +231,15 @@ if($_POST['action'] == 'get-testResultsByUsername' || $_POST['action'] == 'get-t
             echo json_encode($exception->getMessage());
         }
     }
-    else{ //all results for admin
+    if($_POST['action'] == 'get-testResults-teacher'){ // for teacher
+        try{
+            echo json_encode($testController->getTestResultsForTeacher($_POST['username']));
+        }
+        catch(Error $exception){
+            echo json_encode($exception->getMessage());
+        }
+    }
+    if($_POST['action'] == 'get-testResults'){ //all results for admin
         try{
             echo json_encode($testController->getResultsByUsernameOrAllResults(''));
         }

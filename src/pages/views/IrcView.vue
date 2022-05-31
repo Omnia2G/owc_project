@@ -358,8 +358,8 @@
         <p>
           IR Wireless Audio Transfer (Electronoobs), 2020, Dlhšie video, ktoré
           detailnejšie vysvetľuje infračervenú komunikáciu na jednom projekte,
-          kde sa s použitím IR prenáša zvuk. Poukáže aj na niektoré výhody
-          IR, ako aj na rozdiel medzi optickým bezdrôtovým a káblovým spojením.
+          kde sa s použitím IR prenáša zvuk. Poukáže aj na niektoré výhody IR,
+          ako aj na rozdiel medzi optickým bezdrôtovým a káblovým spojením.
         </p>
       </section>
       <br /><br />

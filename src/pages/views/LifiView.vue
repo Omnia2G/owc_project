@@ -642,7 +642,7 @@ export default {
     },
   },
   methods: {
-    moveUp(){
+    moveUp() {
       window.scrollTo(0, 0);
     },
     async loadTestTitlesForThisCourse() {

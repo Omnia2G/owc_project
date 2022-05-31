@@ -157,6 +157,13 @@ class TestController{
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
    }
 
-    
+    public function getTestResultsForTeacher(string $username){
+        $stmt = $this->conn->prepare("SELECT res.id, res.testtitle, res.course, res.points, res.username 
+                FROM `results` AS res INNER JOIN `tests` AS t ON res.testtitle = t.title 
+                WHERE t.username = :username ORDER BY res.testtitle ASC, res.points DESC;");
+        $stmt->bindParam(":username", $username, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 }

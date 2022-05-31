@@ -1,5 +1,5 @@
 <template>
-   <base-dialog :show="!!error" title="Error occured!" @close="handleError">
+  <base-dialog :show="!!error" title="Error occured!" @close="handleError">
     <p>{{ error }}</p>
   </base-dialog>
   <section class="view">

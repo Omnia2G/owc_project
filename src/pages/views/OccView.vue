@@ -68,7 +68,8 @@
           nízkej snímkovej frekvencií, napríklad 30 snímok za sekundu (fps),
           zatiaľ čo špecifické kamery môžu dosiahnuť frekvenciu 1000 snímok za
           sekundu alebo vyššiu. [21]
-        </p><br>
+        </p>
+        <br />
         <span
           ><img
             src="https://orosz.marketingy.eu/owc_project/src/assets/img/rx - tx.JPG"
@@ -88,7 +89,8 @@
           ktoré exponujú všetky pixely súčasne, vyžadujú dostatočne rýchlu
           snímkovú frekvenciu na zistenie zmeny intenzity svetla v každej LED v
           po sebe idúcich snímkach. [21]
-        </p><br>
+        </p>
+        <br />
         <span
           ><img
             src="https://orosz.marketingy.eu/owc_project/src/assets/img/rx - tx block diagram.png"

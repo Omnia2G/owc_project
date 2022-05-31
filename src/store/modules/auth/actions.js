@@ -11,7 +11,6 @@ export default {
       body: payload,
     });
     const responseData = await res.json();
-    // const error = new Error("Wrong 'username' or 'password' was entered!");
     const error = new Error("Zlé  'Používateľské meno'  alebo zlé  'Heslo' !");
     if (!responseData) {
       throw error;
@@ -22,7 +21,6 @@ export default {
       bcrypt.compareSync(payload.get("password"), responseData.pw)
     ) {
       expiresIn = 10800000; // 3h - autologout
-      //expiresIn = 10000;
       const expirationDate = new Date().getTime() + expiresIn;
 
       localStorage.setItem("token", responseData.token);
@@ -115,19 +113,16 @@ export default {
     }
     if (responseData === "username and email exists") {
       throw new Error(
-        //"Entered 'Username' and 'Email' already exists, please choose another!"
         "Zadané 'Používateľské meno' a 'Email' sú obsadené!"
       );
     }
     else if (responseData === "username exists") {
       throw new Error(
-        // "Entered 'Username' already exists, please choose another!"
         "Zadané 'Používateľské meno' je obsadené!"
       );
     }
     else if (responseData === "email exists") {
       throw new Error(
-        // "Entered 'Email' already exists, please choose another!"
         "Zadaný 'Email' je obsadený!"
       );
     }

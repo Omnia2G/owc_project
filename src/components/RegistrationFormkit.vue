@@ -11,9 +11,10 @@
       v-model="firstname"
       label="First Name"
       help="Zadajte meno"
-      validation="required"
+      validation="required|length:2,40"
       :validation-messages="{
         required: 'Nezadali ste meno!',
+        length: 'Dĺžka 2 - 40 znakov!'
       }"
     />
     <FormKit
@@ -22,9 +23,10 @@
       v-model="lastname"
       label="Last Name"
       help="Zadajte priezvisko"
-      validation="required"
+      validation="required|length:2,40"
       :validation-messages="{
         required: 'Nezadali ste priezvisko!',
+        length: 'Dĺžka 2 - 40 znakov!'
       }"
     />
     <FormKit
@@ -33,9 +35,10 @@
       v-model="username"
       label="Username"
       help="Zadajte používateľské meno"
-      validation="required"
+      validation="required|length:2,20"
       :validation-messages="{
         required: 'Nezadali ste používateľské meno!',
+        length: 'Dĺžka 2 - 20 znakov!'
       }"
     />
     <FormKit
@@ -44,10 +47,11 @@
       v-model="email"
       label="Email"
       help="Zadajte emailovú adresu"
-      validation="required|*email"
+      validation="required|*email|length:2,40"
       :validation-messages="{
         required: 'Nezadali ste emailovú adresu!',
         email: 'Nesprávny formát emailovej adresy!',
+        length: 'Max dĺžka 40 znakov!'
       }"
     />
     <FormKit

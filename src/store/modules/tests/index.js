@@ -9,6 +9,7 @@ export default{
             test:[],
             completeTest:[],
             results:[],
+            myResults:[],
         };
     },
     mutations,

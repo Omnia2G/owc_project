@@ -8,14 +8,7 @@
         <span>{{ time }}</span>
       </p>
       <section>
-        <v-carousel
-          hide-delimiters
-          height="400"
-          show-arrows="hover"
-          cycle
-          dark
-          
-        >
+        <v-carousel hide-delimiters height="400" show-arrows="hover" cycle dark>
           <template v-slot:prev="{ props }">
             <v-btn
               rounded="pill"
@@ -60,7 +53,13 @@ export default {
         "red lighten-1",
         "deep-purple accent-4",
       ],
-      slides: ["Visible Light Communication", "Optical Camera Communication", "Infrared Communication", "Free Space Optics", "Li-Fi"],
+      slides: [
+        "Visible Light Communication",
+        "Optical Camera Communication",
+        "Infrared Communication",
+        "Free Space Optics",
+        "Li-Fi",
+      ],
     };
   },
   methods: {
@@ -79,7 +78,7 @@ export default {
     checkTime(i) {
       if (i < 10) {
         i = "0" + i;
-      } // add zero in front of numbers < 10
+      }
       return i;
     },
   },

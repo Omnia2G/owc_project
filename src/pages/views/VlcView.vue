@@ -26,8 +26,6 @@
           najmenšou vlnovou dĺžkou, po červenú s najväčšou vlnovou dĺžkou. [5]
         </p>
         <br />
-
-        <!-- <span><img src="../../assets/img/0214-4.png" alt="vlc rozsah" /></span> -->
         <span
           ><img
             src="https://orosz.marketingy.eu/owc_project/src/assets/img/0214-4.png"
@@ -334,7 +332,7 @@
             :course="test.course"
           ></test-title>
         </ul>
-         <h3 v-else><i>Tests not found for this course.</i></h3>
+        <h3 v-else><i>Tests not found for this course.</i></h3>
       </section>
       <br /><br />
       <base-button @click="moveUp">Späť na začiatok</base-button>
@@ -352,24 +350,23 @@
               >Viac</a
             >
           </li>
-          
           <li>
             [5] Viditeľné svetlo, by: unknown, 5. október 2021
             <a href="https://sk.wikipedia.org/wiki/Viditeľné _svetlo">Viac</a>
           </li>
-          
+
           <li>[13] "Image Sensor Communication". VLC Consortium</li>
-          
+
           <li>
             [14] "About Visible Light Communication". VLC Consortium. December
             3, 2009.
           </li>
-          
+
           <li>
             [15] "Intelligent Transport System - Visible Light Communication".
             VLC Consortium. January 28, 2010.
           </li>
-          
+
           <li>
             [16] Rodríguez, Juan; Lamar, Diego G.; Aller, Daniel G.; Miaja,
             Pablo F.; Sebastián, Javier (April 2018). "Efficient Visible Light
@@ -377,7 +374,7 @@
             Converters". Sensors. 18 (4): 1127. Bibcode:2018Senso..18.1127R.
             doi:10.3390/s18041127. PMC 5948605. PMID 29642455.
           </li>
-          
+
           <li>
             [17] Sebastian, Javier; Lamar, Diego G.; Aller, Daniel G.;
             Rodriguez, Juan; Miaja, Pablo F. (September 2018). "On the Role of
@@ -386,7 +383,7 @@
             doi:10.1109/JESTPE.2018.2830878. hdl:10651/46845. ISSN 2168-6777.
             S2CID 19092607.
           </li>
-          
+
           <li>
             [18] Rodreguez, Juan; Lamar, Diego G.; Aller, Daniel G.; Miaja,
             Pablo F.; Sebastian, Javier (June 2018). "Power-Efficient VLC
@@ -396,7 +393,7 @@
             (COMPEL). Padua: IEEE: 1-8. doi:10.1109/COMPEL.2018.8460175.
             hdl:10651/48039. ISBN 978-1-5386-5541-2. S2CID 52289901.
           </li>
-          
+
           <li>
             [19] Aziz, Amena Ejaz; Wong, Kainam Thomas; Chen, Jung-Chieh (2017).
             "Color-Shift Keying—How itItsargest Obtainable "Minimum Distance"
@@ -405,7 +402,7 @@
             Bibcode:2017JLwT...35.2724A. doi:10.1109/JLT.2017.2693363.
             hdl:10397/76267. S2CID 13698944.
           </li>
-          
+
           <li>
             [20] Visible light communication
             <a href="https://en.wikipedia.org/wiki/Visible_light_communication"
@@ -452,9 +449,6 @@ export default {
       try {
         await this.$store.dispatch("test/fetchTests", actionPayload);
         this.titles = await this.$store.getters["test/getTests"];
-        // for(let test of tests){
-        //   this.titles.push({['id']: test.id, ['title']: test.title, ['course']: test.course});
-        // }
       } catch (error) {
         this.error = error;
       }
@@ -468,5 +462,3 @@ export default {
   },
 };
 </script>
-
-

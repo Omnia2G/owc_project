@@ -49,25 +49,26 @@ export default {
     },
     testResult(data) {
       this.isLoading = true;
-      this.$store.dispatch('test/saveTestResults', data);
+      this.$store.dispatch("test/saveTestResults", data);
       setTimeout(() => {
         this.isLoading = false;
-        this.results = "Your test result are: " + data.get('points') + " points!";
+        this.results =
+          "Your test result are: " + data.get("points") + " points!";
       }, 1500);
     },
     handleError() {
       this.error = null;
     },
     handleResult() {
-      let role = this.$store.getters['userRole'];
+      let role = this.$store.getters["userRole"];
       this.results = null;
-      if(role === 'student'){
+      if (role === "student") {
         this.$router.replace("/student");
       }
-      if(role === 'teacher'){
+      if (role === "teacher") {
         this.$router.replace("/createtest");
       }
-      if(role === 'admin'){
+      if (role === "admin") {
         this.$router.replace("/adminpanel");
       }
       window.scrollTo(0, 0);

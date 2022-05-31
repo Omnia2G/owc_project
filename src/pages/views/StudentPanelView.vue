@@ -11,14 +11,12 @@
       <base-card>
         <h2>My Results</h2>
         <br />
-        <results-table
-          :results="results"
-        ></results-table>
+        <results-table :results="results"></results-table>
         <br />
       </base-card>
       <base-button @click="toggleEditDeatails">{{
-          personalDetails ? "Zatvorit osobne udaje" : "Upravit osobne udaje"
-        }}</base-button>
+        personalDetails ? "Zatvorit osobne udaje" : "Upravit osobne udaje"
+      }}</base-button>
     </base-card>
   </section>
   <section>
@@ -26,11 +24,11 @@
       <h2>Upravit osobne udaje</h2>
       <br />
       <base-card>
-      <registration-formkit
-        :user="user"
-        :edit="true"
-        @edit-user="editPersonalData"
-      ></registration-formkit>
+        <registration-formkit
+          :user="user"
+          :edit="true"
+          @edit-user="editPersonalData"
+        ></registration-formkit>
       </base-card>
     </base-card>
   </section>
@@ -38,18 +36,18 @@
 
 <script>
 import RegistrationFormkit from "../../components/RegistrationFormkit.vue";
-import ResultsTable from '../../components/ResultsTable.vue';
+import ResultsTable from "../../components/ResultsTable.vue";
 
 export default {
   components: {
     RegistrationFormkit,
-    ResultsTable
+    ResultsTable,
   },
   data() {
     return {
       tests: [],
       user: [],
-      results:[],
+      results: [],
       isLoading: false,
       error: null,
       personalDetails: false,
@@ -65,13 +63,14 @@ export default {
       const resultsPayload = new FormData();
       try {
         await this.$store.dispatch("adminpanel/loadAllUsers", usersPayload);
-        this.user = await this.$store.getters["adminpanel/getUsers"].find((user) => user.username == this.$store.getters['userId']);
-        resultsPayload.append('username', this.$store.getters['userId']);
-        resultsPayload.append('action', 'get-testResultsByUsername');
+        this.user = await this.$store.getters["adminpanel/getUsers"].find(
+          (user) => user.username == this.$store.getters["userId"]
+        );
+        resultsPayload.append("username", this.$store.getters["userId"]);
+        resultsPayload.append("action", "get-testResultsByUsername");
         await this.$store.dispatch("test/testResults", resultsPayload);
         this.results = await this.$store.getters["test/getResults"];
-      }
-      catch (error) {
+      } catch (error) {
         this.error = error;
       }
     },
@@ -91,9 +90,10 @@ export default {
         setTimeout(() => {
           this.isLoading = false;
           this.user = this.$store.getters["adminpanel/getUsers"].find(
-          (user) => user.id == data.get('id'));
+            (user) => user.id == data.get("id")
+          );
           this.moveUp();
-          this.personalDetails = false
+          this.personalDetails = false;
         }, 600);
       } catch (err) {
         setTimeout(() => {

@@ -158,14 +158,19 @@ export default {
       payload.append("id", id);
       payload.append("action", "deleteUser");
       try {
-        let useUnderDelete = this.users.find((user) => user.id == id);
-        if (this.$store.getters["userId"] == useUnderDelete.username) {
+        let userUnderDelete = this.users.find((user) => user.id == id);
+        if (this.$store.getters["userId"] == userUnderDelete.username) {
           setTimeout(() => {
             this.$store.dispatch("autoLogout");
           }, 600);
         }
         this.$store.dispatch("adminpanel/deleteUser", payload);
+        this.$store.dispatch(
+          "test/updateResultsAfterUserDelete",
+          userUnderDelete.username
+        );
         this.users = this.$store.getters["adminpanel/getUsers"];
+        this.results = this.$store.getters["test/getResults"];
       } catch (err) {
         this.error = err;
       }
@@ -222,13 +227,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.modal-body {
-  width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  max-height: calc(100vh - 210px);
-  overflow-y: auto;
-}
-</style>

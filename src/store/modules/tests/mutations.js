@@ -26,4 +26,10 @@ export default {
     tmpArr["course"] = payload.get("course");
     state.test[index] = tmpArr;
   },
+  deleteUserFromResults(state, payload){
+    state.results = state.results.filter((result) => result.username !== payload);
+  },
+  setMyTestResults(state, payload){
+    state.myResults = payload;
+  },
 };

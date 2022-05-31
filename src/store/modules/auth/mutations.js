@@ -1,4 +1,4 @@
-export default{ //commit
+export default{
     setUser(state, payload){
         state.userId = payload.userId;
         state.userRole = payload.userRole;
