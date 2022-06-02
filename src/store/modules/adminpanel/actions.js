@@ -7,7 +7,7 @@ export default {
       body: payload,
     });
     if (!res.ok) {
-      throw new Error("Something went wrong during fetching users!");
+      throw new Error("Stala sa nejaká chyba, skúste znova!");
     }
     const responseData = await res.json();
     context.commit('setUsers', responseData);

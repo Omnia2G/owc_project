@@ -1,5 +1,5 @@
 <template>
-  <base-dialog :show="!!error" title="Error occured!" @close="handleError">
+  <base-dialog :show="!!error" title="Chyba!" @close="handleError">
     <p>{{ error }}</p>
   </base-dialog>
   <section class="view">
@@ -21,7 +21,7 @@
             src="https://orosz.marketingy.eu/owc_project/src/assets/img/fso2.JPG"
             alt="Ako funguje FSO"
         /></span>
-        <p class="imgTitle">Ako funguje FSO [62]</p>
+        <p class="imgTitle">Ako funguje FSO [29]</p>
         <p>
           Táto technológia je užitočná tam, kde sú fyzické prepojenia
           nepraktické z dôvodu vysokých nákladov alebo iných dôvodov. [28]
@@ -33,7 +33,7 @@
         /></span>
         <p class="imgTitle">
           Krátkodobé misie NASA pre optickú komunikáciu v blízkosti Zeme
-          2019-2021. [63]
+          2019-2021. [30]
         </p>
         <p>
           Optické spojenia bod-bod vo voľnom priestore možno implementovať
@@ -42,7 +42,7 @@
           Technológia (IrDA) je veľmi jednoduchá forma optickej komunikácie vo
           voľnom priestore. Technológia FSO je považovaná za súčasť optických
           bezdrôtových komunikačných aplikácií. Na komunikáciu medzi kozmickými
-          loďami možno použiť optiku voľného priestoru. [29]
+          loďami možno použiť optiku voľného priestoru. [31]
         </p>
         <span
           ><img
@@ -50,7 +50,7 @@
             alt="Konštelácia NASA Next Generation Relay plánovaná na rok 2025"
         /></span>
         <p class="imgTitle">
-          Konštelácia NASA Next Generation Relay plánovaná na rok 2025. [63]
+          Konštelácia NASA Next Generation Relay plánovaná na rok 2025. [30]
         </p>
       </section>
       <section>
@@ -60,9 +60,9 @@
           <li>
             V roku 2008 spoločnosť MRV Communications predstavila systém
             založený na optike voľného priestoru s rýchlosťou prenosu dát 10
-            Gbit/s [30], ktorá pôvodne požadovala vzdialenosť 2 km pri vysokej
+            Gbit/s [32], ktorá pôvodne požadovala vzdialenosť 2 km pri vysokej
             dostupnosti. Toto vybavenie už nie je k dispozícií, pred koncom
-            životnosti sa užitočná vzdialenosť produktu zmenila na 350 m. [31]
+            životnosti sa užitočná vzdialenosť produktu zmenila na 350 m. [33]
           </li>
           <li>
             V roku 2013 začala spoločnosť MOSTCOM sériovo vyrábať nový
@@ -73,12 +73,12 @@
             nízku úroveň počas atmosférických porúch (zvyčajne až 10 Mb/s). V
             apríli 2014 spoločnosť s Vedecko-technologickým centrom „Fiord“
             demonštrovala prenosovú rýchlosť 30 Gb/s v laboratórnych
-            podmienkach. V roku 2018 začal [32] Mostcom exportovať 30 Gb/s
+            podmienkach. V roku 2018 začal [34] Mostcom exportovať 30 Gb/s
             systém na svetový telekomunikačný trh.
           </li>
           <li>
             LightPointe ponúka mnoho podobných hybridných riešení ako ponuka
-            MOSTCOM. [33]
+            MOSTCOM. [35]
           </li>
           <li>RONJA</li>
         </ul>
@@ -92,7 +92,7 @@
           Kulhavým z Twibright Labs a uvedený na trh v roku 2001. Dáta prenáša
           bezdrôtovo pomocou lúčov svetla. Ronja možno použiť na vytvorenie 10
           Mbit/s plne duplexného eternetového spojenia bod-bod. Odhaduje sa, že
-          na celom svete bolo vybudovaných 1000 až 2000 spojení. [34]
+          na celom svete bolo vybudovaných 1000 až 2000 spojení. [36]
         </p>
         <p>
           Dosah základnej konfigurácie je 1,4 km. Zariadenie pozostáva z trubice
@@ -125,7 +125,7 @@
           <li>
             Ronja Lopipe: Pôvodný (ukončený) dizajn využívajúci červené
             viditeľné svetlo a rozhranie RS232 pre maximálne 115 kbit/s PPP/SLIP
-            prepojenie. [35]
+            prepojenie. [37]
           </li>
         </ul>
       </section>
@@ -221,13 +221,31 @@
             >
           </li>
           <li>
-            [29] Schütz, Andreas; Giggenbach, Dirk (10 November 2008). "DLR
+            [29] How does free space optical communication by Google-X work?,
+            by: Mayur Dhokchaule
+            <a
+              href="https://www.quora.com/How-does-free-space-optical-communication-by-Google-X-work"
+              >Viac</a
+            >
+          </li>
+          <li>
+            [30] Cornwell, D.M. (2017). NASA's optical communications program
+            for 2017 and beyond. 2017 IEEE International Conference on Space
+            Optical Systems and Applications (ICSOS), 10-14.
+            <a
+              href="https://www.semanticscholar.org/paper/
+              NASA's-optical-communications-program-for-2017-and-Cornwell/396bb4d0637f0c1f5f66221c61401555dd00048c"
+              >Viac</a
+            >
+          </li>
+          <li>
+            [31] Schütz, Andreas; Giggenbach, Dirk (10 November 2008). "DLR
             communicates with TerraSAR-X Earth Observation satellite via laser
             beam". DLR Portal. Deutsches Zentrum für Luft und Raumfahrt (DLR) -
             German Aerospace Center. Retrieved 14 March 2018.
           </li>
           <li>
-            [30] "MRV TereScope 10GE", MRV Communications 2009. Viac:
+            [32] "MRV TereScope 10GE", MRV Communications 2009. Viac:
             <a
               href="https://commconnect.com/wp-content/uploads/2011/10/Terescope-10GE.pdf"
               >Link1</a
@@ -240,19 +258,19 @@
             >
           </li>
           <li>
-            [31] An end-of-life notice was posted suddenly and briefly on the
+            [33] An end-of-life notice was posted suddenly and briefly on the
             MRV Terescope product page in 2011. All references to the Terescope
             have been completely removed from MRV's official page as of October
             27, 2014.
           </li>
           <li>
-            [32] "10 Gbps Through The Air". Arto Link. Retrieved October 27,
+            [34] "10 Gbps Through The Air". Arto Link. Retrieved October 27,
             2014. new Artolink wireless communication system with the highest
             capacity: 10 Gbps, full duplex Artolink M1-10GE model
             <a href="http://artolink.com/page/what/">Viac</a>
           </li>
           <li>
-            [33] "LightPointe main page". Archived from the original on
+            [35] "LightPointe main page". Archived from the original on
             2018-03-14. Retrieved October 27, 2014.
             <a
               href="https://web.archive.org/web/20180314051837/http://www.lightpointe.com/"
@@ -260,33 +278,15 @@
             >Viac
           </li>
           <li>
-            [34] Soderberg, J. (2010). "Free Space Optics in the Czech Wireless
+            [36] Soderberg, J. (2010). "Free Space Optics in the Czech Wireless
             Community: Shedding Some Light on the Role of Normativity for
             User-Initiated Innovations". Science, Technology, and Human Values.
             36 (4): 423-450. doi:10.1177/0162243910368398.
           </li>
           <li>
-            [35] "Twibright Labs : Ronja". linas.org. Retrieved 3 June 2017.
+            [37] "Twibright Labs : Ronja". linas.org. Retrieved 3 June 2017.
             <a
               href="https://linas.org/mirrors/atrey.karlin.mff.cuni.cz/2002.01.03/~clock/twibright/ronja/"
-              >Viac</a
-            >
-          </li>
-          <li>
-            [62] How does free space optical communication by Google-X work?,
-            by: Mayur Dhokchaule
-            <a
-              href="https://www.quora.com/How-does-free-space-optical-communication-by-Google-X-work"
-              >Viac</a
-            >
-          </li>
-          <li>
-            [63] Cornwell, D.M. (2017). NASA's optical communications program
-            for 2017 and beyond. 2017 IEEE International Conference on Space
-            Optical Systems and Applications (ICSOS), 10-14.
-            <a
-              href="https://www.semanticscholar.org/paper/
-              NASA's-optical-communications-program-for-2017-and-Cornwell/396bb4d0637f0c1f5f66221c61401555dd00048c"
               >Viac</a
             >
           </li>

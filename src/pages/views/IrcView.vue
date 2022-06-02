@@ -1,5 +1,5 @@
 <template>
-  <base-dialog :show="!!error" title="Error occured!" @close="handleError">
+  <base-dialog :show="!!error" title="Chyba!" @close="handleError">
     <p>{{ error }}</p>
   </base-dialog>
   <section class="view">
@@ -152,7 +152,7 @@
           je najmenší spoločný menovateľ pre všetky zariadenia a ako taký sa
           používa na vyjednávanie medzi komunikačnými zariadeniami). Protokol
           ultra rýchle infračervené (UFIR) podporuje prenosovú rýchlosť až 100
-          Mb/s. [27]
+          Mb/s. [25]
         </p>
         <p>
           Infračervené laserové systémy možno použiť aj na komunikáciu na veľké
@@ -168,7 +168,7 @@
           udržiavané "odrážaním" prenášaných signálov od odrážajúcich povrchov,
           ako sú steny a stropy. Vysielač využíva širokouhlý vysielací lúč a
           prijímač má širokouhlý detektor. Špecifikácie pre infračervené
-          bezdrôtové siete LAN sú zahrnuté v štandarde IEEE 802.11. [27]
+          bezdrôtové siete LAN sú zahrnuté v štandarde IEEE 802.11. [25]
         </p>
         <p>
           Infračervené vysielacie zariadenie, buď svetelná dióda (LED) alebo
@@ -183,7 +183,7 @@
           významnú šumovú zložku na prijímači. Dostupnosť efektívnych, lacných
           LED a fotodiód pracujúcich v rozsahu 800-1000 nanometrov viedla k
           požiadavke, aby vysielače mali vlnovú dĺžku špičkového výkonu medzi
-          850 a 950 nanometrami. [27]
+          850 a 950 nanometrami. [25]
         </p>
       </section>
       <section>
@@ -195,28 +195,28 @@
             Jednou z výhod infračervenej komunikácie je jednoduchosť jej
             všeobecného princípu fungovania. Táto technológia je relatívne
             jednoduchšia na implementáciu ako iné bezdrôtové komunikačné
-            technológie. Používa sa teda v rade prenosných zariadení. [25]
+            technológie. Používa sa teda v rade prenosných zariadení. [26]
           </li>
           <li>
             <span><strong>Lacná technológia: </strong></span>
             Jednoduchosť IR komunikácie sa ďalej premieta do nízkych nákladov na
             implementáciu. To je dôvod, prečo ide o najpoužívanejšiu bezdrôtovú
             komunikačnú technológiu pre aplikácie s krátkym dosahom a aplikácie
-            typu one-on-one use case. [25]
+            typu one-on-one use case. [26]
           </li>
           <li>
             <span><strong>Obmedzené zachytenie: </strong></span>
             Infračervené žiarenie sa šíri priamočiarym spôsobom a má krátky
             dosah. Riziká odpočúvania a rušenia sú nízke v porovnaní s inými
             bezdrôtovými komunikačnými technológiami, ako sú Bluetooth, Wi-Fi a
-            Wi-Fi Direct. [25]
+            Wi-Fi Direct. [26]
           </li>
           <li>
             <span><strong>Energetická účinnosť: </strong></span>
             LED dióda používaná pri odosielaní infračervených lúčov má nízke
             požiadavky na energiu. Ďalej je možné celý IrDA vysielač
             prevádzkovať s malými a nenabíjateľnými batériami. Tieto batérie
-            môžu vydržať mesiace. [25]
+            môžu vydržať mesiace. [26]
           </li>
           <li>
             <span><strong>Rozsiahle aplikácie: </strong></span>
@@ -226,7 +226,7 @@
             prostredníctvom špecifikácie IrLAN, štandard bezdrôtových platieb
             prostredníctvom infračerveného finančného zasielania správ alebo
             protokolu IrFM a výmena binárnych objektov pomocou štandardu OBEX.
-            [25]
+            [26]
           </li>
         </ul>
       </section>
@@ -242,7 +242,7 @@
             IR komunikačnej technológie. Na rozdiel od rádiovej komunikácie musí
             byť vysielač IrDA zosúladený s prijímačom IrDA. Napríklad diaľkové
             ovládanie televízora nebude fungovať, ak nebude vysielané priamo na
-            obrazovku televízora. [25]
+            obrazovku televízora. [26]
           </li>
           <li>
             <span><strong>Krátky dosah prenosu: </strong></span>
@@ -253,7 +253,7 @@
             vysielače. IR komunikačná technológia funguje len na krátky dosah 10
             metrov alebo menej. Okrem obmedzenia priamej viditeľnosti je
             blízkosť bezdrôtovej komunikácie cez infračervené rozhranie značne
-            obmedzená. [25]
+            obmedzená. [26]
           </li>
           <li>
             <span><strong>Prekážky: </strong></span>
@@ -263,7 +263,7 @@
             ovplyvnené aj dymom, hmlou, prachom a slnečným žiarením. IrDA
             vysielače sa tiež môžu navzájom rušiť. Výkon zariadenia môže
             ovplyvniť vzdialenosť aj prítomnosť prekážok alebo interferencií.
-            [25]
+            [26]
           </li>
           <li>
             <span><strong>Bezpečnostné problémy: </strong></span>
@@ -272,7 +272,7 @@
             zraniteľnou voči odpočúvaniu. Niektoré IrDA prijímače však môžu
             reagovať na niekoľko IrDA vysielačov, najmä ak je kódovanie a prenos
             údajov nešifrované, čo vyvoláva obavy o bezpečnosti diaľkovo
-            ovládaných zariadení. [25]
+            ovládaných zariadení. [26]
           </li>
         </ul>
       </section>
@@ -298,7 +298,7 @@
         </ul>
         <p>
           Prenos IR údajov z jedného zariadenia do druhého sa niekedy označuje
-          ako sústredenie do zväzku. [26]
+          ako sústredenie do zväzku. [27]
         </p>
       </section>
       <br /><br />
@@ -416,7 +416,16 @@
             >
           </li>
           <li>
-            [25] Infrared Communication: Advantages and Disadvantages, Posted on
+            [25] Infrared Communications Systems, Author: Christopher J. Wells,
+            Published: 28-01-2009
+            <a
+              href="https://www.technologyuk.net/telecommunications/communicationtechnologies/
+                infrared-communication.shtml"
+              >Viac</a
+            >
+          </li>
+          <li>
+            [26] Infrared Communication: Advantages and Disadvantages, Posted on
             March 13, 2021 by Marion Davies
             <a
               href="https://www.konsyse.com/articles/infrared-communication-advantages-and-disadvantages/"
@@ -424,18 +433,9 @@
             >
           </li>
           <li>
-            [26] infrared transmission, By TechTarget Contributor
+            [27] infrared transmission, By TechTarget Contributor
             <a
               href="https://www.techtarget.com/searchnetworking/definition/infrared-transmission"
-              >Viac</a
-            >
-          </li>
-          <li>
-            [27] Infrared Communications Systems, Author: Christopher J. Wells,
-            Published: 28-01-2009
-            <a
-              href="https://www.technologyuk.net/telecommunications/communicationtechnologies/
-                infrared-communication.shtml"
               >Viac</a
             >
           </li>

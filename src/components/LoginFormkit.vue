@@ -21,14 +21,14 @@
       type="password"
       name="password"
       v-model="password"
-      label="Password"
+      label="Heslo"
       validation="required"
       help="Zadajte heslo"
       :validation-messages="{
         required: 'Nezadali ste heslo!',
       }"
     />
-    <base-button>Log In</base-button>
+    <base-button>Prihlásiť sa</base-button>
   </FormKit>
 </template>
 

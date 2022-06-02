@@ -12,10 +12,10 @@
           <td>{{ test.username }}</td>
           <td>
             <base-button class="delete" @click="editTest(test.id)"
-              >Edit</base-button
+              >Upraviť</base-button
             >
             <base-button class="delete" @click="deleteTest(test.id)"
-              >Delete</base-button
+              >Vymazať</base-button
             >
           </td>
         </tr>

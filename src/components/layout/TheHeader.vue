@@ -37,21 +37,21 @@
             <router-link to="/about">O nás</router-link>
           </li>
           <li v-if="activeRole === 'student' || activeRole === 'admin'">
-            <router-link to="/student">Student Portal</router-link>
+            <router-link to="/student">Študent</router-link>
           </li>
           <li v-if="activeRole === 'teacher' || activeRole === 'admin'">
-            <router-link to="/createtest">Teacher Panel</router-link>
+            <router-link to="/createtest">Učiteľ</router-link>
           </li>
           <li v-if="activeRole === 'admin'">
-            <router-link to="/adminpanel">Admin Panel</router-link>
+            <router-link to="/adminpanel">Admin</router-link>
           </li>
           <li v-if="!isLoggedIn">
-            <router-link to="/login">Login</router-link>
+            <router-link to="/login">Prihlásiť</router-link>
           </li>
           <li v-if="!isLoggedIn">
-            <router-link to="/register">Sign In</router-link>
+            <router-link to="/register">Registrácia</router-link>
           </li>
-            <base-button v-else class="flat logout" @click="logout">Logout</base-button>
+            <base-button v-else class="flat logout" @click="logout">Odhlásiť</base-button>
         </ul>
         </div>
     </nav>

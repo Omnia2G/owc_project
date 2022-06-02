@@ -1,8 +1,8 @@
 <template>
-  <base-dialog :show="!!error" title="Error occured!" @close="handleError">
+  <base-dialog :show="!!error" title="Chyba!" @close="handleError">
     <p>{{ error }}</p>
   </base-dialog>
-  <base-dialog :show="isLoading" title="Loading..." fixed>
+  <base-dialog :show="isLoading" title="Načítanie..." fixed>
     <base-spinner></base-spinner>
   </base-dialog>
   <v-overlay
@@ -11,7 +11,7 @@
     class="align-center justify-center"
   >
     <base-card>
-      <h2>Edit User Data</h2>
+      <h2>Opraviť detaily osobných údajov používateľov</h2>
       <div class="modal-body">
         <registration-formkit
           :admin="'admin'"
@@ -28,7 +28,7 @@
     class="align-center justify-center"
   >
     <base-card>
-      <h2>Edit Test Data</h2>
+      <h2>Opraviť detaily testov</h2>
       <div class="modal-body">
         <create-test-form
           :test="test"
@@ -41,9 +41,9 @@
   <section>
     <base-card>
       <br />
-      <h1>Admin panel</h1>
+      <h1>Správcovský panel</h1>
       <base-card>
-        <h2>Users</h2>
+        <h2>Používatelia</h2>
         <br />
         <users-table
           :users="users"
@@ -51,7 +51,7 @@
           @edit-user="loadEditUser"
         ></users-table>
         <br />
-        <h2>Tests</h2>
+        <h2>Všetky testy</h2>
         <br />
         <tests-table
           :tests="tests"
@@ -60,7 +60,7 @@
           @delete-test="deleteTest"
         ></tests-table>
         <br />
-        <h2>Results</h2>
+        <h2>Všetky výsledky</h2>
         <br />
         <results-table :results="results"></results-table>
         <br />
@@ -68,7 +68,7 @@
       <base-button @click="moveUp">Späť na začiatok</base-button>
     </base-card>
     <base-card>
-      <h2>Add new Admin (or User)</h2>
+      <h2>Pridať nového Admina (alebo používateľa)</h2>
       <base-card>
         <registration-formkit
           :admin="'admin'"
@@ -103,7 +103,7 @@ export default {
       user: [],
       test: [],
       results: [],
-      testTableheads: ["Title", "Course", "Username"],
+      testTableheads: ["Title", "Course", "Username", "Možnosti"],
       isLoading: false,
       error: null,
       editUserOverlay: false,

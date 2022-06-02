@@ -1,15 +1,15 @@
 <template>
-  <base-dialog :show="!!error" title="Error occured!" @close="handleError">
+  <base-dialog :show="!!error" title="Chyba!" @close="handleError">
     <p>{{ error }}</p>
   </base-dialog>
-  <base-dialog :show="!!results" title="Results" @close="handleResult">
+  <base-dialog :show="!!results" title="Výsledok" @close="handleResult">
     <p>{{ results }}</p>
   </base-dialog>
-  <base-dialog :show="isLoading" title="Evaluating...">
+  <base-dialog :show="isLoading" title="Vyhodnotenie...">
     <base-spinner></base-spinner>
   </base-dialog>
   <base-card>
-    <h2>Good Luck</h2>
+    <h2>Veľa štastia!</h2>
     <test-form
       :testArray="fullTest"
       :title="$route.params.title"
@@ -53,7 +53,7 @@ export default {
       setTimeout(() => {
         this.isLoading = false;
         this.results =
-          "Your test result are: " + data.get("points") + " points!";
+          "Váš výsledok je: " + data.get("points") + " bodov!";
       }, 1500);
     },
     handleError() {

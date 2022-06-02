@@ -11,7 +11,7 @@ export default {
       body: payload,
     });
     const responseData = await res.json();
-    const error = new Error("Zlé  'Používateľské meno'  alebo zlé  'Heslo' !");
+    const error = new Error("Zlé 'Používateľské meno' alebo zlé 'Heslo' !");
     if (!responseData) {
       throw error;
     }

@@ -2,10 +2,10 @@
      <v-table theme="dark" fixed-header height="200px" density="compact">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Course</th>
-          <th>Points</th>
-          <th>Username</th>
+          <th>Titul</th>
+          <th>Kurz</th>
+          <th>Body</th>
+          <th>Požívateľské meno</th>
         </tr>
       </thead>
       <tbody>

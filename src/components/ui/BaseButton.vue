@@ -35,8 +35,10 @@ a {
   text-decoration: none;
   padding: 0.5rem .7rem;
   font: inherit;
-  background-color: #3a0061;
-  border: 1px solid #3a0061;
+  /* background-color: #3a0061; */
+  background-color: #333;
+  /* border: 1px solid #3a0061; */
+  border: 1px solid #333;
   color: white;
   cursor: pointer;
   border-radius: 30px;
@@ -50,8 +52,11 @@ a:hover,
 a:active,
 button:hover,
 button:active {
-  background-color: #270041;
-  border-color: #270041;
+  /* background-color: #270041; */
+  /* border-color: #270041; */
+  background-color: rgb(28, 27, 27);
+  border-color: rgb(28, 27, 27);
+
 }
 
 .delete{
@@ -91,7 +96,9 @@ button:active {
 .outline:hover,
 .outline:active {
   /* background-color: #edd2ff; */
-  background-color: beige;
+  /* background-color: beige; */
+  background-color: rgb(138, 136, 136);
+  color: azure;
 }
 @media (max-width: 700px) {
     button, a{

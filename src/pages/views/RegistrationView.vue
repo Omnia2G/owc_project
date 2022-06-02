@@ -1,13 +1,13 @@
 <template>
-  <base-dialog :show="!!error" title="An Error occurred" @close="handleError">
+  <base-dialog :show="!!error" title="Chyba!" @close="handleError">
     <p>{{ error }}</p>
   </base-dialog>
-  <base-dialog :show="isLoading" title="Checking the Database...">
+  <base-dialog :show="isLoading" title="Kontrola...">
     <base-spinner></base-spinner>
   </base-dialog>
   <section>
     <base-card>
-      <h2>Register as a Teacher or as a Student now!</h2>
+      <h2>Registrácia ako Učiteľ alebo ako Študent !</h2><br>
       <registration-formkit
         @register-user="registration"
       ></registration-formkit>

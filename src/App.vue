@@ -39,7 +39,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: beige;
+  background-color: rgb(237, 234, 234);
 }
 .route-enter-from {
   opacity: 0;

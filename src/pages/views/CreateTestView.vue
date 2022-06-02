@@ -1,8 +1,8 @@
 <template>
-  <base-dialog :show="!!error" title="An Error occurred" @close="handleError">
+  <base-dialog :show="!!error" title="Chyba!" @close="handleError">
     <p>{{ error }}</p>
   </base-dialog>
-  <base-dialog :show="isLoading" title="Checking the database..." fixed>
+  <base-dialog :show="isLoading" title="Kontrola..." fixed>
     <base-spinner></base-spinner>
   </base-dialog>
   <v-overlay
@@ -11,7 +11,7 @@
     class="align-center justify-center"
   >
     <base-card>
-      <h2>Edit Test Data</h2>
+      <h2>Úprava testov</h2>
       <br />
       <div class="modal-body">
         <create-test-form
@@ -24,9 +24,9 @@
   </v-overlay>
   <section>
     <base-card>
-      <h1>Teacher Panel</h1>
+      <h1>Učiteľský Panel</h1>
       <base-card>
-        <h2>My Tests</h2>
+        <h2>Moje testy</h2>
         <br />
         <tests-table
           :tests="tests"
@@ -36,22 +36,22 @@
         ></tests-table>
         <br />
         <br />
-        <h2>Results of my Tests</h2>
+        <h2>Výsledky mojich testov</h2>
         <br />
         <results-table :results="results"></results-table>
         <br />
         <br />
-        <h2>My Results</h2>
+        <h2>Moje výsledky</h2>
         <br />
         <results-table :results="myResults"></results-table>
         <br /><br />
         <base-button @click="toggleNewTest">{{
-          openNewTest ? "Zatvorit novy test" : "Novy test"
+          openNewTest ? "Zatvoriť nový test" : "Nový test"
         }}</base-button>
         <br />
       </base-card>
       <base-button @click="toggleEditDeatails">{{
-        personalDetails ? "Zatvorit osobne udaje" : "Upravit osobne udaje"
+        personalDetails ? "Zatvoriť osobné údaje" : "Upraviť osobné údaje"
       }}</base-button>
     </base-card>
   </section>
@@ -63,7 +63,7 @@
   </section>
   <section>
     <base-card v-if="personalDetails">
-      <h2>Upravit osobne udaje</h2>
+      <h2>Úprava osobných údajov</h2>
       <br />
       <base-card>
         <registration-formkit
@@ -96,7 +96,7 @@ export default {
       user: [],
       results: [],
       myResults: [],
-      testTableheads: ["Title", "Course", "Username"],
+      testTableheads: ["Titul", "Kurz", "Používateľské meno", "Možnosti"],
       isLoading: false,
       error: null,
       openNewTest: false,

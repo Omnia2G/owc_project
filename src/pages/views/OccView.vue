@@ -1,5 +1,5 @@
 <template>
-  <base-dialog :show="!!error" title="Error occured!" @close="handleError">
+  <base-dialog :show="!!error" title="Chyba!" @close="handleError">
     <p>{{ error }}</p>
   </base-dialog>
   <section class="view">
@@ -13,7 +13,7 @@
           Cieľom OCC je doručiť údaje zo svetelného zdroja alebo zdrojov do
           kamery. Umelé svetlá (LED) aj kamery sú dostupné všade, kde žijú
           ľudia. Existujúca infraštruktúra bude výhodou OCC pre prijatie na
-          trhu. [21]
+          trhu. [22]
         </p>
         <br />
         <span
@@ -21,7 +21,7 @@
             src="https://orosz.marketingy.eu/owc_project/src/assets/img/Example of promising services in IEEE 802.15.7m.png"
             alt="Príklady služieb v IEEE 802.15.7m"
         /></span>
-        <p class="imgTitle">Príklady služieb v IEEE 802.15.7m [7]</p>
+        <p class="imgTitle">Príklady služieb v IEEE 802.15.7m [8]</p>
         <br />
         <p>
           OCC sa líši od VLC a LiFi, pretože sa používajú rôzne typy prijímačov.
@@ -34,7 +34,7 @@
           tri technológie OWC (OCC, VLC a LiFi) sa spoliehajú na optické vlnové
           dĺžky, neinterferujú s RF. IEEE 802.15.7m OWC dopĺňa ktorúkoľvek z
           technológií IEEE 802.11 RF vrátane bezdrôtového prístupu 802.11p pre
-          automobilové prostredie a Wi-Fi. [21]
+          automobilové prostredie a Wi-Fi. [22]
         </p>
         <p>
           V systémoch VLC a LiFi sa fotodióda používa iba na príjem dát. Naopak,
@@ -48,7 +48,7 @@
           zdrojov, ktoré sú priestorovo oddelené súčasne. Napriek týmto
           významným výhodám kamier bol OWC založený na kamere len nedávno
           prijatý v prebiehajúcej štandardizácií OWC v IEEE 802.15.7m Task Group
-          (TG7m). [21]
+          (TG7m). [22]
         </p>
       </section>
       <section>
@@ -67,7 +67,7 @@
           Nyquistovej teórie vzorkovania. Kamery smartfónov zvyčajne pracujú pri
           nízkej snímkovej frekvencií, napríklad 30 snímok za sekundu (fps),
           zatiaľ čo špecifické kamery môžu dosiahnuť frekvenciu 1000 snímok za
-          sekundu alebo vyššiu. [21]
+          sekundu alebo vyššiu. [22]
         </p>
         <br />
         <span
@@ -76,7 +76,7 @@
             alt="Input output camera communication experiment setup"
         /></span>
         <p class="imgTitle">
-          Input output camera communication experiment setup [7]
+          Input output camera communication experiment setup [8]
         </p>
         <br />
         <p>
@@ -88,7 +88,7 @@
           modulovanú v rolovanom obraze. Globálne fotoaparáty s uzávierkou,
           ktoré exponujú všetky pixely súčasne, vyžadujú dostatočne rýchlu
           snímkovú frekvenciu na zistenie zmeny intenzity svetla v každej LED v
-          po sebe idúcich snímkach. [21]
+          po sebe idúcich snímkach. [22]
         </p>
         <br />
         <span
@@ -97,7 +97,7 @@
             alt="Input output camera communication block diagram"
         /></span>
         <p class="imgTitle">
-          Input output camera communication block diagram [7]
+          Input output camera communication block diagram [8]
         </p>
       </section>
       <section>
@@ -117,8 +117,68 @@
           Charakteristiky modulovaného svetla vnímané ľudským okom. Svetelné
           zdroje a ich modulácie musia byť zvolené vhodne, pretože primárnym
           účelom svetelného zdroja je osvetlenie, zatiaľ čo komunikácia je
-          sekundárnym problémom. [21]
+          sekundárnym problémom. [22]
         </p>
+        <ul>
+          <li>
+            <strong>Nyquistova modulácia vzorkovania:</strong> Princíp NSM je
+            založený na obmedzení spínacej/obnovovacej frekvencie Rs (rolling
+            shutter) Tx tak, aby bola menšia alebo rovná 0,5 snímok za sekundu,
+            aby sa splnila Nyquistova vzorkovacia veta. Keďže snímková
+            frekvencia je väčšinou obmedzená na 60 fps, Rs Tx je vo všeobecnosti
+            nastavené na 30 Hz pre NSM. Okrem toho z dôvodu nízkej Rs Tx, ktorý
+            spôsobuje vnímateľné blikanie pre ľudské oči, NSM vo všeobecnosti
+            využíva digitálny displej ako Tx namiesto LED, pretože blikanie
+            displeja je menej nepríjemné ako blikanie LED. Navyše jediná LED Tx
+            sa v NSM nepoužíva, pretože efektívna dátová rýchlosť je obmedzená
+            na menej ako 60 bps. [8]
+          </li>
+        </ul>
+        <br />
+        <span
+          ><img
+            src="https://orosz.marketingy.eu/owc_project/src/assets/img/nsm.png"
+            alt="Nyquistova modulácia vzorkovania"
+        /></span>
+        <p class="imgTitle">Nyquistova modulácia vzorkovania [8]</p>
+        <ul>
+          <li>
+            <strong>Signalizácia regiónu záujmu:</strong> Region-of-Interest
+            Signaling (RoI-S) je vylepšením NSM, ktoré využíva oblasť záujmu
+            (RoI) v dodatočnom spracovaní, aby sa zmenšila časť snímania obrazu.
+            RoI znižuje rozlíšenie obrazu spracovávaného na Rx a tým aj
+            navrhovanú metódu RoI-S ponúka efektívnejšie a rýchlejšie
+            spracovanie ako OCC založené na NSM. Realizácia RoI-S je založená na
+            kombinácií schém NSM a vysokorýchlostného NSM. RoI-S využíva kameru
+            s nízkou frekvenciou na fixáciu oblasti záujmu a potom vykoná
+            skutočný príjem pomocou vysokorýchlostného fotoaparátu využívajúci
+            predtým nastavenú oblasť záujmu. Pre RoI-S je potrebné používať dve
+            kamery pôvodná metóda ROI je post-processing (po dokončení
+            zachytávania) a rýchlosť nemôže byť neskôr zmenené. [8]
+          </li>
+          <li>
+            <strong>Hybridná kamera-PD modulácia:</strong>Hybridná optická
+            komunikácia medzi kamerou a Pd známa ako optický komunikačný
+            obrazový snímač (OCI). OCI využíva LED, kameru a Pd na zabezpečenie
+            podstatne lepšej odozvy na zmenu intenzity svetla v porovnaní s
+            konvenčnými zobrazovacími pixelmi. Pri OCI sa detekcia svetelného
+            zdroja z obrazových buniek uskutočňuje pred vytvorením komunikačného
+            spojenia a aktiváciou Pd buniek. Okrem toho je detekcia RoI
+            požadovaná, avšak neexistuje žiadna signalizácia, a preto existuje
+            požadovaný algoritmus založený na počítačovom videní. [8]
+          </li>
+          <li>
+            <strong>Modulácia na báze Rs:</strong> Na zvýšenie dátovej
+            priepustnosti bol vyčlenený obrazový snímač so zabudovanou foto
+            diódou. Je príliš zložitý na výrobu a zatiaľ nie je komerčne
+            dostupný. Prijatím Rs efektu obrazového snímača na báze CMOS je
+            možné zvýšiť dátovú rýchlosť. OCC na báze Rs je druhou bežne
+            používanou schémou po NSM, lebo implementácie je praktická na
+            všetkých bežne dostupných kamerách založených na CMOS. Okrem toho sa
+            Rs tiež nazýva Rs vzorová demodulácia v dôsledku zamerania na
+            demoduláciu. [8]
+          </li>
+        </ul>
       </section>
     </base-card>
     <base-card>
@@ -207,7 +267,7 @@
         <h2>Referencie</h2>
         <ul>
           <li>
-            [7] Cahyadi Willy, Chung Yeon-Ho, Ghassemlooy Zabih, Bani Hassan
+            [8] Cahyadi Willy, Chung Yeon-Ho, Ghassemlooy Zabih, Bani Hassan
             Navid. (2020). Optical Camera Communications: Principles,
             Modulations, Potential and Challenges. Electronics. 9. 1339.
             10.3390/electronics9091339.
@@ -218,7 +278,7 @@
             >
           </li>
           <li>
-            [21] What is Optical Camera Communication, by:Trang Nguyen, August
+            [22] What is Optical Camera Communication, by:Trang Nguyen, August
             8, 2018.
             <a
               href="https://opticalpress.com/2018/08/08/what-is-optical-camera-communication/"

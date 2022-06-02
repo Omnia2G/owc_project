@@ -1,5 +1,5 @@
 <template>
-  <base-dialog :show="!!error" title="Error occured!" @close="handleError">
+  <base-dialog :show="!!error" title="Chyba!" @close="handleError">
     <p>{{ error }}</p>
   </base-dialog>
   <section class="view">
@@ -70,12 +70,12 @@
           delením (O-OFDM), ktoré boli optimalizované pre rýchlosť prenosu dát,
           viacnásobný prístup a energetickú účinnosť. Zavedenie O-OFDM znamená,
           že je potrebná nová štandardizácia optickej bezdrôtovej
-          komunikácie.[43]
+          komunikácie.[42]
         </p>
         <p>
           802.11 Light Communications Amendment - Task Group "bb". Cieľom tejto
           skupiny je rozšíriť 802.11 o svetelné médium. Skupina chce poskytnúť
-          nový štandard 802.11bb do polovice roku 2021.[42]
+          nový štandard 802.11bb do polovice roku 2021.[43]
         </p>
         <p>
           Napriek tomu štandard IEEE 802.15.7 definuje fyzickú vrstvu (PHY) a
@@ -84,7 +84,7 @@
           multimediálnych služieb. Zohľadňuje mobilitu optického prenosu, jeho
           kompatibilitu s umelým osvetlením prítomným v infraštruktúrach a
           rušenie, ktoré môže generovať okolité osvetlenie. Vrstva MAC umožňuje
-          použitie prepojenia s ostatnými vrstvami ako pri protokole TCP/IP.[61]
+          použitie prepojenia s ostatnými vrstvami ako pri protokole TCP/IP.[44]
         </p>
         <p>Štandard definuje tri vrstvy PHY s rôznymi rýchlosťami:</p>
         <ul>
@@ -111,7 +111,7 @@
           pre vrstvy PHY I a PHY II zahŕňa hodiny vo vnútri prenášaných údajov
           reprezentujúc logickú 0 so symbolom OOK "01" a logickú 1 so symbolom
           OOK "10", všetky s jednosmernou zložkou. Jednosmerná zložka zabraňuje
-          zhasnutiu svetla v prípade predĺženého chodu logických 0. [61]
+          zhasnutiu svetla v prípade predĺženého chodu logických 0. [44]
         </p>
         <span
           ><img
@@ -140,7 +140,7 @@
             src="https://orosz.marketingy.eu/owc_project/src/assets/img/lifi speed.JPG"
             alt="LiFi vs WiFi rýchlosť"
         /></span>
-        <p class="imgTitle">Li-Fi vs Wi-Fi [64]</p>
+        <p class="imgTitle">Li-Fi vs Wi-Fi [47]</p>
         <ul>
           <li>
             <span><strong>Efektívnosť: </strong></span>
@@ -228,9 +228,9 @@
         <p>
           S krátkovlnným žiarením, aké používa Li-Fi, komunikácia nemôže
           preniknúť cez steny a dvere. Vďaka tomu je bezpečnejší a uľahčuje
-          riadenie prístupu k sieti.[47] Pokiaľ sú zakryté priehľadné materiály,
+          riadenie prístupu k sieti.[48] Pokiaľ sú zakryté priehľadné materiály,
           ako sú okná, prístup ku kanálu Li-Fi je obmedzený na zariadenia v
-          miestnosti. [48]
+          miestnosti. [49]
         </p>
         <ul>
           <li>
@@ -239,20 +239,20 @@
             Electronics Show v Las Vegas v januári 2014. Telefón využíva
             technológiu Wysips CONNECT od SunPartner, ktorá premieňa svetelné
             vlny na využiteľnú energiu, vďaka čomu je telefón schopný prijímať a
-            dekódovať signály bez čerpanie z jeho batérie. [49][50] Číru tenkú
+            dekódovať signály bez čerpanie z jeho batérie. [50][51] Číru tenkú
             vrstvu krištáľového skla je možné pridať na malé obrazovky, ako sú
             hodinky a smartfóny, vďaka ktorým sú napájané solárnou energiou.
             Smartfóny by mohli získať o 15 % dlhšiu výdrž batérie počas bežného
             dňa. Prvé smartfóny využívajúce túto technológiu prišli v roku 2015.
             Táto obrazovka dokáže prijímať aj VLC signály ako aj fotoaparát
-            smartfónu. [51] Náklady na tieto obrazovky na jeden smartfón sa
-            pohybujú výrazne nižšie než u väčšine iných nových technológií. [52]
+            smartfónu. [52] Náklady na tieto obrazovky na jeden smartfón sa
+            pohybujú výrazne nižšie než u väčšine iných nových technológií. [53]
             Svetelná spoločnosť Signify (predtým Philips Lighting) vyvinula
             systém VLC pre nakupujúcich v obchodoch. Musia si stiahnuť aplikáciu
             do smartfónu a potom ich smartfón komunikuje s LED diódami v
             obchode. Systém dokáže presne určiť, kde sa v obchode nachádzajú, a
             poskytne im zodpovedajúce kupóny a informácie podľa toho, v ktorej
-            uličke sa nachádzajú a na čo sa pozerajú.[53]
+            uličke sa nachádzajú a na čo sa pozerajú.[54]
           </li>
           <li>
             <span><strong> Automatizácia domácností a budov: </strong></span>
@@ -271,7 +271,7 @@
             Efektívna komunikácia údajov je možná vo vzdušných prostrediach, ako
             sú komerčné osobné lietadlá využívajúce Li-Fi. Používanie tohto
             prenosu údajov na báze svetla nebude rušiť zariadenia v lietadle,
-            ktoré sa spoliehajú na rádiové vlny, ako je jeho radar. [54]
+            ktoré sa spoliehajú na rádiové vlny, ako je jeho radar. [55]
             Internet počas letu, ak a kedy ho letecká spoločnosť ponúka, je
             často nespoľahlivý a pomalý. Oledcomm chce posunúť veci o stupeň
             vyššie sprístupnením vysokorýchlostného Li-Fi na letoch Air France a
@@ -293,7 +293,7 @@
             od spoločnosti Oledcomm má maximálny dosah iba 28m, a hoci ponúka
             super rýchle priemerné rýchlosti 40 Mbps až 100 Mbps, je tiež
             výrazne drahší ako WiFi. Oledcomm plánuje sprístupniť LiFiMax pre
-            domáce alebo kancelárske použitie. [55]
+            domáce alebo kancelárske použitie. [56]
           </li>
           <li>
             <span><strong>Reklamy: </strong></span>
@@ -301,7 +301,7 @@
             podniky alebo atrakcie na mobilných zariadeniach, keď jednotlivec
             prechádza. Zákazník, ktorý vstúpi do obchodu a prejde cez predné
             svetlá obchodu, môže na mobilnom zariadení zákazníka zobraziť
-            aktuálne predaje a propagačné akcie. [56]
+            aktuálne predaje a propagačné akcie. [57]
           </li>
           <li>
             <span><strong>Aplikácia pod vodou: </strong></span>
@@ -313,7 +313,7 @@
             mobilitu. Užitočnosť technológie je obmedzená vzdialenosťou, ktorú
             môže svetlo preniknúť do vody. Významné množstvo svetla neprenikne
             ďalej ako 200 metrov. Do vzdialenosti 1000 metrov neprenikne žiadne
-            svetlo. [57]
+            svetlo. [58]
           </li>
           <li>
             <span><strong> Vozidlá: </strong></span>
@@ -330,7 +330,7 @@
             cez siete.[58] Okrem poskytovania vyššej rýchlosti majú svetelné
             vlny tiež znížený vplyv na lekárske nástroje. Príkladom by mohla byť
             možnosť použitia bezdrôtových zariadení pri podobných rádiovo
-            citlivých postupoch pri MRI. [54]
+            citlivých postupoch pri MRI. [55]
           </li>
           <li>
             <span><strong>Priemyselná automatizácia: </strong></span>
@@ -341,7 +341,7 @@
             alternatívou k bežným priemyselným štandardom Wireless LAN.
             Fraunhofer IPMS, výskumná organizácia v Nemecku vyvinula komponent,
             ktorý je veľmi vhodný pre priemyselné aplikácie s časovo citlivým
-            prenosom dát. [59]
+            prenosom dát. [60]
           </li>
         </ul>
         <p>
@@ -362,7 +362,7 @@
           profesionálne trhy. Dala by sa použiť v nemocniciach, kde môže byť
           rádiofrekvenčná (RF) komunikácia obmedzená, alebo v oblastiach, kde je
           signál už preplnený. Ako aj použiť na prepojenie robotov alebo strojov
-          v priemyselných podnikoch. [60]
+          v priemyselných podnikoch. [61]
         </p>
         <p>
           Okrem rýchlosti a vyhýbania sa preplneným rádiovým frekvenciám ponúka
@@ -374,7 +374,7 @@
           pre Trulifi je, že používa optické bezdrôtové transceivery zabudované
           alebo dodatočne namontované do svietidiel Philips, čo znamená, že
           používatelia nemusia nevyhnutne vymieňať svoju existujúcu
-          infraštruktúru osvetlenia, aby mohli Li-Fi vyskúšať. [60]
+          infraštruktúru osvetlenia, aby mohli Li-Fi vyskúšať. [61]
         </p>
       </section>
     </base-card>
@@ -489,7 +489,7 @@
             <a href="https://lificomm.com/lifi/">Viac</a>
           </li>
           <li>
-            [42] Institute of Electrical and Electronics Engineers, Inc. (IEEE),
+            [43] Institute of Electrical and Electronics Engineers, Inc. (IEEE),
             Nikola Serafimovski
             <a
               href="https://grouper.ieee.org/groups/802/11/Reports/tgbb_update.htm"
@@ -497,7 +497,7 @@
             >
           </li>
           <li>
-            [43] Tsonev, D.; Sinanovic, S.; Haas, Harald (15 September 2013).
+            [42] Tsonev, D.; Sinanovic, S.; Haas, Harald (15 September 2013).
             "Complete Modeling of Nonlinear Distortion in OFDM-Based Optical
             Wireless Communication". Journal of Lightwave Technology. 31 (18):
             3064-3076. Bibcode:2013JLwT...31.3064T.
@@ -520,40 +520,44 @@
             <a href="https://lifi.co/lifi-pros-cons/">Viac</a>
           </li>
           <li>
-            [47] "Li-Fi: Lighting the Future of Wireless Networks". Archived
+            [47] LiFi vs WiFi - Detailed Comparison, by: Rashmi Bhardwaj
+            <a href="https://ipwithease.com/lifi-vs-wifi/">Viac</a>
+          </li>
+          <li>
+            [48] "Li-Fi: Lighting the Future of Wireless Networks". Archived
             from the original on 18 April 2017. Retrieved 17 April 2017.
           </li>
           <li>
-            [48] "Applications of Li-Fi - Lifi Research and Development Centre".
+            [49] "Applications of Li-Fi - Lifi Research and Development Centre".
             Lifi Research and Development Centre. Archived from the original on
             30 October 2016. Retrieved 15 November 2016.
           </li>
           <li>
-            [49] Breton, Johann (20 December 2013). "Li-Fi Smartphone to be
+            [50] Breton, Johann (20 December 2013). "Li-Fi Smartphone to be
             Presented at CES 2014". Digital Versus. Archived from the original
             on 8 January 2014. Retrieved 16 January 2014.
           </li>
           <li>
-            [50] Rigg, Jamie (11 January 2014). "Smartphone concept incorporates
+            [51] Rigg, Jamie (11 January 2014). "Smartphone concept incorporates
             LiFi sensor for receiving light-based data". Engadget. Archived from
             the original on 15 January 2014. Retrieved 16 January 2014.
           </li>
           <li>
-            [51] An Internet of Light: Going Online with LEDs and the First
+            [52] An Internet of Light: Going Online with LEDs and the First
             Li-Fi Smartphone Archived 11 January 2014 at the Wayback Machine,
             Motherboard Beta, Brian Merchant
           </li>
           <li>
-            [52] Van Camp, Jeffrey (19 January 2014). "Wysips Solar Charging
+            [53] Van Camp, Jeffrey (19 January 2014). "Wysips Solar Charging
             Screen Could Eliminate Chargers and Wi-Fi". Digital Trends. Archived
             from the original on 7 November 2015. Retrieved 29 November 2015.
           </li>
           <li>
-            [53] LaMonica, Martin (18 February 2014). "Philips Creates Shopping
+            [54] LaMonica, Martin (18 February 2014). "Philips Creates Shopping
             Assistant with LEDs and Smart Phone". IEEE Spectrum.
           </li>
           <li>
-            [54] Ayara, W. A.; Usikalu, M. R.; Akinyemi, M. L.; Adagunodo, T.
+            [55] Ayara, W. A.; Usikalu, M. R.; Akinyemi, M. L.; Adagunodo, T.
             A.; Oyeyemi, K. D. (July 2018). "Review on Li-Fi: an advancement in
             wireless network communication with the application of solar power".
             IOP Conference Series: Earth and Environmental Science. 173 (1):
@@ -561,7 +565,7 @@
             doi:10.1088/1755-1315/173/1/012016. ISSN 1755-1315.
           </li>
           <li>
-            [55] High-speed LiFi will soon be available on Air France flights,
+            [56] High-speed LiFi will soon be available on Air France flights,
             by: A. Khalid, June 12th, 2019
             <a
               href="https://www.engadget.com/2019-06-12-high-speed-lifi-will-soon-be-available-on-air-franceflights.
@@ -570,13 +574,13 @@
             >
           </li>
           <li>
-            [56] Swami, Nitin Vijaykumar; Sirsat, Narayan Balaji; Holambe,
+            [57] Swami, Nitin Vijaykumar; Sirsat, Narayan Balaji; Holambe,
             Prabhakar Ramesh (2017). Light Fidelity (Li-Fi): In Mobile
             Communication and Ubiquitous Computing Applications. Springer
             Singapore. ISBN 978-981-10-2630-0.
           </li>
           <li>
-            [57] How far does light travel in the ocean?
+            [58] How far does light travel in the ocean?
             <a
               href="https://web.archive.org/web/20170131072651/http://oceanservice.noaa.gov/facts/light_tra
                       vel.html"
@@ -584,30 +588,22 @@
             >
           </li>
           <li>
-            [58] "Data Services of Li- Fi in Hospital Management- Communication
+            [59] "Data Services of Li- Fi in Hospital Management- Communication
             in Hospitals" (PDF). International Journal of Science and Research
             (IJSR). Archived (PDF) from the original on 4 September 2014.
           </li>
           <li>
-            [59] Happich, Julien. "Fraunhofer IPMS pushes Li-Fi to 12.5Gbit/s
+            [60] Happich, Julien. "Fraunhofer IPMS pushes Li-Fi to 12.5Gbit/s
             for industrial use". European Business Press SA. André Rousselot.
             Retrieved 13 November 2017.
           </li>
           <li>
-            [60] Signify's LiFi system promises up to 150 Mbps internet via LED
+            [61] Signify's LiFi system promises up to 150 Mbps internet via LED
             lights, by:C. Fisher, June 20th, 2019
             <a
               href="https://www.engadget.com/2019-06-20-signify-trulifi-lifi-light-fidelity-internet.html"
               >Viac</a
             >
-          </li>
-          <li>
-            [61] Li-Fi by: Unknown
-            <a href="https://en.wikipedia.org/wiki/Li-Fi">Viac</a>
-          </li>
-          <li>
-            [64] LiFi vs WiFi - Detailed Comparison, by: Rashmi Bhardwaj
-            <a href="https://ipwithease.com/lifi-vs-wifi/">Viac</a>
           </li>
         </ul>
       </section>

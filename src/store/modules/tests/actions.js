@@ -8,10 +8,10 @@ export default{
          const responseData = await res.json();
         
         if (!res.ok) {
-          throw new Error("Something went wrong, try again!");
+          throw new Error("Stala sa nejaká chyba, skúste znova!");
         }
         if(responseData === 'Title exists for this course'){
-          throw new Error("This title exists for this course!");
+          throw new Error("Tento titul už existuje pre tento kurz!");
         }
         if(payload.get('action') === 'editTest'){
           context.commit('updateTest', payload);
@@ -24,7 +24,7 @@ export default{
         body: payload,
       });
       if (!res.ok) {
-        throw new Error("Something went wrong with the test initialization, try again!");
+        throw new Error("Stala sa nejaká chyba pri inicializácií, skúste znova!");
       }
       const responseData = await res.json();
       context.commit('setTest', responseData);
@@ -44,7 +44,7 @@ export default{
         body: payload,
       });
       if (!res.ok) {
-        throw new Error("Something went wrong, try again!");
+        throw new Error("Stala sa nejaká chyba, skúste znova!");
       }
       const responseData = await res.json();
       context.commit('setCompleteTest', responseData);
@@ -56,7 +56,7 @@ export default{
         body: payload,
       });
       if (!res.ok) {
-        throw new Error("Something went wrong, try again!");
+        throw new Error("Stala sa nejaká chyba, skúste znova!");
       }
     },
 
@@ -66,7 +66,7 @@ export default{
         body: payload,
       });
       if (!res.ok) {
-        throw new Error("Something went wrong, try again!");
+        throw new Error("Stala sa nejaká chyba, skúste znova!");
       }
       const responseData = await res.json();
       context.commit('setResults', responseData);
@@ -82,7 +82,7 @@ export default{
         body: payload,
       });
       if (!res.ok) {
-        throw new Error("Something went wrong, try again!");
+        throw new Error("Stala sa nejaká chyba, skúste znova!");
       }
       const responseData = await res.json();
       context.commit('setMyTestResults', responseData);

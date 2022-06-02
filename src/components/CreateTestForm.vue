@@ -10,11 +10,11 @@
       <p>
         Tu sa dá vytvoriť test s 10 otázkami a odpoveďami typu A,B,C - pre
         jednotlivé témy.
-      </p>
+      </p><br>
       <p>1.Krok: zadajte titul testu</p>
       <p>2.Krok: vyberte tému</p>
       <p>3.Krok: vyplňte formulár, a všade označte správnu odpoveď!</p>
-      <p>4.Krok: odoslať formulár</p>
+      <p>4.Krok: odoslať formulár</p><br>
       <FormKit
         type="text"
         name="title"
@@ -630,7 +630,7 @@
         }"
       />
     </base-card>
-    <base-button>{{ edit ? "Save edited test" : "Vytvoriť test" }}</base-button>
+    <base-button>{{ edit ? "Uložiť zmeny" : "Vytvoriť test" }}</base-button>
   </FormKit>
 </template>
 

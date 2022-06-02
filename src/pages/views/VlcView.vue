@@ -1,5 +1,5 @@
 <template>
-  <base-dialog :show="!!error" title="Error occured!" @close="handleError">
+  <base-dialog :show="!!error" title="Chyba!" @close="handleError">
     <p>{{ error }}</p>
   </base-dialog>
   <section class="view">
@@ -128,7 +128,18 @@
           syntetizovanie a dekódovanie. Predstavuje však výbornú výhodu pri
           viaccestnom prenose, kde receptor nie je v priamom dohľade s
           vysielačom, a preto je prenos závislý od odrazu svetla v iných
-          bariérach. [20]
+          bariérach. [19]
+        </p>
+        <p>
+          Ortogonálne multiplexovanie s frekvenčným delením (OFDM) je často
+          používaná metóda na dosiahnutie vysokých dátových rýchlostí a
+          spektrálnej účinnosti. Táto modulačná metóda používa viaceré nosiče
+          namiesto jednej. Prevezme sériové dáta, ktoré sa majú preniesť, a
+          rozdelí ich do mnohých pomalších sériových tokov, z ktorých každý je
+          modulovaný na jednu z viacerých subnosičov. Môže mať 40 subnosičov
+          alebo až mnoho tisíc. Subnosiče sú od seba vzdialené tak, aby boli
+          navzájom ortogonálne. To znamená, že napriek tesnej vzájomnej
+          vzdialenosti sa nerušia. [20]
         </p>
       </section>
       <section>
@@ -161,7 +172,7 @@
         <ul>
           <li>Kľúčovanie zapnuté - vypnuté (OOK)</li>
           <li>Variabilná modulácia polohy impulzu (VPPM)</li>
-          <li>Kľúčovanie farebného posunu (CSK) [20]</li>
+          <li>Kľúčovanie farebného posunu (CSK) [19]</li>
         </ul>
       </section>
       <section>
@@ -184,7 +195,7 @@
           Kvôli dodatočnému kompenzačnému impulzu je modulácia tejto vlny o
           niečo zložitejšia ako modulácia VPPM. Informácie zakódované na šírke
           impulzu sa však dajú ľahko rozlíšiť a dekódovať, takže zložitosť
-          vysielača je vyvážená jednoduchosťou prijímača. [20]
+          vysielača je vyvážená jednoduchosťou prijímača. [19]
         </p>
       </section>
       <section>
@@ -211,7 +222,7 @@
           rámci dátovej periódy, musí byť receptor nejakým spôsobom
           synchronizovaný s vysielačom, pričom presne vie, kedy sa začína dátová
           perióda a ako dlho trvá. Tieto charakteristiky trochu sťažujú
-          implementáciu demodulácie signálu VPPM. [20]
+          implementáciu demodulácie signálu VPPM. [19]
         </p>
       </section>
       <section>
@@ -234,7 +245,7 @@
           farbu, ktorá sa v priebehu času javí ako konštantná, ale nedokážu
           vnímať okamžitú farbu, ktorá sa v čase rýchlo mení. Jednoducho CSK
           prenos udržuje konštantný časovo spriemerovaný svetelný tok, aj keď
-          jeho sekvencia symbolov sa rýchlo mení v chromatickosti. [19]
+          jeho sekvencia symbolov sa rýchlo mení v chromatickosti. [21]
         </p>
       </section>
       <br /><br />
@@ -354,19 +365,15 @@
             [5] Viditeľné svetlo, by: unknown, 5. október 2021
             <a href="https://sk.wikipedia.org/wiki/Viditeľné _svetlo">Viac</a>
           </li>
-
           <li>[13] "Image Sensor Communication". VLC Consortium</li>
-
           <li>
             [14] "About Visible Light Communication". VLC Consortium. December
             3, 2009.
           </li>
-
           <li>
             [15] "Intelligent Transport System - Visible Light Communication".
             VLC Consortium. January 28, 2010.
           </li>
-
           <li>
             [16] Rodríguez, Juan; Lamar, Diego G.; Aller, Daniel G.; Miaja,
             Pablo F.; Sebastián, Javier (April 2018). "Efficient Visible Light
@@ -374,7 +381,6 @@
             Converters". Sensors. 18 (4): 1127. Bibcode:2018Senso..18.1127R.
             doi:10.3390/s18041127. PMC 5948605. PMID 29642455.
           </li>
-
           <li>
             [17] Sebastian, Javier; Lamar, Diego G.; Aller, Daniel G.;
             Rodriguez, Juan; Miaja, Pablo F. (September 2018). "On the Role of
@@ -383,7 +389,6 @@
             doi:10.1109/JESTPE.2018.2830878. hdl:10651/46845. ISSN 2168-6777.
             S2CID 19092607.
           </li>
-
           <li>
             [18] Rodreguez, Juan; Lamar, Diego G.; Aller, Daniel G.; Miaja,
             Pablo F.; Sebastian, Javier (June 2018). "Power-Efficient VLC
@@ -393,21 +398,31 @@
             (COMPEL). Padua: IEEE: 1-8. doi:10.1109/COMPEL.2018.8460175.
             hdl:10651/48039. ISBN 978-1-5386-5541-2. S2CID 52289901.
           </li>
-
           <li>
-            [19] Aziz, Amena Ejaz; Wong, Kainam Thomas; Chen, Jung-Chieh (2017).
+            [19] Visible light communication
+            <a href="https://en.wikipedia.org/wiki/Visible_light_communication"
+              >Viac</a
+            >
+          </li>
+          <li>
+            [20] Editor(s): Louis E. Frenzel, Handbook of Serial Communications
+            Interfaces, Newnes, 2016, Page iv, ISBN 9780128006290,
+            <a href="https://doi.org/10.1016/B978-0-12-800629-0.00086-3."
+              >Viac 1</a
+            >
+            /
+            <a
+              href="https://www.sciencedirect.com/science/article/pii/B9780128006290000863"
+              >Viac 2</a
+            >
+          </li>
+          <li>
+            [21] Aziz, Amena Ejaz; Wong, Kainam Thomas; Chen, Jung-Chieh (2017).
             "Color-Shift Keying—How itItsargest Obtainable "Minimum Distance"
             Depends on its Preset Operating Chromaticity and Constellation
             Size". Journal of Lightwave Technology. 35 (13): 2724-2733.
             Bibcode:2017JLwT...35.2724A. doi:10.1109/JLT.2017.2693363.
             hdl:10397/76267. S2CID 13698944.
-          </li>
-
-          <li>
-            [20] Visible light communication
-            <a href="https://en.wikipedia.org/wiki/Visible_light_communication"
-              >Viac</a
-            >
           </li>
         </ul>
       </section>

@@ -9,7 +9,7 @@
       type="text"
       name="firstname"
       v-model="firstname"
-      label="First Name"
+      label="Meno"
       help="Zadajte meno"
       validation="required|length:2,40"
       :validation-messages="{
@@ -21,7 +21,7 @@
       type="text"
       name="lastname"
       v-model="lastname"
-      label="Last Name"
+      label="Priezvisko"
       help="Zadajte priezvisko"
       validation="required|length:2,40"
       :validation-messages="{
@@ -33,7 +33,7 @@
       type="text"
       name="username"
       v-model="username"
-      label="Username"
+      label="Používateľské meno"
       help="Zadajte používateľské meno"
       validation="required|length:2,20"
       :validation-messages="{
@@ -58,7 +58,7 @@
       type="password"
       name="password1"
       v-model="password1"
-      label="Password"
+      label="Heslo"
       validation="required|*length:8,12"
       help="Dĺžka hesla 8-12 znakov"
       validation-visibility="live"
@@ -70,7 +70,7 @@
     <FormKit
       type="password"
       name="password2"
-      label="Confirm Password"
+      label="Potvrdiť heslo"
       help="Potvrďte heslo"
       validation="required|confirm:password1"
       validation-visibility="live"
@@ -84,7 +84,7 @@
       type="radio"
       name="role"
       v-model="role"
-      label="Sign In as:"
+      label="Registrácia ako:"
       help="Vyberte ako sa chcete zaregistrovať"
       :options="{
         admin: 'Admin',
@@ -96,42 +96,12 @@
         required: 'Neoznačili ste rolu!',
       }"
     />
-      <!-- <FormKit
-      v-else-if="teacher == 'teacher'"
-      type="radio"
-      name="role"
-      v-model="role"
-      label="Sign In as:"
-      help="Vyberte ako sa chcete zaregistrovať"
-      :options="{
-        teacher: 'Učiteľ',
-      }"
-      validation="required"
-      :validation-messages="{
-        required: 'Neoznačili ste rolu!',
-      }"
-    />
-      <FormKit
-      v-else-if="student == 'student'"
-      type="radio"
-      name="role"
-      v-model="role"
-      label="Sign In as:"
-      help="Vyberte ako sa chcete zaregistrovať"
-      :options="{
-        student: 'Študent',
-      }"
-      validation="required"
-      :validation-messages="{
-        required: 'Neoznačili ste rolu!',
-      }"
-    /> -->
     <FormKit
       v-if="!isLoggedIn && admin != 'admin'"
       type="radio"
       name="role"
       v-model="role"
-      label="Sign In as:"
+      label="Registrácia ako:"
       help="Vyberte ako sa chcete zaregistrovať"
       :options="{
         teacher: 'Učiteľ',
@@ -145,14 +115,14 @@
     <FormKit
       v-if="!edit"
       type="checkbox"
-      label="Terms of service"
+      label="Podmienky"
       validation="required|accepted"
       :validation-messages="{
         required: 'Neprijali ste podmienky!',
         accepted: 'Musíte prijať podmienky!',
       }"
     />
-    <base-button>{{ edit ? "Save Data" : "Registrácia" }}</base-button>
+    <base-button>{{ edit ? "Uložiť zmeny" : "Registrácia" }}</base-button>
   </FormKit>
 </template>
 

@@ -2,9 +2,9 @@
     <v-table theme="dark" fixed-header height="200px" density="compact">
       <thead>
         <tr>
-          <th>Username</th>
-          <th>Role</th>
-          <th>Actions</th>
+          <th>Používateľské meno</th>
+          <th>Rola</th>
+          <th>Možnosti</th>
         </tr>
       </thead>
       <tbody>
@@ -13,10 +13,10 @@
           <td data-label="Role">{{ user.role }}</td>
           <td>
             <base-button class="delete" @click="editUser(user.id)"
-              >Edit</base-button
+              >Upraviť</base-button
             >
             <base-button class="delete" @click="deleteUser(user.id)"
-              >Delete</base-button
+              >Vymazať</base-button
             >
           </td>
         </tr>

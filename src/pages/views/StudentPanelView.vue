@@ -1,27 +1,27 @@
 <template>
-  <base-dialog :show="!!error" title="An Error occurred" @close="handleError">
+  <base-dialog :show="!!error" title="Chyba" @close="handleError">
     <p>{{ error }}</p>
   </base-dialog>
-  <base-dialog :show="isLoading" title="Checking the database..." fixed>
+  <base-dialog :show="isLoading" title="Kontrola..." fixed>
     <base-spinner></base-spinner>
   </base-dialog>
   <section>
     <base-card>
-      <h1>Personal achievements and details</h1>
+      <h1>Osobné úspechy a údaje</h1>
       <base-card>
-        <h2>My Results</h2>
+        <h2>Moje výsledky</h2>
         <br />
         <results-table :results="results"></results-table>
         <br />
       </base-card>
       <base-button @click="toggleEditDeatails">{{
-        personalDetails ? "Zatvorit osobne udaje" : "Upravit osobne udaje"
+        personalDetails ? "Zatvoriť osobné údaje" : "Upraviť osobné údaje"
       }}</base-button>
     </base-card>
   </section>
   <section>
     <base-card v-if="personalDetails">
-      <h2>Upravit osobne udaje</h2>
+      <h2>Úprava osobných údajov</h2>
       <br />
       <base-card>
         <registration-formkit
